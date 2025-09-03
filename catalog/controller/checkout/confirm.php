@@ -135,10 +135,18 @@ class ControllerCheckoutConfirm extends Controller {
 			} elseif (isset($this->session->data['guest'])) {
 				$order_data['customer_id'] = 0;
 				$order_data['customer_group_id'] = $this->session->data['guest']['customer_group_id'];
-				$order_data['firstname'] = $this->session->data['guest']['firstname'];
-				$order_data['lastname'] = $this->session->data['guest']['lastname'];
-				$order_data['email'] = $this->session->data['guest']['email'];
-				$order_data['telephone'] = $this->session->data['guest']['telephone'];
+				
+				// Для гостевых заказов берем данные из guest, если они есть, иначе из payment_address
+				$order_data['firstname'] = !empty($this->session->data['guest']['firstname']) ? 
+					$this->session->data['guest']['firstname'] : 
+					$this->session->data['payment_address']['firstname'];
+				$order_data['lastname'] = !empty($this->session->data['guest']['lastname']) ? 
+					$this->session->data['guest']['lastname'] : 
+					$this->session->data['payment_address']['lastname'];
+				$order_data['email'] = !empty($this->session->data['guest']['email']) ? 
+					$this->session->data['guest']['email'] : '';
+				$order_data['telephone'] = !empty($this->session->data['guest']['telephone']) ? 
+					$this->session->data['guest']['telephone'] : '';
 				$order_data['fax'] = $this->session->data['guest']['fax'];
 				$order_data['custom_field'] = $this->session->data['guest']['custom_field'];
 			}
