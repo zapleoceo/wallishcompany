@@ -67,6 +67,7 @@ $_['text_picklist']              = 'Примечание';
 // Column
 $_['column_order_id']            = '№ Заказа';
 $_['column_customer']            = 'Покупатель';
+$_['column_telephone']           = 'Телефон';
 $_['column_status']              = 'Статус';
 $_['column_date_added']          = 'Дата добавления';
 $_['column_date_modified']       = 'Дата обновления';

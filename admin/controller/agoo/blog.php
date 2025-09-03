@@ -1,6 +1,6 @@
 <?php
 /* All rights reserved belong to the module, the module developers http://opencartadmin.com */
-// https://opencartadmin.com � 2011-2019 All Rights Reserved
+// https://opencartadmin.com � 2011-2019 All Rights Reserved
 // Distribution, without the author's consent is prohibited
 if (!class_exists('ControllerAgooBlog', false)) {
 class ControllerAgooBlog extends Controller
@@ -3405,11 +3405,23 @@ EOF;
 			$disabled = array_map('trim', $disabled);
 			return !in_array($func, $disabled);
 		}
-		if (function_exists('exec') && (exec('echo EXEC') == 'EXEC')){
-        	return true;
-		} else {
-			return false;
+		// Безопасная проверка доступности функции без выполнения exec
+		if ($func === 'exec') {
+			// Проверяем доступность функции exec без её выполнения
+			return function_exists('exec') && !in_array('exec', $this->getDisabledFunctions());
 		}
+		return function_exists($func);
+	}
+
+	/**
+	 * Безопасное получение списка отключенных функций
+	 */
+	private function getDisabledFunctions() {
+		$disabled = ini_get('disable_functions');
+		if (empty($disabled)) {
+			return array();
+		}
+		return array_map('trim', explode(',', $disabled));
 	}
 
 	private function table_exists($tableName) {
@@ -3423,17 +3435,66 @@ EOF;
 	private function dir_permissions($file) {
 		error_reporting(0);
 		set_error_handler('agoo_error_handler');
-		if ($this->isAva('exec')) {
-			$files = array(
-				$file
-			);
-			@exec('chmod 7777 ' . implode(' ', $files));
-			@exec('chmod 0777 ' . implode(' ', $files));
+		
+		// Безопасная установка прав доступа без использования exec
+		try {
+			// Проверяем, что файл существует и находится в разрешенной директории
+			if (!$this->isValidFilePath($file)) {
+				error_log("Security warning: Attempted to modify permissions for invalid file path: " . $file);
+				return false;
+			}
+			
+			// Устанавливаем umask для безопасных прав доступа
+			$old_umask = umask(0);
+			
+			// Устанавливаем безопасные права доступа (755 для директорий, 644 для файлов)
+			if (is_dir($file)) {
+				chmod($file, 0755);
+			} else {
+				chmod($file, 0644);
+			}
+			
+			// Восстанавливаем umask
+			umask($old_umask);
+			
+		} catch (Exception $e) {
+			error_log("Error setting file permissions: " . $e->getMessage());
 		}
-		@umask(0);
-		@chmod($file, 0777);
+		
 		restore_error_handler();
 		error_reporting(E_ALL);
+	}
+
+	/**
+	 * Проверка валидности пути к файлу
+	 */
+	private function isValidFilePath($file) {
+		// Проверяем, что путь не содержит опасные символы
+		if (strpos($file, '..') !== false || strpos($file, '//') !== false) {
+			return false;
+		}
+		
+		// Проверяем, что файл находится в разрешенных директориях
+		$allowed_dirs = array(
+			DIR_APPLICATION,
+			DIR_IMAGE,
+			DIR_CACHE,
+			DIR_DOWNLOAD,
+			DIR_UPLOAD
+		);
+		
+		$real_file = realpath($file);
+		if ($real_file === false) {
+			return false;
+		}
+		
+		foreach ($allowed_dirs as $allowed_dir) {
+			if (strpos($real_file, $allowed_dir) === 0) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 
 

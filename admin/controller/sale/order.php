@@ -487,6 +487,7 @@ class ControllerSaleOrder extends Controller {
 			$data['orders'][] = array(
 				'order_id'      => $result['order_id'],
 				'customer'      => $result['customer'],
+				'telephone'     => $result['telephone'],
 				'status'        => $result['status'],
 				'status_id'     => $result['status_id'],
 				'total'         => $this->currency->format($result['total'], $result['currency_code'], $result['currency_value']),
