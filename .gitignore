@@ -1,14 +1,9 @@
-# OpenCart .gitignore
-
-# Configuration files (contain sensitive data)
-config.php
-admin/config.php
-catalog/config.php
+# OpenCart .gitignore - UPDATED FOR FULL FUNCTIONALITY
 
 # Development documentation and reports
 cursor/
 
-# Cache and logs
+# Cache and logs (but keep structure)
 system/storage/cache/*
 system/storage/logs/*
 system/storage/download/*
@@ -60,10 +55,6 @@ node_modules/
 npm-debug.log
 yarn-error.log
 
-# Composer (if using)
-vendor/
-composer.lock
-
 # Environment files
 .env
 .env.local
@@ -86,3 +77,90 @@ composer.lock
 !system/storage/modification/.gitkeep
 !image/cache/.gitkeep
 !image/catalog/.gitkeep
+
+# IMPORTANT: Include all OpenCart core files for full functionality
+# These files are essential for the site to work
+!system/engine/
+!system/library/
+!system/helper/
+!system/startup.php
+!system/modification.xml
+!system/smsgate/
+!system/startup.php
+
+# Include all template and theme files
+!catalog/view/theme/
+!admin/view/template/
+
+# Include all image assets
+!image/
+!image/data/
+!image/flags/
+!image/fonts/
+!image/langmark/
+!image/payment/
+!image/templates/
+
+# Include all catalog files
+!catalog/controller/
+!catalog/language/
+!catalog/model/
+!catalog/view/
+
+# Include all admin files
+!admin/controller/
+!admin/language/
+!admin/model/
+!admin/view/
+
+# Include all system files
+!system/library/dompdf/
+!system/library/agoo/
+!system/library/cache/
+!system/library/db/
+!system/library/export_import/
+!system/library/image/
+!system/library/openbay/
+!system/library/parser/
+!system/library/sc/
+!system/library/template/
+
+# Include all essential PHP files
+!*.php
+!admin/*.php
+!catalog/*.php
+!system/*.php
+
+# Include all essential configuration files (but not sensitive ones)
+!config.php
+!admin/config.php
+!catalog/config.php
+!system/config/config.php
+
+# Include all essential template files
+!templ/
+!templ/css/
+!templ/js/
+!templ/images/
+
+# Include all essential documentation
+!README*
+!LICENSE*
+!CHANGELOG*
+!INSTALL*
+!UPGRADE*
+
+# Include all essential assets
+!logo.*
+!favicon.*
+!robots.txt
+!sitemap.xml
+!crossdomain.xml
+!google*.html
+
+# Include all essential modules
+!pdf/
+!seoshield-client/
+!migrate/
+!modification/
+!emails_img/
