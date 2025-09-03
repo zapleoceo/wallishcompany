@@ -531,6 +531,12 @@ class ModelCatalogProduct extends Model {
     {
         $path = explode('_', $this->request->get['path']);
         $countCategory = count($path);
+        
+        // Проверяем, что у нас достаточно элементов в path
+        if ($countCategory < 2) {
+            return array();
+        }
+        
         $category_id = $path[$countCategory - 2];
 	    //sql = "SELECT category_id FROM " . DB_PREFIX . "product_to_category WHERE product_id = '" . (int)$product_id . "' AND main_category IS FALSE";
         //$sql = "SELECT product_id FROM " . DB_PREFIX . "product_to_category WHERE category_id = '" . (int)$category_id . "'";
@@ -556,7 +562,11 @@ class ModelCatalogProduct extends Model {
         if (empty($query->rows)) {
             // Если нет товаров в категории, то вероятно попали в главную категорию, там нет товаров
             // выбираем из текущей категории
-            $category_id = $path[$countCategory - 1];
+            if ($countCategory >= 1) {
+                $category_id = $path[$countCategory - 1];
+            } else {
+                return array();
+            }
             $sql = "SELECT p.product_id 
                 FROM " . DB_PREFIX . "product p 
 		        LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) 
