@@ -222,7 +222,7 @@ class Controllermodulecustmergroupbysumm extends Controller {
 
         // return $products;
 
-        print_r($products);exit();
+        // print_r($products);exit(); // УДАЛЕНО: выводил секретную информацию о продуктах
 
         $range = $this->getRanges();
         $resultprods = array();

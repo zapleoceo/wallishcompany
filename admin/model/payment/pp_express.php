@@ -299,12 +299,14 @@ class ModelPaymentPPExpress extends Model {
 	public function getTokens($test) {
 		if ($test == 'sandbox') {
 			$endpoint = 'https://api.sandbox.paypal.com/v1/oauth2/token';
-			$client_id = 'Ad3QTBAHwhuNI_blejO4_RqvES74yWRUC61c5QVNDbxkq9csbLpDZogWp_0n';
-			$client_secret = 'EGqgGxCqjs1GIa5l1Ex_Flq0Mb2oMT3rJu2kwz6FuF9QKyxCg6qNqyddxCCW';
+			// ВНИМАНИЕ: В продакшене замените на ваши API ключи!
+			$client_id = $this->config->get('pp_express_client_id_sandbox') ?: 'Ad3QTBAHwhuNI_blejO4_RqvES74yWRUC61c5QVNDbxkq9csbLpDZogWp_0n';
+			$client_secret = $this->config->get('pp_express_client_secret_sandbox') ?: 'EGqgGxCqjs1GIa5l1Ex_Flq0Mb2oMT3rJu2kwz6FuF9QKyxCg6qNqyddxCCW';
 		} else {
 			$endpoint = 'https://api.paypal.com/v1/oauth2/token';
-			$client_id = 'AWyAiBCUYsE156N8YpiiISQpSpep2HPoXXPrf33VBeYleE0SQJg40pgEqZvq';
-			$client_secret = 'EEkc6xB30fDkgUO_YldWWHxKDquY7LBRId6FJ-parAR1CsVpK35zB6U0SIh4';
+			// ВНИМАНИЕ: В продакшене замените на ваши API ключи!
+			$client_id = $this->config->get('pp_express_client_id_live') ?: 'AWyAiBCUYsE156N8YpiiISQpSpep2HPoXXPrf33VBeYleE0SQJg40pgEqZvq';
+			$client_secret = $this->config->get('pp_express_client_secret_live') ?: 'EEkc6xB30fDkgUO_YldWWHxKDquY7LBRId6FJ-parAR1CsVpK35zB6U0SIh4';
 		}
 
 		$request = '';
