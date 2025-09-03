@@ -1,7 +1,7 @@
 /*
  * Metadata - jQuery plugin for parsing metadata from elements
  *
- * Copyright (c) 2006 John Resig, Yehuda Katz, Jï¿½rn Zaefferer, Paul McLanahan
+ * Copyright (c) 2006 John Resig, Yehuda Katz, Jörn Zaefferer, Paul McLanahan
  *
 	* Licensed under http://en.wikipedia.org/wiki/MIT_License
  *
@@ -94,12 +94,7 @@ $.extend({
 			if ( data.indexOf( '{' ) <0 )
 			data = "{" + data + "}";
 			
-			try {
-				data = JSON.parse(data);
-			} catch (e) {
-				console.warn('Invalid JSON in metadata:', data);
-				data = {};
-			}
+			data = eval("(" + data + ")");
 			
 			$.data( elem, settings.single, data );
 			return data;
