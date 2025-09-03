@@ -1,0 +1,54 @@
+.main-text {
+  padding-top: 130px;
+  line-height: 35px;
+  @include media-breakpoint-only(md) {
+    padding-top: 100px; 
+    padding-bottom: 15px; 
+  }
+  @include media-breakpoint-down(sm) {
+    padding-top: 45px;
+  }
+  @include media-breakpoint-down(md) {
+    width: 100%;
+    max-width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .main-text__title {
+    text-align: center;
+    font-family: "Gotham Pro Regular";
+    font-size: 38px;
+    margin-bottom: 55px;
+    text-transform: uppercase;
+    white-space: pre-line;
+
+    @include media-breakpoint-down(sm) {
+      font-size: 28px;
+    }
+    @include media-breakpoint-down(xs) {
+      font-size: 31px;
+    }
+  }
+
+  .main-text__text {
+    text-align: center;
+    font-family: "Gotham Pro Regular";
+    font-size: 16px;
+    margin-bottom: 55px;
+
+    @include media-breakpoint-down(sm) {
+      font-size: 14px !important;
+    }
+  }
+
+  .main-text__btn {
+    margin-bottom: 115px;
+    margin-top: 0;
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+  }
+}

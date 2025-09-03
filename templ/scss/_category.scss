@@ -1,0 +1,745 @@
+.top-drop.open {
+  background: $cyan;
+  .top-drop__title {
+    color: #fff;
+  }
+  .top-drop__control svg path {
+    fill: #fff;
+  }
+}
+
+.top-drop {
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  min-height: 30px;
+  transition: all .3s ease-in-out;
+  border: 1px solid $lightgray;
+  z-index: 2;
+  text-align: center;
+  margin-bottom: 5px;
+
+  @include media-breakpoint-down(md) {
+    text-align: left;
+    padding: 5px 0 5px 25px;
+  }
+  @include media-breakpoint-only(sm) {
+    width: 370px;
+  }
+  @include media-breakpoint-down(xs) {
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  &__wrapper {
+    position: absolute;
+    width: 100.7%;
+    text-align: left;
+    left: -1px;
+    top: 35px;
+    display: none;
+    background: #fff;
+    @include media-breakpoint-down(xs) {
+      top: 45px;
+    }
+    .sale {
+      margin: 0;
+      border: 1px solid $lightgray;
+      padding: 10px 0;
+    }
+    ul li a {
+      padding-left: 15px;
+    }
+    ul li label {
+      right: 15px;
+      top: 5px;
+      width: 20px;
+      height: 16px;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    ul li label.sidebar__control {
+      top: 12px;
+    }
+    .sidebar {
+      margin-bottom: 0;
+      &__item {
+        margin: 0;
+        padding: 0;
+        border-bottom: 1px solid $lightgray;
+        border-left: 1px solid $lightgray;
+        border-right: 1px solid $lightgray;
+        &:after {
+          display: none;
+        }
+      }
+      &__link {
+        display: inline-block;
+        padding: 10px 0 10px 15px;
+      }
+    }
+    .sub-items.open {
+      height: auto;
+    }
+    .sub-items {
+      padding: 0;
+      &__item {
+        border: 1px solid $lightgray;
+        padding: 5px 0 5px 20px;
+        margin: 0;
+        background-color: #f9f9f9;
+      }
+    }
+  }
+  &__title {
+    color: $black;
+    text-align: center;
+
+    &:hover {
+      text-decoration: none;
+      @include textHover();
+    }
+  }
+
+  &__control {
+    position: absolute;
+    width: 20px;
+    height: 30px;
+    top: 0;
+    right: 15px;
+    & svg path {
+      fill: $cyan;
+    }
+  }
+  &__control--close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    height: 100%;
+  }
+  &__control--open {
+    transform: rotate(180deg);
+  }
+
+}
+
+// ###################### category
+.category {
+  &--product {
+    margin-bottom: 100px;
+    &:after { // fix for browser which not chaching bg image
+      content: '';
+      position: absolute;
+      z-index: -999;
+      background: url('../img/icons/heart-red.svg') no-repeat center;
+    }
+    &:before {
+      background: url("../img/icons/arrow-long-cyan.svg") no-repeat center;
+      content: '';
+      position: absolute;
+      z-index: -999;
+    }
+  }
+  & .container {
+    @include media-breakpoint-down(md) {
+      width: 100%;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 100%;
+    }
+  }
+  .row {
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  &__title {
+    position: relative;
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 45px;
+    font-family: 'Futura Pt Light';
+    font-size: 48px;
+    @include media-breakpoint-down(sm) {
+      font-size: 32px;
+    }
+  }
+  // ###################### pagination
+  .pagination[data-view='false'] {
+    display: none;
+  }
+  .pagination[data-view='true'] {
+    display: flex;
+  }
+  .pagination {
+    transition: all .3s ease-in-out;
+    @include media-breakpoint-only(md) {
+      //margin-top: 80px;
+    }
+    .active {
+      color: $cyan;
+    }
+    &__item {
+      position: relative;
+      margin-right: 30px;
+      cursor: pointer;
+      width: 20px;
+      display: flex;
+      justify-content: center;
+
+      &:hover {
+
+        & .pagination__link {
+          @include textHover();
+          text-decoration: none;
+        }
+        &:after {
+          opacity: 1;
+        }
+      }
+
+      &:first-of-type {
+        background: url("../img/icons/arrow-long-black.svg") no-repeat center;
+        transform: rotate(180deg);
+        width: 21px;
+        &.disabled:hover {
+          background: url("../img/icons/arrow-long-black.svg") no-repeat center;
+        }
+        &:hover {
+          background: url("../img/icons/arrow-long-cyan.svg") no-repeat center;
+        }
+        & .pagination__link {
+          &:after {
+            display: none;
+          }
+        }
+      }
+
+      &:last-of-type {
+        background: url("../img/icons/arrow-long-black.svg") no-repeat center;
+        width: 21px;
+        margin-right: 0;
+        & .pagination__link {
+          &:after {
+            display: none;
+          }
+        }
+        &.disabled:hover {
+          background: url("../img/icons/arrow-long-black.svg") no-repeat center;
+        }
+        &:hover {
+          background: url("../img/icons/arrow-long-cyan.svg") no-repeat center;
+        }
+      }
+    }
+    &__link {
+      color: $black;
+      transition: all .3s ease-in-out;
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      &:after {
+        opacity: 0;
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 100%;
+        height: 2px;
+        background-color: $cyan;
+        transition: all .3s ease-in-out;
+      }
+      &:hover:after,
+      &.active:after {
+        opacity: 1;
+      }
+    }
+  }
+  // ###################### pagination
+  .card {
+    width: 100%;
+    margin-bottom: 30px;
+    position: relative;
+    border-radius: 0;
+    border: 1px solid $lightgray;
+    border-color: transparent;
+    &:hover .card__body {
+      border: 1px solid $cyan;
+      border-top: 0;
+      border-bottom: 1px solid #ebebeb;
+    }
+    &:hover .card__footer {
+      border: 1px solid $cyan;
+      border-top: 0;
+    }
+
+    &__like {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      display: flex;
+      justify-content: center;
+      z-index: 2;
+      cursor: pointer;
+
+      & .icon {
+        width: 20px;
+        height: 25px;
+        margin: auto 0;
+      }
+      & .icon svg path {
+        fill: lighten(#7c7f88, 30%);
+      }
+      &:hover .icon {
+        & svg path {
+          fill: $cyan;
+        }
+      }
+    }
+    &__like.active {
+      & .icon {
+        background: url('../img/icons/heart-red.svg') no-repeat center;
+        position: absolute;
+        top: -3px;
+        left: 0px;
+        & svg {
+          display: none;
+        }
+      }
+    }
+
+    &__stock {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 54px;
+      height: 26px;
+      color: $white;
+      z-index: 2;
+      display: none;
+      text-align: center;
+
+      .text {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 10px;
+        text-transform: uppercase;
+        font-weight: 400;
+      }
+
+      &--new {
+        display: block;
+        background-color: $cyan;
+      }
+
+      &--sale {
+        display: block;
+        background-color: $red;
+
+        & ~ .card__body .card__old-price + .card__new-price {
+          color: $saleColor;
+        }
+      }
+    }
+    &__image[src=''] {
+      display: block;
+      position: relative;
+      &:after {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: #f9f9f9 url(../img/icons/logoForProd.svg) no-repeat center;
+        background-size: 200% 200%;
+      }
+    }
+    &__image {
+      width: 100%;
+      height: 375px;
+      text-align: center;
+    }
+
+    &__body {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 25px 20px;
+      border: 1px solid $lightgray;
+      border-top: 0;
+    }
+
+    &__text {
+      width: 100%;
+      font-family: "Gotham Pro Regular";
+      color: $cardTextColor;
+      font-size: 16px;
+      margin-bottom: 5px;
+      font-weight: 500;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    &__price-holder,
+    &__code,
+    &__new-price,
+    &__old-price {
+      margin: 0;
+    }
+    &__code {
+      margin-right: 0;
+      margin-left: auto;
+      font-size: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+    &__price-holder {
+      font-family: "Gotham Pro Bold";
+    }
+    &__new-price {
+      font-size: 14px;
+      font-family: "Gotham Pro Bold";
+    }
+    &__old-price {
+      position: relative;
+      color: #d8d8d8;
+      padding-right: 5px;
+      font-size: 10px;
+      bottom: -5px;
+      text-decoration: line-through;
+    }
+    &__code {
+      color: $cardCodeColor;
+    }
+
+    &__footer {
+      border: 1px solid $lightgray;
+      border-top: 0;
+      display: flex;
+      height: 55px;
+    }
+    &__counter,
+    &__bucket,
+    &__btn {
+      height: 100%;
+    }
+
+    &__counter,
+    &__btn {
+      height: 100%;
+      width: 55px;
+      &:focus {
+        outline: 1px solid #43b9d4;
+        z-index: 2;
+      }
+    }
+
+    &__counter {
+      display: table-cell;
+      border-right: 1px solid $lightgray;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      & input {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        text-align: center;
+        position: relative;
+        &:focus {
+          outline: none;
+          border: 1px solid $cyan;
+        }
+      }
+      & + .card__btn {
+        background: transparent url("../img/icons/plus-big.svg") no-repeat center;
+      }
+    }
+    &__bucket.active .icon svg path,
+    &__bucket.active .icon svg circle {
+      fill: $cyan;
+    }
+    &__bucket {
+      width: calc(100% - 150px);
+      display: flex;
+      justify-content: center;
+
+      &:hover {
+        background-color: $cyan;
+        border-color: $cyan;
+        outline: 1px solid $cyan;
+      }
+
+      & .icon {
+        width: 18px;
+        height: 18px;
+        margin: auto 0;
+      }
+
+      &:hover .icon {
+        & svg path {
+          fill: $white;
+        }
+      }
+
+      &:hover .icon {
+        & svg circle {
+          fill: $white;
+        }
+      }
+    }
+
+    &__btn {
+      cursor: pointer;
+      border: 0;
+      border-right: 1px solid $lightgray;
+      background: transparent url("../img/icons/minus-big.svg") no-repeat center;
+    }
+  }
+}
+
+// ###################### left sidebar
+.sidebar {
+  position: relative;
+  list-style-type: none;
+  padding-left: 0;
+  color: $black;
+  font-size: 12px;
+  background-color: $white;
+  z-index: 9;
+
+  &__control {
+    width: 21px;
+    height: 21px;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    z-index: 2;
+    cursor: pointer;
+    transform: scale(.7);
+    background: url("../img/icons/plus-big.svg") no-repeat center;
+    @include media-breakpoint-only(xl) {
+      right: 5px;
+    }
+    &--product {
+      right: 0;
+    }
+  }
+
+  &__control--open {
+    background: url("../img/icons/minus-big.svg") no-repeat center;
+  }
+
+  &__core {
+    display: none;
+
+    &:checked ~ .sub-items {
+      height: 200px;
+    }
+  }
+  &__title {
+    position: relative;
+    margin-bottom: 45px;
+    font-family: "Gotham Pro Bold";
+    font-size: 14px;
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: $sidebarTitleUnderline;
+      left: 0;
+      bottom: -15px;
+    }
+    &--item {
+      @include media-breakpoint-only(lg) {
+        width: 220px;
+      }
+    }
+  }
+
+  &__item {
+    position: relative;
+    margin-bottom: 15px;
+    &:first-of-type {
+      @include media-breakpoint-only(lg) {
+        margin-top: 20px;
+      }
+      @include media-breakpoint-only(lg) {
+        margin-top: 20px;
+      }
+    }
+    //margin-bottom: 30px;
+    //margin-top: 45px;
+
+    &:hover {
+      cursor: pointer;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background-color: $sidebarUnderline;
+      left: 0;
+      //top: 33px;
+      top: 40px;
+    }
+  }
+
+  &__link {
+    color: inherit;
+    text-transform: uppercase;
+    padding: 10px 0;
+    width: 100%;
+    display: flex;
+
+    &:hover {
+      text-decoration: none;
+      @include textHover();
+    }
+  }
+
+  &:active ~ .sub-items {
+    height: 200px;
+  }
+}
+
+// ###################### sale category in sidebar
+.sale {
+  position: relative;
+  list-style-type: none;
+  padding-left: 0;
+  background-color: #fff;
+  margin-bottom: 30px;
+  font-size: 12px;
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    width: 100%;
+    height: 1px;
+    background-color: $lightgray;
+  }
+  &__item {
+    position: relative;
+    text-transform: uppercase;
+    &--product {
+      right: 0;
+    }
+    label {
+      font-size: 14px;
+      color: $saleColor;
+    }
+    &:hover {
+      label,
+      a {
+        color: $cyan;
+      }
+    }
+  }
+
+  &__link {
+    color: $saleColor;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+// ###################### nested items in sidebar
+.sub-items {
+  position: relative;
+  list-style-type: none;
+  padding-left: 10px;
+  color: inherit;
+  transition: all .3s ease-in-out;
+  height: 0;
+  overflow: hidden;
+  counter-reset: item;
+  &__quantity {
+    position: absolute;
+    top: 0;
+    right: 3px;
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include media-breakpoint-down(lg) {
+      right: 17px;
+    }
+    &--product {
+      right: 0;
+    }
+  }
+
+  .active {
+    @include textHover();
+  }
+  &__item.act {
+    color: $cyan;
+  }
+  &__item {
+    position: relative;
+    counter-increment: item;
+    margin-top: 17px;
+
+    &:hover {
+      cursor: pointer;
+      color: $categorySubCategoryHover;
+    }
+
+    &:hover .sub-items__link {
+      color: $categorySubCategoryHover;
+      text-decoration: none;
+    }
+
+    &:hover .sub-items__quantity {
+      color: $categorySubCategoryHover;
+    }
+  }
+
+  &__link {
+    color: inherit;
+  }
+}
+
+// ###################### top controls
+.btn-holder {
+  display: flex;
+  &--2 {
+    @include media-breakpoint-only(md) {
+      position: relative;
+    }
+    @media (max-width: 475px) {
+      margin-top: 6px;
+    }
+  }
+  @include media-breakpoint-down(xs) {
+    .btn--sale,
+    .btn--new {
+      width: calc(50% - 2.5px);
+      margin: 0;
+      text-align: center;
+      position: relative;
+      .text {
+        width: 100%;
+      }
+    }
+    .btn--new {
+      margin-right: 5px !important;
+    }
+  }
+}

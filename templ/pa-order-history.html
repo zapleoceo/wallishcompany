@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Аккаунт</title>
+    <link rel="stylesheet" href="./css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bootstrap/bootstrap-grid.css" />
+    <link rel="stylesheet" href="./css/bootstrap/bootstrap-reboot.css" />
+    <link rel="stylesheet" href="./css/global.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="#" />
+    <meta name="description" content="" />
+    <meta name="Keywords" content="" />
+</head>
+<body>
+<main class="main">
+    <!-- BEGIN: order -->
+    <section class="account container">
+        <h1 class="account__title">Персональный аккаунт</h1>
+        <div class="row">
+
+            <!-- BEGIN: sidebar-->
+            <div class="col-xl-2 col-lg-2 col-md-8 col-12 offset-xl-0 offset-lg-0 offset-md-2">
+                <ul class="sidebar-nav account__sidebar-nav row">
+                    <label id="sidebar-nav__control" class="sidebar-nav__control">
+                        <i class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="9" height="5" viewBox="0 0 9 5">
+                                <path id="arrow-mini-down" class="cls-1" d="M231.056,880.819l-3.87-3.774a0.6,0.6,0,0,1,0-.869,0.643,0.643,0,0,1,.892,0l3.424,3.339,3.424-3.339a0.641,0.641,0,0,1,.891,0,0.6,0.6,0,0,1,0,.869l-3.87,3.774A0.641,0.641,0,0,1,231.056,880.819Z" transform="translate(-227 -876)"/>
+                            </svg>
+                        </i>
+                    </label>
+                    <li class="sidebar-nav__item col-12"><a href="#" class="sidebar-nav__link">Личные данные</a></li>
+                    <li class="sidebar-nav__item col-12"><a href="#" class="sidebar-nav__link">Адреса доставки</a></li>
+                    <li class="sidebar-nav__item col-12"><a href="#" class="sidebar-nav__link">Мои заказы</a></li>
+                    <li class="sidebar-nav__item col-12"><a href="#" class="sidebar-nav__link">Список желаний</a></li>
+                    <li class="sidebar-nav__item col-12"><a href="#" class="sidebar-nav__link">Мои карты</a></li>
+                    <li class="sidebar-nav__item col-12">
+                        <a href="#" class="sidebar-nav__link">Выход</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- END: sidebar -->
+
+            <div class="order-align col-xl-9 col-lg-9 col-12">
+                <!-- BEGIN: table -->
+                <div class="order row">
+                    <h4 class="order__title">История заказов</h4>
+
+                    <table class="order__table">
+                        <thead>
+                        <tr>
+                            <th>Номер</th>
+                            <th>Дата</th>
+                            <th>Сумма</th>
+                            <th>Способ оплаты</th>
+                            <th>Способ доставки</th>
+                            <th>Статус</th>
+                            <th>Повторить</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="order__row">
+                            <td class="order__link-holder">
+                                <a href="#" class="order__link">№ 97427148</a>
+                            </td>
+                            <td class="order__date">
+                                24 марта 2018   12:38
+                            </td>
+                            <td class="order__price">
+                                1 549 грн.
+                            </td>
+                            <td class="order__type">
+                                Наличные
+                            </td>
+                            <td class="order__delivery">
+                                Нова Пошта
+                            </td>
+                            <td class="order__status" data-status="inprogress">
+                                В обработке
+                                <a href="#" class="btn"><span class="text">Оплатить</span></a>
+                            </td>
+                            <td class="order__repeat-holder">
+                              <a href="#" class="order__repeat"><i class="icon"></i></a>
+                            </td>
+                        </tr>
+
+                        <tr class="order__row">
+                            <td class="order__link-holder">
+                                <a href="#" class="order__link">№ 97427148</a>
+                            </td>
+                            <td class="order__date">
+                                24 марта 2018   12:38
+                            </td>
+                            <td class="order__price">
+                                1 549 грн.
+                            </td>
+                            <td class="order__type">
+                                Наличные
+                            </td>
+                            <td class="order__delivery">
+                                Нова Пошта
+                            </td>
+                            <td class="order__status" data-status="canceled">
+                                Отменен
+                                <a href="#" class="btn"><span class="text">Оплатить</span></a>
+                            </td>
+                            <td class="order__repeat-holder">
+                              <a href="#" class="order__repeat"><i class="icon"></i></a>
+                            </td>
+                        </tr>
+
+                        <tr class="order__row">
+                            <td class="order__link-holder">
+                                <a href="#" class="order__link">№ 97427148</a>
+                            </td>
+                            <td class="order__date">
+                                24 марта 2018   12:38
+                            </td>
+                            <td class="order__price">
+                                1 549 грн.
+                            </td>
+                            <td class="order__type">
+                                Наличные
+                            </td>
+                            <td class="order__delivery">
+                                Нова Пошта
+                            </td>
+                            <td class="order__status " data-status="payed">
+                                оплачен
+                                <a href="#" class="btn"><span class="text">Оплатить</span></a>
+                            </td>
+                            <td class="order__repeat-holder">
+                              <a href="#" class="order__repeat"><i class="icon"></i></a>
+                            </td>
+                        </tr>
+
+                        <tr class="order__row">
+                            <td class="order__link-holder">
+                                <a href="#" class="order__link">№ 97427148</a>
+                            </td>
+                            <td class="order__date">
+                                24 марта 2018   12:38
+                            </td>
+                            <td class="order__price">
+                                1 549 грн.
+                            </td>
+                            <td class="order__type">
+                                Наличные
+                            </td>
+                            <td class="order__delivery">
+                                Нова Пошта
+                            </td>
+                            <td class="order__status " data-status="success">
+                                выполнен
+                                <a href="#" class="btn"><span class="text">Оплатить</span></a>
+                            </td>
+                            <td class="order__repeat-holder">
+                              <a href="#" class="order__repeat"><i class="icon"></i></a>
+                            </td>
+                        </tr>
+
+                        <tr class="order__row">
+                            <td class="order__link-holder">
+                                <a href="#" class="order__link">№ 97427148</a>
+                            </td>
+                            <td class="order__date">
+                                24 марта 2018   12:38
+                            </td>
+                            <td class="order__price">
+                                1 549 грн.
+                            </td>
+                            <td class="order__type">
+                                Наличные
+                            </td>
+                            <td class="order__delivery">
+                                Нова Пошта
+                            </td>
+                            <td class="order__status" data-status="none">
+                                <a href="#" class="btn"><span class="text">Оплатить</span></a>
+                            </td>
+                            <td class="order__repeat-holder">
+                              <a href="#" class="order__repeat"><i class="icon"></i></a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- END: table -->
+
+                <!-- BEGIN: pagination -->
+                <div class="order category row justify-content-center">
+                    <nav class="d-xl-block d-lg-block d-md-block d-none col-auto">
+                        <ul class="pagination">
+                            <li class="pagination__item"><a href="#" class="pagination__link"></a></li>
+                            <li class="pagination__item"><a href="#" class="pagination__link">01</a></li>
+                            <li class="pagination__item"><a href="#" class="pagination__link active">02</a></li>
+                            <li class="pagination__item"><a href="#" class="pagination__link">03</a></li>
+                            <li class="pagination__item"><a href="#" class="pagination__link">04</a></li>
+                            <li class="pagination__item"><a href="#" class="pagination__link">05</a></li>
+                            <li class="pagination__item"><a href="#" class="pagination__link"></a></li>
+                        </ul>
+                    </nav>
+                    <div class="btn-holder d-xl-none d-lg-none d-md-none d-block col-12">
+                      <button class="btn order__btn"><span class="text">Показать больше</span></button>
+                    </div>
+                </div>
+                <!-- END: pagination -->
+            </div>
+        </div>
+    </section>
+    <!-- END: order -->
+</main>
+
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script src="./js/order-history.js"></script>
+</body>
+</html>

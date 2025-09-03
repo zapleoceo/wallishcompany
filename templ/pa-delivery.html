@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Аккаунт</title>
+    <link rel="stylesheet" href="./css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bootstrap/bootstrap-grid.css" />
+    <link rel="stylesheet" href="./css/bootstrap/bootstrap-reboot.css" />
+    <link rel="stylesheet" href="./css/global.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="#" />
+    <meta name="description" content="" />
+    <meta name="Keywords" content="" />
+</head>
+<body>
+<main class="main">
+    <!-- BEGIN: account -->
+    <section class="account container">
+        <h1 class="account__title">Персональный аккаунт</h1>
+        <div class="row">
+
+            <!-- BEGIN: sidebar-->
+            <div class="col-xl-2 col-lg-2 col-md-8 col-12 offset-xl-0 offset-lg-0 offset-md-2">
+                <ul class="sidebar-nav account__sidebar-nav row">
+                    <label id="sidebar-nav__control" class="sidebar-nav__control">
+                        <i class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="9" height="5" viewBox="0 0 9 5">
+                                <path id="arrow-mini-down" class="cls-1" d="M231.056,880.819l-3.87-3.774a0.6,0.6,0,0,1,0-.869,0.643,0.643,0,0,1,.892,0l3.424,3.339,3.424-3.339a0.641,0.641,0,0,1,.891,0,0.6,0.6,0,0,1,0,.869l-3.87,3.774A0.641,0.641,0,0,1,231.056,880.819Z" transform="translate(-227 -876)"/>
+                            </svg>
+                        </i>
+                    </label>
+                    <li class="sidebar-nav__item col-12"><a href="#" class="sidebar-nav__link">Личные данные</a></li>
+                    <li class="sidebar-nav__item col-12"><a href="#" class="sidebar-nav__link">Адреса доставки</a></li>
+                    <li class="sidebar-nav__item col-12"><a href="#" class="sidebar-nav__link">Мои заказы</a></li>
+                    <li class="sidebar-nav__item col-12"><a href="#" class="sidebar-nav__link">Список желаний</a></li>
+                    <li class="sidebar-nav__item col-12"><a href="#" class="sidebar-nav__link">Мои карты</a></li>
+                    <li class="sidebar-nav__item col-12">
+                        <a href="#" class="sidebar-nav__link">Выход</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- END: sidebar -->
+
+            <div class="col-xl-9 col-lg-9 col-12">
+
+                <div class="row align">
+
+<!-- BEGIN: left column -->
+                  <div class="delivery col-xl-5 col-lg-5 col-md-5 col-sm-5 col-12">
+                    <div class="row">
+                      <h4 class="delivery__title col-12">Доставка по территории Украины</h4>
+                      <div class="delivery__btn-holder">
+                          <button id="addUkraineAdress" class="btn"><span class="text">Добавить адрес в украине</span></button>
+                      </div>
+                      <!-- BEGIN: ukraine address -->
+                      <form class="delivery__data-holder" action="#" id="addDeliveryForm">
+                        <div class="wrapper">
+                            <span class="close" id="closeUkraineAdress"></span>
+                            <div class="col-12">
+                                <div class="contacts">
+                                    <div class="contacts__input-holder ">
+                                        <select class="contacts__input contacts__input--select" name="deliveryType" id="deliveryType" data-error=".error0">
+                                            <option value="curier">Курьером по киеву (бесплатно)</option>
+                                            <option value="nova" selected>Нова пошта</option>
+                                        </select>
+                                        <label class="select has align--1">Тип доставки</label>
+                                        <label class="control" for="deliveryType"><i class="icon"></i></label>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <div class="error0"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="contacts">
+                                    <div class="contacts__input-holder ">
+                                        <select class="contacts__input contacts__input--select" name="city" id="city" data-error=".error1">
+                                            <option value="">Киев</option>
+                                            <option value="">Днепр</option>
+                                        </select>
+                                        <label class="select has">Город</label>
+                                        <label class="control" for="city"><i class="icon"></i></label>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <div class="error1"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 hidden">
+                                <div class="contacts contacts__input-holder">
+                                    <input class="contacts__input" type="text" name="deliveryAddress" data-error=".error2"/>
+                                    <label class="has">Адрес доставки</label>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <div class="error2"></div>
+                                </div>
+                            </div>
+                            <div class="col-12 visible">
+                                <div class="contacts contacts__input-holder">
+                                    <select class="contacts__input contacts__input--select" name="deliveryNova" id="deliveryNova" data-error=".error3">
+                                        <option value="">Киев отделения 35</option>
+                                        <option value="">Днепр отделения 16</option>
+                                    </select>
+                                    <label class="select has">Номер отделения &laquo;Нова Пошта&raquo;</label>
+                                    <label class="control" for="deliveryNova"><i class="icon"></i></label>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <div class="error3"></div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="contacts contacts__input-holder">
+                                    <input class="contacts__input" type="tel" name="phone" data-error=".error4"/>
+                                    <label class="has">Телефон получателя</label>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <div class="error4"></div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="contacts contacts__input-holder">
+                                    <input class="contacts__input" type="text" name="company" data-error=".error5"/>
+                                    <label class="has">Компания</label>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <div class="error5"></div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="contacts contacts__input-holder">
+                                    <input class="contacts__input" type="text" name="uname" data-error=".error6"/>
+                                    <label class="has">Имя</label>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <div class="error6"></div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="contacts contacts__input-holder">
+                                    <input class="contacts__input" type="text" name="surname" data-error=".error7"/>
+                                    <label class="has">Фамилия</label>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <div class="error7"></div>
+                                </div>
+                            </div>
+                            <div class="d-card__control-holder">
+                                <div class="checkbox">
+                                    <input id="subscribe-input_4" class="checkbox__core" type="checkbox"/>
+                                    <label for="subscribe-input_4" class="checkbox__control"><i class="icon"></i></label>
+                                </div>
+                                <p class="d-card__c-text d-card__c-text--editForm">
+                                    <span class="text">Установить адресом по умолчанию</span>
+                                </p>
+                            </div>
+                            <div class="d-card__control-holder">
+                                <div class="checkbox">
+                                    <input id="subscribe-input_5" class="checkbox__core" type="checkbox"/>
+                                    <label for="subscribe-input_5" class="checkbox__control"><i class="icon"></i></label>
+                                </div>
+                                <p class="d-card__c-text d-card__c-text--editForm">
+                                    <span class="text">Отправить на имя компании</span>
+                                </p>
+                            </div>
+                            <div class="delivery__btn-holder">
+                                <a href="#" id="addDelivery" class="btn btn--editForm"><span class="text">Сохранить</span></a>
+                            </div>
+                        </div>
+                      </form>
+                      <!-- END: ukraine address -->
+                  <!-- BEGIN: d-card -->
+                    <div class="d-card delivery__d-card col-12" id="d-card_0">
+                                <div class="d-card__type">
+                                    <input class="text" type="text" value="Курьером по Киеву (бесплатно)" readonly="true" />
+                                </div>
+                                <div class="d-card__address">
+                                    <textarea class="text" readonly="true">Київ, Київська обл., 02156 Україна вул. Тараса Шевченко, 11, кв. 66
+                                    </textarea>
+                                </div>
+                                <div class="d-card__phone-holder">
+                                    <input class="text" type="text" value="+38 066 395-35-74" readonly="true" />
+                                </div>
+                                <div class="d-card__name">
+                                  <input type="text" class="text" value="Евгений Маденов"  readonly="true"/>
+                                </div>
+                                <div class="d-card__control-holder">
+                                    <button class="d-control edit" id="0" data-edit="Редактировать" data-save="Сохранить">Редактировать</button>
+                                    <button class="d-control remove" id="0" data-language="Удалить">Удалить</button>
+                                </div>
+                                <div class="d-card__control-holder">
+                                    <div class="checkbox">
+                                        <input id="subscribe-input_0" class="checkbox__core" type="checkbox"/>
+                                        <label for="subscribe-input_0" class="checkbox__control"><i class="icon"></i></label>
+                                    </div>
+                                    <p class="d-card__c-text">
+                                        <span class="text">Установить адресом по умолчанию</span>
+                                    </p>
+                                </div>
+                    </div>
+                  <!-- END: d-card -->
+
+                  <!-- BEGIN: d-card -->
+                    <div class="d-card delivery__d-card col-12" id="d-card_2">
+                          <div class="d-card__type">
+                              <input class="text" type="text" value="Курьером по Киеву (бесплатно)" readonly="true" />
+                          </div>
+                          <div class="d-card__address">
+                              <textarea class="text" readonly="true">
+                                  Київ, Київська обл., 02156 Україна
+                                  вул. Тараса Шевченко, 11, кв. 66
+                              </textarea>
+                          </div>
+                          <div class="d-card__phone-holder">
+                              <input class="text" type="text" value="+38 066 395-35-74" readonly="true" />
+                          </div>
+                          <div class="d-card__name">
+                            <input type="text" class="text" value="Евгений Маденов"  readonly="true"/>
+                          </div>
+                          <div class="d-card__control-holder">
+                              <button class="d-control edit" id="2" data-edit="Редактировать" data-save="Сохранить">Редактировать</button>
+                              <button class="d-control remove" id="2" data-language="Удалить">Удалить</button>
+                          </div>
+                          <div class="d-card__control-holder">
+                              <div class="checkbox">
+                                  <input id="subscribe-input_2" class="checkbox__core" type="checkbox"/>
+                                  <label for="subscribe-input_2" class="checkbox__control"><i class="icon"></i></label>
+                              </div>
+                              <p class="d-card__c-text">
+                                  <span class="text">Установить адресом по умолчанию</span>
+                              </p>
+                          </div>
+                    </div>
+                  <!-- END: d-card -->
+                        </div>
+
+                    </div>
+                <!-- END: left column -->
+
+                <!-- BEGIN: right column -->
+                  <div class="delivery col-xl-5 col-lg-5 col-md-5 col-sm-5 col-12">
+                    <div class="row">
+                        <h4 class="delivery__title col-12">Международная доставка</h4>
+                        <div class="delivery__btn-holder">
+                            <button id="addInternayionalAdress" class="btn"><span class="text">Добавить Международный адрес</span></button>
+                        </div>
+                        <!-- BEGIN: international address -->
+                      <form class="delivery__data-holder" action="#" id="addInternationalDeliveryForm">
+                          <div class="wrapper">
+                              <span class="close" id="closeInternationalAdress"></span>
+                              <div class="col-12">
+                                  <div class="contacts">
+                                      <div class="contacts__input-holder ">
+                                          <select class="contacts__input contacts__input--select" name="country" id="country" data-error=".error_1_0">
+                                              <option>USA</option>
+                                          </select>
+                                          <label class="select has align--1">Страна</label>
+                                          <label class="control" for="country"><i class="icon"></i></label>
+                                          <span class="highlight"></span>
+                                          <span class="bar"></span>
+                                          <div class="error_1_0"></div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-12">
+                                  <div class="contacts contacts__input-holder">
+                                      <input class="contacts__input" type="text" name="state" data-error=".error_1_1"/>
+                                      <label class="has">Округ</label>
+                                      <span class="highlight"></span>
+                                      <span class="bar"></span>
+                                      <div class="error_1_1"></div>
+                                  </div>
+                              </div>
+                              <div class="col-12">
+                                  <div class="contacts contacts__input-holder">
+                                      <input class="contacts__input" type="text" name="iCity" data-error=".error_1_2"/>
+                                      <label class="has">Город</label>
+                                      <span class="highlight"></span>
+                                      <span class="bar"></span>
+                                      <div class="error_1_2"></div>
+                                  </div>
+                              </div>
+                              <div class="col-12">
+                                  <div class="contacts contacts__input-holder">
+                                      <input class="contacts__input" type="text" name="iAddress" data-error=".error_1_3"/>
+                                      <label class="has">Адрес</label>
+                                      <span class="highlight"></span>
+                                      <span class="bar"></span>
+                                      <div class="error_1_3"></div>
+                                  </div>
+                              </div>
+                              <div class="col-12">
+                                  <div class="contacts contacts__input-holder">
+                                      <input class="contacts__input" type="text" name="zip" data-error=".error_1_4"/>
+                                      <label class="has">Zip code</label>
+                                      <span class="highlight"></span>
+                                      <span class="bar"></span>
+                                      <div class="error_1_4"></div>
+                                  </div>
+                              </div>
+                              <div class="col-12">
+                                  <div class="contacts contacts__input-holder">
+                                      <input class="contacts__input" type="tel" name="iPhone" data-error=".error_1_5"/>
+                                      <label class="has">Телефон</label>
+                                      <span class="highlight"></span>
+                                      <span class="bar"></span>
+                                      <div class="error_1_5"></div>
+                                  </div>
+                              </div>
+                              <div class="col-12">
+                                  <div class="contacts contacts__input-holder">
+                                      <input class="contacts__input" type="text" name="iCompany" data-error=".error_1_6"/>
+                                      <label class="has">Компания</label>
+                                      <span class="highlight"></span>
+                                      <span class="bar"></span>
+                                      <div class="error_1+6"></div>
+                                  </div>
+                              </div>
+                              <div class="col-12">
+                                  <div class="contacts contacts__input-holder">
+                                      <input class="contacts__input" type="text" name="iUname" data-error=".error_1_7"/>
+                                      <label class="has">Имя</label>
+                                      <span class="highlight"></span>
+                                      <span class="bar"></span>
+                                      <div class="error_1_7"></div>
+                                  </div>
+                              </div>
+                              <div class="col-12">
+                                  <div class="contacts contacts__input-holder">
+                                      <input class="contacts__input" type="text" name="iSurname" data-error=".error_1_8"/>
+                                      <label class="has">Фамилия</label>
+                                      <span class="highlight"></span>
+                                      <span class="bar"></span>
+                                      <div class="error_1_8"></div>
+                                  </div>
+                              </div>
+                              <div class="d-card__control-holder">
+                                  <div class="checkbox">
+                                      <input id="subscribe-input_international" class="checkbox__core" type="checkbox"/>
+                                      <label for="subscribe-input_international" class="checkbox__control"><i class="icon"></i></label>
+                                  </div>
+                                  <p class="d-card__c-text d-card__c-text--editForm">
+                                      <span class="text">Установить адресом по умолчанию</span>
+                                  </p>
+                              </div>
+                              <div class="delivery__btn-holder">
+                                  <a href="#" id="addDelivery" class="btn btn--editForm"><span class="text">Сохранить</span></a>
+                              </div>
+                          </div>
+                        </form>
+                        <!-- END: international address -->
+                  <!-- BEGIN: d-card -->
+                    <div class="d-card delivery__d-card col-12" id="d-card_3">
+                      <div class="d-card__type">
+                          <input class="text" type="text" value="United States of America" readonly="true" />
+                      </div>
+                      <div class="d-card__address">
+                          <textarea class="text" readonly="true">
+                              Boston, New Jersey,
+                              Mary Jane Lane 124/265
+                              ZIP 1265HD2
+                              Amazon ltd
+                          </textarea>
+                      </div>
+                      <div class="d-card__phone-holder">
+                          <input class="text" type="text" value="+1-888-452-1505" readonly="true" />
+                      </div>
+                      <div class="d-card__name">
+                        <input type="text" class="text" value="John Smith"  readonly="true"/>
+                      </div>
+                      <div class="d-card__control-holder">
+                          <button class="d-control edit" id="3" data-edit="Редактировать" data-save="Сохранить">Редактировать</button>
+                          <button class="d-control remove" id="3" data-language="Удалить">Удалить</button>
+                      </div>
+                      <div class="d-card__control-holder">
+                          <div class="checkbox">
+                              <input id="subscribe-input_3" class="checkbox__core" type="checkbox"/>
+                              <label for="subscribe-input_3" class="checkbox__control"><i class="icon"></i></label>
+                          </div>
+                          <p class="d-card__c-text">
+                              <span class="text">Установить адресом по умолчанию</span>
+                          </p>
+                      </div>
+                    </div>
+                <!-- END: d-card -->
+                    </div>
+
+                    </div>
+                <!-- END: right column -->
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </section>
+    <!-- END: account -->
+</main>
+
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script src="./js/delivery.js"></script>
+</body>
+</html>

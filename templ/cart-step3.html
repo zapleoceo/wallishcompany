@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Аккаунт</title>
+    <link rel="stylesheet" href="./css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bootstrap/bootstrap-grid.css" />
+    <link rel="stylesheet" href="./css/bootstrap/bootstrap-reboot.css" />
+    <link rel="stylesheet" href="./css/global.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="#" />
+    <meta name="description" content="" />
+    <meta name="Keywords" content="" />
+</head>
+<body>
+<main class="main">
+    <!-- BEGIN: cart step 3 details -->
+    <section class="cart container">
+        <h1 class="cart__title">Корзина</h1>
+        <div class="row justify-content-center">
+
+      <!-- BEGIN: cart content -->
+          <div class="col-xl-10 col-lg-10 col-12">
+<!-- BEGIN: cart stagger -->
+            <div class="row">
+              <div class="stagger cart__stagger">
+                <a href="#" class="stagger__link ">
+                    <span class="stagger__text">Корзина</span>
+                </a>
+                <a href="#" class="stagger__link ">
+                    <span class="stagger__text">Ваши данные</span>
+                </a>
+                <a href="#" class="stagger__link active">
+                    <span class="stagger__text">Доставка</span>
+                </a>
+                <a href="#" class="stagger__link">
+                    <span class="stagger__text">Оплата</span>
+                </a>
+              </div>
+            </div>
+<!-- END: cart stagger -->
+            <div class="row">
+              <div class="c-info c-info--ukr cart__c-info col-12">
+
+                <div class="c-info__user-info-holder">
+
+                  <input class="c-info__core" type="radio" name="core" id="ukraineDelivery" checked/>
+                  <input class="c-info__core" type="radio" name="core" id="internationalDelivery" />
+
+                  <label class="c-info__label c-info__label--step3" for="ukraineDelivery" id="label_step3_0"><i class="icon"></i><span class="text">Доставка по Украине</span></label>
+                  <label class="c-info__label c-info__label--step3" for="internationalDelivery" id="label_step3_1"><i class="icon"></i><span class="text">Междрународная доставка</span></label>
+              <!-- BEGIN: ukraine delivery -->
+                  <div class="c-info__hidden-content hidden-content--step3" id="hidden_content_0">
+
+                      <input class="c-info__core" type="radio" name="ukrDeliveryType" id="novapochtaDelivery" checked/>
+                      <input class="c-info__core" type="radio" name="ukrDeliveryType" id="curierDelivery" />
+                      <input class="c-info__core" type="radio" name="ukrDeliveryType" id="selfDelivery" />
+
+                      <label class="c-info__label c-info__label--ukr" for="novapochtaDelivery" id="label_0_0"><i class="icon"></i><span class="text">На отделание Нова Пошта (бесплатно)</span></label>
+                      <label class="c-info__label c-info__label--ukr" for="curierDelivery" id="label_0_1"><i class="icon"></i><span class="text">Курьером по Киеву (бесплатно)</span></label>
+                      <label class="c-info__label c-info__label--ukr" for="selfDelivery" id="label_0_2"><i class="icon"></i><span class="text">Самовоз</span></label>
+  <!-- Content ################################################### -->
+                      <!-- BEGIN: novapochta delivery -->
+                      <div class="hidden-content hidden-content--ukr c-info__hidden-content" id="hidden_content_0_0">
+                          <form class="hidden-content__wrapper row" action="#" id="novaPochtaContentForm">
+                              <div class="hidden-content__addresses col-12">
+                                <div class="holiday-radio">
+                                    <input id="address_" type="radio" class="holiday-radio__core" name="n-address" checked/>
+                                    <label for="address_" class="holiday-radio__label">
+                                        <i class="holiday-radio__tumb"></i>
+                                        <span class="holiday-radio__text">holiday-radio</span>
+                                    </label>
+                                    <span class="holiday-radio__edit editnova">Редактировать</span>
+                                </div>
+                                <div class="holiday-radio">
+                                    <input id="address_1" type="radio" class="holiday-radio__core" name="n-address"/>
+                                    <label for="address_1" class="holiday-radio__label active">
+                                        <i class="holiday-radio__tumb"></i>
+                                        <span class="holiday-radio__text">holiday-radio</span>
+                                    </label>
+                                    <span class="holiday-radio__edit editnova">Редактировать</span>
+                                </div>
+                              </div>
+                              <div class="hidden-content__add-address col-12">
+                                <button type="button" id="addNovaPochtaBtn" class="hidden-content__add-address-btn">
+                                  <i class="icon"></i>
+                                  <span class="text">Добавить новый адрес доставки 1</span>
+                                </button>
+                              </div>
+                              <div class="col-12 hidden-content__comment">
+                                  <div class="contacts contacts__input-holder">
+                                      <input class="contacts__input" type="text" name="novaComment" data-error=".errorNova"/>
+                                      <label class="has">Коментарий к заказу</label>
+                                      <span class="highlight"></span>
+                                      <span class="bar"></span>
+                                      <div class="errorNova"></div>
+                                  </div>
+                              </div>
+                              <p class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12">
+                                  Доставка на отделение «Нова Пошта» бесплатно!
+                              </p>
+                              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                <button type="submit" class="btn hidden-content__btn"><span class="text">Далее</span></button>
+                              </div>
+                          </form>
+
+                          <!-- BEGIN: add novapochta popup -->
+                            <div class="hidden-popup hidden-popup--ukrNova" id="novaPochtaPopup">
+                                <form class="hidden-popup__wrapper hidden-popup__wrapper--step3 row" action="#" id="novaPochtaForm">
+                                    <span class="close" id="closeNovaPopup"></span>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="contacts">
+                                            <div class="contacts__input-holder ">
+                                                <select class="contacts__input contacts__input--select" name="n-city" id="city" data-error=".error_0_0">
+                                                    <option value="">Киев</option>
+                                                    <option value="">Днепр</option>
+                                                </select>
+                                                <label class="select has">Город</label>
+                                                <label class="control" for="n-city"><i class="icon"></i></label>
+                                                <span class="highlight"></span>
+                                                <span class="bar"></span>
+                                                <div class="error_0_0"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="contacts contacts__input-holder">
+                                            <select class="contacts__input contacts__input--select" name="n-depart" id="deliveryNova" data-error=".error_0_1">
+                                                <option value="">Киев отделения 35</option>
+                                                <option value="">Днепр отделения 16</option>
+                                            </select>
+                                            <label class="select has">Номер отделения &laquo;Нова Пошта&raquo;</label>
+                                            <label class="control" for="n-depart"><i class="icon"></i></label>
+                                            <span class="highlight"></span>
+                                            <span class="bar"></span>
+                                            <div class="error_0_1"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="contacts contacts__input-holder">
+                                            <input class="contacts__input" type="tel" name="n-phone" data-error=".error_0_2"/>
+                                            <label class="has">Телефон получателя</label>
+                                            <span class="highlight"></span>
+                                            <span class="bar"></span>
+                                            <div class="error_0_2"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="contacts contacts__input-holder">
+                                            <input class="contacts__input" type="text" name="n-company" data-error=".error_0_3"/>
+                                            <label class="has">Компания</label>
+                                            <span class="highlight"></span>
+                                            <span class="bar"></span>
+                                            <div class="error_0_3"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="contacts contacts__input-holder">
+                                            <input class="contacts__input" type="text" name="n-uname" data-error=".error_0_6"/>
+                                            <label class="has">Имя</label>
+                                            <span class="highlight"></span>
+                                            <span class="bar"></span>
+                                            <div class="error_0_6"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="contacts contacts__input-holder">
+                                            <input class="contacts__input" type="text" name="n-surname" data-error=".error_0_7"/>
+                                            <label class="has">Фамилия</label>
+                                            <span class="highlight"></span>
+                                            <span class="bar"></span>
+                                            <div class="error_0_7"></div>
+                                        </div>
+                                    </div>
+                                    <div class="d-card__control-holder">
+                                        <div class="checkbox">
+                                            <input id="subscribe-input_nova_0" class="checkbox__core" type="checkbox"/>
+                                            <label for="subscribe-input_nova_0" class="checkbox__control"><i class="icon"></i></label>
+                                        </div>
+                                        <p class="d-card__c-text d-card__c-text--editForm">
+                                            <span class="text">Установить адресом по умолчанию</span>
+                                        </p>
+                                    </div>
+                                    <div class="d-card__control-holder">
+                                        <div class="checkbox">
+                                            <input id="subscribe-input_nova_1" class="checkbox__core" type="checkbox"/>
+                                            <label for="subscribe-input_nova_1" class="checkbox__control"><i class="icon"></i></label>
+                                        </div>
+                                        <p class="d-card__c-text d-card__c-text--editForm">
+                                            <span class="text">Отправить на имя компании</span>
+                                        </p>
+                                    </div>
+                                    <div class="hidden-popup__btn-holder">
+                                        <button id="novaPochtaBtn" class="btn"><span class="text">Сохранить</span></button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- END: add novapochta popup -->
+                      </div>
+                    <!-- END: novapochta delivery -->
+
+                    <!-- BEGIN: curier delivery -->
+                      <div class="hidden-content hidden-content--ukr c-info__hidden-content" id="hidden_content_0_1">
+                          <form class="hidden-content__wrapper row" action="#" id="cuierForm">
+                              <div id="addresses" class="hidden-content__addresses col-12">
+                                <div class="holiday-radio">
+                                    <input id="address_" type="radio" class="holiday-radio__core" name="c-address" checked/>
+                                    <label for="address_" class="holiday-radio__label">
+                                        <i class="holiday-radio__tumb"></i>
+                                        <span class="holiday-radio__text">holiday-radio</span>
+                                    </label>
+                                    <span class="holiday-radio__edit editcurier">Редактировать</span>
+                                </div>
+                                <div class="holiday-radio">
+                                    <input id="address_1" type="radio" class="holiday-radio__core" name="c-address"/>
+                                    <label for="address_1" class="holiday-radio__label active">
+                                        <i class="holiday-radio__tumb"></i>
+                                        <span class="holiday-radio__text">holiday-radio</span>
+                                    </label>
+                                    <span class="holiday-radio__edit editcurier">Редактировать</span>
+                                </div>
+                              </div>
+                              <div class="hidden-content__add-address col-12">
+                                <button type="button" class="hidden-content__add-address-btn" id="addCurierBtn">
+                                  <i class="icon"></i>
+                                  <span class="text">Добавить новый адрес доставки 2</span>
+                                </button>
+                              </div>
+                              <div class="col-12 hidden-content__comment">
+                                  <div class="contacts contacts__input-holder">
+                                      <input class="contacts__input" type="text" name="curierComment" data-error=".errorCuier"/>
+                                      <label class="has">Коментарий к заказу</label>
+                                      <span class="highlight"></span>
+                                      <span class="bar"></span>
+                                      <div class="errorCuier"></div>
+                                  </div>
+                              </div>
+                              <p class="col-8col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12">
+                                  Доставка курьером по Киеву бесплатно!
+                              </p>
+                              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                <button type="submit" class="btn hidden-content__btn"><span class="text">Далее</span></button>
+                              </div>
+                          </form>
+
+                          <!-- BEGIN: add curier popup -->
+                            <div class="hidden-popup hidden-popup--ukrCurier" id="curierPopup">
+                                <form class="hidden-popup__wrapper hidden-popup__wrapper--step3 row" action="#" id="addCurierForm">
+                                    <span class="close" id="closeCurierPopup"></span>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="contacts contacts__input-holder">
+                                            <input class="contacts__input" type="text" name="c-city" data-error=".error_1_0"/>
+                                            <label class="has">Город</label>
+                                            <span class="highlight"></span>
+                                            <span class="bar"></span>
+                                            <div class="error_1_0"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="contacts contacts__input-holder">
+                                            <input class="contacts__input" type="text" name="c-address" data-error=".error_1_1"/>
+                                            <label class="has">Адрес доставки</label>
+                                            <span class="highlight"></span>
+                                            <span class="bar"></span>
+                                            <div class="error_1_1"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="contacts contacts__input-holder">
+                                            <input class="contacts__input" type="tel" name="c-phone" data-error=".error_1_2"/>
+                                            <label class="has">Телефон</label>
+                                            <span class="highlight"></span>
+                                            <span class="bar"></span>
+                                            <div class="error_1_2"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="contacts contacts__input-holder">
+                                            <input class="contacts__input" type="text" name="c-company" data-error=".error_1_3"/>
+                                            <label class="has">Компания</label>
+                                            <span class="highlight"></span>
+                                            <span class="bar"></span>
+                                            <div class="error_1_3"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="contacts contacts__input-holder">
+                                            <input class="contacts__input" type="text" name="c-uname" data-error=".error_1_4"/>
+                                            <label class="has">Имя получателя</label>
+                                            <span class="highlight"></span>
+                                            <span class="bar"></span>
+                                            <div class="error_1_4"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="contacts contacts__input-holder">
+                                            <input class="contacts__input" type="text" name="c-surname" data-error=".error_1_5"/>
+                                            <label class="has">Фамилия получателя</label>
+                                            <span class="highlight"></span>
+                                            <span class="bar"></span>
+                                            <div class="error_1_5"></div>
+                                        </div>
+                                    </div>
+                                    <div class="d-card__control-holder">
+                                        <div class="checkbox">
+                                            <input id="subscribe-input_curier" class="checkbox__core" type="checkbox"/>
+                                            <label for="subscribe-input_curier" class="checkbox__control"><i class="icon"></i></label>
+                                        </div>
+                                        <p class="d-card__c-text d-card__c-text--editForm">
+                                            <span class="text">Установить адресом по умолчанию</span>
+                                        </p>
+                                    </div>
+                                    <div class="hidden-popup__btn-holder">
+                                        <button type="submit" class="btn"><span class="text">Сохранить</span></button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- END: add curier popup -->
+                      </div>
+                    <!-- END: curier delivery -->
+
+                    <!-- BEGIN: self delivery -->
+                      <div class="hidden-content hidden-content--ukr c-info__hidden-content" id="hidden_content_0_2">
+                          <form class="hidden-content__wrapper row" id="selfDel">
+                              <div class="hidden-content__sd-label col-12">
+                                  <span class="text">Забрать заказ вы можете по адресу:</span>
+                              </div>
+                              <div class="hidden-content__sd-address col-12">
+                                <span class="text">Украина, г. Киев, ул. Дмитриевская 80, оф.9, этаж 4</span>
+                              </div>
+                              <div class="col-12 hidden-content__comment">
+                                  <div class="contacts contacts__input-holder">
+                                      <input class="contacts__input" type="text" name="selfDeliveryComment" data-error=".errorSelf"/>
+                                      <label class="has">Коментарий к заказу</label>
+                                      <span class="highlight"></span>
+                                      <span class="bar"></span>
+                                      <div class="errorSelf"></div>
+                                  </div>
+                              </div>
+                              <div class="col-12">
+                                <button type="submit" class="btn hidden-content__btn"><span class="text">Далее</span></button>
+                              </div>
+                          </form>
+                      </div>
+                    <!-- END: self delivery -->
+                    
+                  </div>
+                <!-- END: ukraine delivery -->
+
+  <!-- International delivery ################################################### -->
+                <!-- BEGIN: international delivery -->
+                  <div class="c-info__hidden-content hidden-content--step3" id="hidden_content_1">
+                    <form class="hidden-content__wrapper row" action="#" id="internationalForm">
+                        <div id="addresses" class="hidden-content__addresses col-12">
+                          <div class="holiday-radio">
+                              <input id="address_" type="radio" class="holiday-radio__core" name="i-address" checked/>
+                              <label for="address_" class="holiday-radio__label">
+                                  <i class="holiday-radio__tumb"></i>
+                                  <span class="holiday-radio__text">holiday-radio</span>
+                              </label>
+                              <span class="holiday-radio__edit editinter">Редактировать</span>
+                          </div>
+                          <div class="holiday-radio">
+                              <input id="address_1" type="radio" class="holiday-radio__core" name="i-address"/>
+                              <label for="address_1" class="holiday-radio__label active">
+                                  <i class="holiday-radio__tumb"></i>
+                                  <span class="holiday-radio__text">holiday-radio</span>
+                              </label>
+                              <span class="holiday-radio__edit editinter">Редактировать</span>
+                          </div>
+                        </div>
+                        <div class="hidden-content__add-address col-12">
+                          <button type="button" class="hidden-content__add-address-btn" id="addInternationalBtn">
+                            <i class="icon"></i>
+                            <span class="text">Добавить новый адрес доставки</span>
+                          </button>
+                        </div>
+                        <div class="col-12 hidden-content__comment">
+                            <div class="contacts contacts__input-holder">
+                                <input class="contacts__input" type="text" name="internationalComment" data-error=".error2"/>
+                                <label class="has">Коментарий к заказу</label>
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <div class="error2"></div>
+                            </div>
+                        </div>
+                        <p class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12">
+                            После оформления заказа мы предложим вам несколько
+                            вариантов доставки. Доставка по миру осуществляется
+                            за счет покупателя, после согласования стоимости
+                            и сроков доставки
+                        </p>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                          <button class="btn hidden-content__btn"><span class="text">Далее</span></button>
+                        </div>
+                    </form>
+                    
+                    <!-- BEGIN: add international popup -->
+                  <div class="hidden-popup hidden-popup--international" id="internationalPopup">
+                    <form class="hidden-popup__wrapper hidden-popup__wrapper--step3 row" action="#" id="internationalForm">
+                        <span class="close" id="closeInternationalPopup"></span>
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                          <div class="contacts">
+                              <div class="contacts__input-holder ">
+                                  <select class="contacts__input contacts__input--select" name="i-country" id="country" data-error=".error_2_0">
+                                      <option>USA</option>
+                                  </select>
+                                  <label class="select has">Страна</label>
+                                  <label class="control" for="country"><i class="icon"></i></label>
+                                  <span class="highlight"></span>
+                                  <span class="bar"></span>
+                                  <div class="error_2_0"></div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                          <div class="contacts contacts__input-holder">
+                              <input class="contacts__input" type="text" name="i-state" data-error=".error_2_1"/>
+                              <label class="has">Округ</label>
+                              <span class="highlight"></span>
+                              <span class="bar"></span>
+                              <div class="error_2_1"></div>
+                          </div>
+                      </div>
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                          <div class="contacts contacts__input-holder">
+                              <input class="contacts__input" type="text" name="i-city" data-error=".error_2_2"/>
+                              <label class="has">Город</label>
+                              <span class="highlight"></span>
+                              <span class="bar"></span>
+                              <div class="error_2_2"></div>
+                          </div>
+                      </div>
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                          <div class="contacts contacts__input-holder">
+                              <input class="contacts__input" type="text" name="i-address" data-error=".error_2_3"/>
+                              <label class="has">Адрес</label>
+                              <span class="highlight"></span>
+                              <span class="bar"></span>
+                              <div class="error_2_3"></div>
+                          </div>
+                      </div>
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                          <div class="contacts contacts__input-holder">
+                              <input class="contacts__input" type="text" name="i-zip" data-error=".error_2_4"/>
+                              <label class="has">Zip code</label>
+                              <span class="highlight"></span>
+                              <span class="bar"></span>
+                              <div class="error_2_4"></div>
+                          </div>
+                      </div>
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                          <div class="contacts contacts__input-holder">
+                              <input class="contacts__input" type="tel" name="i-phone" data-error=".error_2_5"/>
+                              <label class="has">Телефон</label>
+                              <span class="highlight"></span>
+                              <span class="bar"></span>
+                              <div class="error_2_5"></div>
+                          </div>
+                      </div>
+                      <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-12">
+                          <div class="contacts contacts__input-holder">
+                              <input class="contacts__input" type="text" name="i-company" data-error=".error_2_6"/>
+                              <label class="has">Компания</label>
+                              <span class="highlight"></span>
+                              <span class="bar"></span>
+                              <div class="error_2_6"></div>
+                          </div>
+                      </div>
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                          <div class="contacts contacts__input-holder">
+                              <input class="contacts__input" type="text" name="i-uname" data-error=".error_2_7"/>
+                              <label class="has">Имя</label>
+                              <span class="highlight"></span>
+                              <span class="bar"></span>
+                              <div class="error_2_7"></div>
+                          </div>
+                      </div>
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                          <div class="contacts contacts__input-holder">
+                              <input class="contacts__input" type="text" name="i-surname" data-error=".error_2_8"/>
+                              <label class="has">Фамилия</label>
+                              <span class="highlight"></span>
+                              <span class="bar"></span>
+                              <div class="error_2_8"></div>
+                          </div>
+                      </div>
+                      <div class="d-card__control-holder">
+                          <div class="checkbox">
+                              <input id="subscribe-input_international" class="checkbox__core" type="checkbox"/>
+                              <label for="subscribe-input_international" class="checkbox__control"><i class="icon"></i></label>
+                          </div>
+                          <p class="d-card__c-text d-card__c-text--editForm">
+                              <span class="text">Установить адресом по умолчанию</span>
+                          </p>
+                      </div>
+                      <div class="hidden-popup__btn-holder">
+                          <button type="submit" class="btn btn--editForm"><span class="text">Сохранить</span></button>
+                      </div>
+                    </form>
+                </div>
+                <!-- END: add international popup -->
+                </div>
+                <!-- END: international delivery -->
+                  
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+      <!-- END: cart content -->
+
+        </div>
+    </section>
+    <!-- END: cart step 3 details -->
+</main>
+
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script src="./js/jquery.validate.min.js"></script>
+<script src="./js/cart-step-3.js"></script>
+</body>
+</html>

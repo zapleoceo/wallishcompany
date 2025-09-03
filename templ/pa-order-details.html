@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Аккаунт</title>
+    <link rel="stylesheet" href="./css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bootstrap/bootstrap-grid.css" />
+    <link rel="stylesheet" href="./css/bootstrap/bootstrap-reboot.css" />
+    <link rel="stylesheet" href="./css/global.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="#" />
+    <meta name="description" content="" />
+    <meta name="Keywords" content="" />
+</head>
+<body>
+<main class="main">
+    <!-- BEGIN: order details -->
+    <section class="account container">
+        <h1 class="account__title">Персональный аккаунт</h1>
+        <div class="row">
+
+            <!-- BEGIN: sidebar-->
+            <div class="col-xl-2 col-lg-2 col-md-8 col-12 offset-xl-0 offset-lg-0 offset-md-2">
+                <ul class="sidebar-nav account__sidebar-nav row">
+                    <label id="sidebar-nav__control" class="sidebar-nav__control">
+                        <i class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="9" height="5" viewBox="0 0 9 5">
+                                <path id="arrow-mini-down" class="cls-1" d="M231.056,880.819l-3.87-3.774a0.6,0.6,0,0,1,0-.869,0.643,0.643,0,0,1,.892,0l3.424,3.339,3.424-3.339a0.641,0.641,0,0,1,.891,0,0.6,0.6,0,0,1,0,.869l-3.87,3.774A0.641,0.641,0,0,1,231.056,880.819Z" transform="translate(-227 -876)"/>
+                            </svg>
+                        </i>
+                    </label>
+                    <li class="sidebar-nav__item col-12"><a href="#" class="sidebar-nav__link">Личные данные</a></li>
+                    <li class="sidebar-nav__item col-12"><a href="#" class="sidebar-nav__link">Адреса доставки</a></li>
+                    <li class="sidebar-nav__item col-12"><a href="#" class="sidebar-nav__link">Мои заказы</a></li>
+                    <li class="sidebar-nav__item col-12"><a href="#" class="sidebar-nav__link">Список желаний</a></li>
+                    <li class="sidebar-nav__item col-12"><a href="#" class="sidebar-nav__link">Мои карты</a></li>
+                    <li class="sidebar-nav__item col-12">
+                        <a href="#" class="sidebar-nav__link">Выход</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- END: sidebar -->
+
+            <div class="order-align col-xl-9 col-lg-9 col-12">
+              <!-- BEGIN: back to list -->
+                <div class="order align-product row">
+                  <div class="product-nav order__back-btn">
+                    <a href="#" class="product-nav__prev">
+                      <i class="icon"></i>
+                      <span class="text">Назад в список заказов</span>
+                    </a>
+                  </div>
+                </div>
+      <!-- END: back to list -->
+
+      <!-- BEGIN: main-info -->
+                <div class="order-details row">
+                  <div class="order-details__padding col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="main-info order-details__main-info">
+                      <p class="main-info__label">№ Заказа</p>
+                      <p class="main-info__text">97427148</p>
+                    </div>
+                  </div>
+                  <div class="order-details__padding col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="main-info order-details__main-info">
+                      <p class="main-info__label">Способ оплаты</p>
+                      <p class="main-info__text">Наложенный платеж</p>
+                    </div>
+                  </div>
+                  <div class="order-details__padding col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="main-info order-details__main-info">
+                      <p class="main-info__label">Дата заказа</p>
+                      <p class="main-info__text">24 марта 2018     12:38</p>
+                    </div>
+                  </div>
+                  <div class="order-details__padding col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="main-info order-details__main-info">
+                      <p class="main-info__label">Способ доставки</p>
+                      <p class="main-info__text">Нова Пошта</p>
+                    </div>
+                  </div>
+                  <div class="order-details__padding col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="main-info order-details__main-info">
+                      <p class="main-info__label">Статус</p>
+                      <p class="main-info__text" data-status="canceled">отменен</p>
+                    </div>
+                  </div>
+                  <div class="order-details__padding col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="main-info main-info--center order-details__main-info">
+                      <a href="#" class="main-info__link">
+                        <p class="main-info__print-icon"></p>
+                        <p class="main-info__print-text">Распечатать заказ</p>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+<!-- END: main-info -->
+        <!-- BEGIN: table -->
+                <div class="order row">
+
+                    <table class="order__table">
+                        <thead>
+                        <tr>
+                            <th>Товар</th>
+                            <th>Категория</th>
+                            <th>Код</th>
+                            <th>Кол-во</th>
+                            <th>Цена</th>
+                            <th>Сумма</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="order__row">
+                          <td class="order__t-product">
+                            <figure class="t-product">
+                                <p class="t-product__pic-holder">
+                                    <img class="t-product__pic" src="./img/1200/account.png" alt="alt" />
+                                </p>
+                                <figcaption class="t-product__caption">
+                                  Happy Birthday!
+                                </figcaption>
+                            </figure>
+                          </td>
+                          <td class="order__category">Конверты ручной работы</td>
+                          <td class="order__code">18-P-339</td>
+                          <td class="order__quantity">2 шт.</td>
+                          <td class="order__one-price">80 грн.</td>
+                          <td class="order__price">239 963 грн.</td>
+                        </tr>
+                        <tr class="order__row">
+                            <td class="order__t-product">
+                              <figure class="t-product">
+                                  <p class="t-product__pic-holder">
+                                      <img class="t-product__pic" src="./img/1200/account.png" alt="alt" />
+                                  </p>
+                                  <figcaption class="t-product__caption">
+                                    Happy Birthday!
+                                  </figcaption>
+                              </figure>
+                            </td>
+                            <td class="order__category">Конверты ручной работы</td>
+                            <td class="order__code">18-P-339</td>
+                            <td class="order__quantity">2 шт.</td>
+                            <td class="order__one-price">80 грн.</td>
+                            <td class="order__price">239 963 грн.</td>
+                          </tr>
+                          <tr class="order__row">
+                              <td class="order__t-product">
+                                <figure class="t-product">
+                                    <p class="t-product__pic-holder">
+                                        <img class="t-product__pic" src="./img/1200/account.png" alt="alt" />
+                                    </p>
+                                    <figcaption class="t-product__caption">
+                                      Happy Birthday!
+                                    </figcaption>
+                                </figure>
+                              </td>
+                              <td class="order__category">Конверты ручной работы</td>
+                              <td class="order__code">18-P-339</td>
+                              <td class="order__quantity">2 шт.</td>
+                              <td class="order__one-price">80 грн.</td>
+                              <td class="order__price">239 963 грн.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="order-details col-12">
+                      <div class="row">
+                        <div class="col-xl-5 col-lg-5 col-md-5 col-12 order-xl-1 order-lg-1 order-md-1 order-2">
+                          <div class="order-details__btn-holder">
+                            <a href="#" class="btn order-details__btn">
+                              <span class="text">Повторить заказ</span>
+                            </a>
+                          </div>
+                        </div>
+                        <div class="col-xl-7 col-lg-7 col-md-7 col-12 order-xl-1 order-lg-1 order-md-1 order-1">
+                          <div class="order-details__info-holder order-details__info-holder--small">
+                            <p class="order-details__name">Общая сумма</p>
+                            <p class="order-details__price">12 256 грн.</p>
+                          </div>
+                          <div class="order-details__info-holder order-details__info-holder--small">
+                            <p class="order-details__name">Скидка</p>
+                            <p class="order-details__price">12 256 грн.</p>
+                          </div>
+                          <div class="order-details__info-holder">
+                              <p class="order-details__name">Итого к оплате</p>
+                              <p class="order-details__price">11 736 грн.</p>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+  <!-- END: table -->
+
+            </div>
+
+
+        </div>
+    </section>
+    <!-- END: order details -->
+</main>
+
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script src="./js/order-history.js"></script>
+</body>
+</html>

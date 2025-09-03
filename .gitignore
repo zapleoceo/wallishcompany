@@ -1,0 +1,85 @@
+# OpenCart .gitignore
+
+# Configuration files (contain sensitive data)
+config.php
+admin/config.php
+catalog/config.php
+
+# Cache and logs
+system/storage/cache/*
+system/storage/logs/*
+system/storage/download/*
+system/storage/upload/*
+system/storage/modification/*
+image/cache/*
+image/catalog/*
+
+# IDE and editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.cache
+
+# Backup files
+*.bak
+*.backup
+*.save
+*.old
+
+# Development files
+*.dev.php
+*.local.php
+config.dev.php
+config.local.php
+php.ini
+
+# Test files
+test.php
+test_*.php
+debug_*.php
+adminer.php
+
+# SASS/CSS cache
+templ/.sass-cache/
+templ/css/.sass-cache/
+*.css.map
+
+# Node modules (if using build tools)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Composer (if using)
+vendor/
+composer.lock
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Database dumps
+*.sql
+*.sql.gz
+
+# SSL certificates
+*.pem
+*.key
+*.crt
+
+# Keep empty directories
+!system/storage/cache/.gitkeep
+!system/storage/logs/.gitkeep
+!system/storage/download/.gitkeep
+!system/storage/upload/.gitkeep
+!system/storage/modification/.gitkeep
+!image/cache/.gitkeep
+!image/catalog/.gitkeep

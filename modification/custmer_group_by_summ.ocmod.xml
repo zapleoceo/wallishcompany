@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+    <code>Custmer group by summ</code>
+    <name>Custmer group by summ</name>
+    <version>1.0</version>
+    <author>kJlukoO</author>
+    <link>http://cleanphp.ru</link>
+ 
+    <file path="catalog/model/account/order.php">
+        <operation>
+            <search><![CDATA[
+            public function getOrder($order_id)
+            ]]></search>
+            <add position='before'><![CDATA[
+                public function getCompleteOrdersByCustomerId($id)
+                {
+                    $implode = array();
+
+                    $order_statuses = $this->config->get('config_complete_status');
+
+                    foreach ($order_statuses as $order_status_id)
+                        $implode[] = "order_status_id = '" . (int) $order_status_id . "'";
+
+
+                    if ($implode)
+                        $query = $this->db->query("SELECT SUM(total) AS total FROM `" . DB_PREFIX . "order` WHERE (" . implode(" OR ", $implode) . ") AND customer_id='" . (int) $id . "'");
+
+                    return (int) $query->row['total'];
+                }
+            ]]></add>
+        </operation>
+    </file>
+    
+    <file path="catalog/controller/api/order.php">
+        <operation>
+            <search index="1"><![CDATA[
+            $this->response->addHeader('Content-Type: application/json');
+            ]]></search>
+            <add position='before'><![CDATA[
+                    if ($this->config->get('cgbs_status') && !isset($json['error']))
+                    {
+                        $this->load->model('account/order');
+                        $sum = $this->model_account_order->getCompleteOrdersByCustomerId($order_info['customer_id']);
+
+                        if ($sum)
+                        {
+                            $from_summ = $this->config->get('cgbs_from_summ');
+                            $to_summ = $this->config->get('cgbs_to_summ');
+                            $group = $this->config->get('cgbs_group');
+
+                            for ($i = 0; $i < count($from_summ); $i++)
+                                if ($from_summ[$i] < $sum && $sum < $to_summ[$i])
+                                {
+                                    $this->db->query("UPDATE " . DB_PREFIX . "customer SET customer_group_id = '" . $group[$i] . "' WHERE customer_id ='" . $order_info['customer_id'] . "'");
+                                    break;
+                                }
+                        }
+                    }
+            ]]></add>
+			</operation>
+			<operation>
+			<search index="3"><![CDATA[
+			$this->response->addHeader('Content-Type: application/json');
+			]]></search>
+			<add position='before'><![CDATA[
+                    if ($this->config->get('cgbs_status') && !isset($json['error']))
+                    {
+                        $this->load->model('account/order');
+                        $sum = $this->model_account_order->getCompleteOrdersByCustomerId($order_info['customer_id']);
+
+                        if ($sum)
+                        {
+                            $from_summ = $this->config->get('cgbs_from_summ');
+                            $to_summ = $this->config->get('cgbs_to_summ');
+                            $group = $this->config->get('cgbs_group');
+
+                            for ($i = 0; $i < count($from_summ); $i++)
+                                if ($from_summ[$i] < $sum && $sum < $to_summ[$i])
+                                {
+                                    $this->db->query("UPDATE " . DB_PREFIX . "customer SET customer_group_id = '" . $group[$i] . "' WHERE customer_id ='" . $order_info['customer_id'] . "'");
+                                    break;
+                                }
+                        }
+                    }
+            ]]>
+			</add>
+        </operation>
+    </file>
+    
+        <file path="admin/model/sale/order.php">
+        <operation>
+            <search><![CDATA[
+            public function getOrderTotals($order_id)
+            ]]></search>
+            <add position='before'><![CDATA[
+                public function getCompleteOrdersByCustomerId($id)
+                {
+                    $implode = array();
+
+                    $order_statuses = $this->config->get('config_complete_status');
+
+                    foreach ($order_statuses as $order_status_id)
+                        $implode[] = "order_status_id = '" . (int) $order_status_id . "'";
+
+
+                    if ($implode)
+                        $query = $this->db->query("SELECT SUM(total) AS total FROM `" . DB_PREFIX . "order` WHERE (" . implode(" OR ", $implode) . ") AND customer_id='" . (int) $id . "'");
+
+                    return (int) $query->row['total'];
+                }
+            ]]></add>
+        </operation>
+    </file>
+    
+
+
+	
+	
+</modification>

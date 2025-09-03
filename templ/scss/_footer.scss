@@ -1,0 +1,431 @@
+.footer {
+  position: relative;
+  &__thanks-for-subscribe {
+    width: 100%;
+    position: absolute;
+    top: 15px;
+    z-index: 999;
+    display: none;
+    animation: fade;
+    animation-duration: 1s;
+    @keyframes fade {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    .close {
+      position: absolute;
+      right: 7.5px;
+      top: 7.5px;
+      display: flex;
+      height: 15px;
+      width: 15px;
+      background: url('../img/icons/cross-big.svg') no-repeat center;
+    }
+    p {
+      position: relative;
+      width: 75%;
+      text-align: center;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+  }
+  &__separator {
+    width: 100%;
+    height: 1px;
+    background-color: #f4f4f4;
+    margin-bottom: 30px;
+  }
+
+  &__title {
+    font-family: "Gotham Pro Regular";
+    font-size: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 30px;
+    @include media-breakpoint-down(xs) {
+      width: calc(100% + 30px);
+      margin-left: -15px;
+    }
+  }
+
+  &__form-holder {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 45px;
+
+    @include media-breakpoint-down(xs) {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  &__input {
+    font-family: "Gotham Pro Regular";
+    font-size: 12px;
+    padding: 15px 25px;
+    width: 400px;
+    border: 1px solid $lightgray;
+    color: #a7a7a7;
+    height: 100%;
+    &:focus {
+      outline: 2px solid $cyan;
+    }
+    @include media-breakpoint-down(xs) {
+      width: 100%;
+      margin-bottom: 20px;
+      height: initial;
+      text-align: center;
+    }
+  }
+
+  &__btn {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+    border: 0;
+    width: 160px;
+    padding: 15px 0;
+    font-family: "Gotham Pro Regular";
+    font-weight: 400;
+    font-size: 12px;
+    cursor: pointer;
+
+    @include media-breakpoint-down(xs) {
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    &:hover {
+      background-color: #43b9d4;
+      transition: background-color .7s;
+    }
+  }
+
+  &__list {
+    position: relative;
+    &--1 {
+      width: 35%;
+      @include media-breakpoint-only(xl) {
+        width: 34%;
+        padding-right: 15px;
+        padding-left: 15px;
+      }
+      @include media-breakpoint-only(lg) {
+        padding-left: 15px;
+      }
+    }
+
+    &--2 {
+      width: 30%;
+      @include media-breakpoint-only(xl) {
+        width: 33%;
+        padding-left: 70px;
+      }
+      @include media-breakpoint-only(lg) {
+        padding-left: 15px;
+      }
+      .footer__category {
+        padding-left: 5px;
+      }
+      .list__item {
+        &:nth-of-type(odd) {
+          width: 60%;
+          padding-left: 20px;
+        }
+        &:nth-of-type(even) {
+          width: 40%;
+          padding-right: 15px;
+        }
+      }
+    }
+
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+  }
+
+  &__info {
+    position: relative;
+    width: 22%;
+    @include media-breakpoint-only(xl) {
+      position: relative;
+      width: 23%;
+      padding-left: 85px;
+    }
+    @include media-breakpoint-down(md) {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+    }
+
+    @include media-breakpoint-down(xs) {
+      display: block;
+    }
+  }
+
+  &__category {
+    color: #43b9d4 !important;
+    margin-bottom: 25px;
+    font-size: 16px;
+    font-family: 'Gotham Pro Bold';
+  }
+
+  &__info-holder {
+    background-color: #f9f9f9;
+    padding-top: 100px;
+    padding-bottom: 50px;
+    //margin-top: 45px;
+
+    @include media-breakpoint-down(md) {
+      padding: 30px 0 20px 0;
+    }
+    @include media-breakpoint-down(xs) {
+      padding: 40px 0;
+    }
+  }
+
+  .md-column-1,
+  .md-column-2 {
+    position: relative;
+    @include media-breakpoint-down(md) {
+      width: calc(50% - 71px);
+      padding-top: 15px;
+    }
+    @include media-breakpoint-down(xs) {
+      width: 100%;
+    }
+  }
+  .list {
+
+    &__item {
+      list-style-type: none;
+      font-family: "Gotham Pro Regular";
+      font-size: 14px;
+      width: 50%;
+      padding: 0 15px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      a {
+        color: $black;
+        &:hover {
+          text-decoration: none;
+          color: $cyan;
+        }
+      }
+    }
+  }
+
+  .socials {
+    display: flex;
+    margin-top: 30px;
+
+    &__icon-holder {
+      margin-right: 30px;
+      @include media-breakpoint-only(md) {
+        margin-right: 45px;
+      }
+    }
+    &__link {
+      width: 15px;
+      height: 15px;
+    }
+    &__icon {
+      width: 15px;
+      height: 15px;
+      svg {
+        width: 15px;
+        height: 15px;
+      }
+      &:hover {
+        fill: #43b9d4;
+        transition: fill .7s;
+        cursor: pointer;
+      }
+    }
+
+    @include media-breakpoint-down(md) {
+      justify-content: center;
+      padding-left: 30px;
+    }
+  }
+
+  .phone-group {
+    display: flex;
+    flex-wrap: wrap;
+
+    &__number {
+      width: 100%;
+      font-family: "Gotham Pro Regular";
+      font-size: 14px;
+      line-height: 17px;
+      @include media-breakpoint-only(md) {
+        line-height: 50px;
+      }
+      @include media-breakpoint-down(xs) {
+        line-height: 24px;
+      }
+      &:link {
+        color: initial;
+      }
+      &:hover {
+        text-decoration: none;
+        color: $cyan;
+      }
+
+      @include media-breakpoint-down(md) {
+        text-align: center;
+        font-size: 14px;
+      }
+    }
+  }
+
+  &__email {
+    margin: 15px auto;
+    font-family: "Gotham Pro Bold";
+    font-size: 14px;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:link {
+      color: initial;
+    }
+    &:hover {
+      text-decoration: none;
+      color: $cyan;
+    }
+    @include media-breakpoint-down(md) {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 50px;
+    }
+
+    @include media-breakpoint-down(xs) {
+      margin: 20px auto;
+    }
+  }
+
+  .address-group {
+    a {
+      color: $black;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    &__address {
+      margin: 0;
+      font-family: "Gotham Pro Bold";
+      font-size: 14px;
+      white-space: pre-line;
+      line-height: 17px;
+      text-transform: uppercase;
+      &:hover {
+        color: $cyan;
+      }
+      @include media-breakpoint-down(md) {
+        text-align: center;
+        font-size: 14px;
+        line-height: 23px;
+      }
+      @include media-breakpoint-down(xs) {
+        line-height: 24px;
+      }
+    }
+  }
+
+  &__v-line {
+    height: 157px;
+    width: 1px;
+    background-color: #e3e3e3;
+    margin: 10px 35px 0 35px;
+
+    @include media-breakpoint-only(lg) {
+      margin: 10px 30px 0 45px;
+    }
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+
+    &--show {
+      display: none;
+
+      @include media-breakpoint-down(md) {
+        display: block;
+        position: relative;
+        top: -15px;
+      }
+
+      @include media-breakpoint-down(xs) {
+        display: none;
+      }
+    }
+  }
+
+  &__rights-holder {
+    padding: 0;
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 21px;
+      @include media-breakpoint-only(md) {
+        margin-right: 0;
+      }
+      @include media-breakpoint-only(sm) {
+        margin-right: 5px;
+        margin-left: 12px;
+      }
+      @include media-breakpoint-down(xs) {
+        margin-right: 0;
+      }
+      &:hover {
+        .footer__rights-logo {
+          background: url("../img/icons/logo-footer-02.svg?v=1.0.0.2") center no-repeat;
+          transform: scale(.8);
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  &__rights {
+    font-family: "Gotham Pro Regular";
+    font-size: 12px;
+    padding: 35px 15px;
+    margin: 0;
+    @include media-breakpoint-only(md) {
+      text-align: center;
+      padding: 46px 10px;
+    }
+    @include media-breakpoint-only(sm) {
+      padding: 35px 0;
+    }
+    @include media-breakpoint-down(xs) {
+      text-align: center;
+      padding: 15px 0;
+      margin: 0;
+    }
+  }
+
+  &__rights-logo {
+    width: 93px;
+    height: 88px;
+    background: url("../img/icons/logo-footer.svg?v=1.0.0.2") center no-repeat;
+    //transition: all .5s ease;
+    //margin-left: 30px;
+    // position: relative;
+    // top: -5px;
+    @include media-breakpoint-down(xs) {
+      text-align: center;
+      margin: 30px 0 0 0;
+      transform: scale(.8);
+    }
+  }
+}

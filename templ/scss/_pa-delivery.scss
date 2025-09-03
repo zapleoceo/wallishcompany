@@ -1,0 +1,445 @@
+.align {
+  @include media-breakpoint-down(md) {
+    justify-content: center;
+  }
+}
+.by-defualt {
+  color: $defaultAddressColor;
+}
+.delivery {
+  position: relative;
+  margin-left: 60px;
+  @include media-breakpoint-only(lg) {
+    margin-left: 85px;
+  }
+  @include media-breakpoint-only(md) {
+    margin-left: 90px;
+    margin-top: 85px;
+  }
+  @include media-breakpoint-only(sm) {
+    margin-left: 0;
+    margin-top: 60px;
+  }
+  @include media-breakpoint-down(xs) {
+    margin-left: 0;
+    margin-top: 60px;
+  }
+
+  &:before {
+    position: absolute;
+    height: calc(100% + 120px);
+    width: 1px;
+    content: '';
+    background-color: $lightgray;
+    top: -50px;
+    left: -70px;
+    @include media-breakpoint-down(lg) {
+      left: -35px;
+    }
+    @include media-breakpoint-down(md) {
+      left: -55px;
+      top: -20px;
+    }
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+  }
+  &:nth-of-type(2) {
+    @include media-breakpoint-down(lg) {
+      margin-left: 60px;
+    }
+    @include media-breakpoint-down(md) {
+      margin-left: 105px;
+      padding-left: 45px;
+    }
+    @include media-breakpoint-down(sm) {
+      margin-left: 0;
+      padding-left: 0;
+    }
+    @include media-breakpoint-down(xs) {
+      padding-left: 15px;
+    }
+    #addInternayionalAdress {
+      width: 340px;
+      @include media-breakpoint-down(sm) {
+        width: 100%;
+      }
+    }
+    .delivery__data-holder {
+      @include media-breakpoint-only(lg) {
+        left: -45px;
+      }
+    }
+  }
+  &:nth-of-type(2):before {
+    left: -85px;
+    @include media-breakpoint-down(lg) {
+      left: -65px;
+    }
+    @include media-breakpoint-down(md) {
+      left: -55px;
+    }
+  }
+  .ukraine_set.min-height {
+    min-height: 900px;
+    @include media-breakpoint-down(xs) {
+      min-height: 950px;
+    }
+  }
+  .other_set.min-height {
+    min-height: 1100px;
+  }
+  .ukraine_set {
+    @include media-breakpoint-only(sm) {
+      padding-right: 15px;
+    }
+  }
+  .other_set {
+    @include media-breakpoint-only(sm) {
+      padding-left: 15px;
+    }
+    #addInternationalDeliveryForm {
+      @include media-breakpoint-down(xs) {
+        top: 60px;
+      }
+    }
+  }
+  .empty {
+    width: 100%;
+    text-align: left;
+    margin-top: 30px;
+    margin-right: 30px;
+    @include media-breakpoint-down(sm) {
+      text-align: center;
+    }
+    @include media-breakpoint-down(xs) {
+      margin-right: 0;
+    }
+  }
+  &:first-of-type {
+    @include media-breakpoint-down(md) {
+      margin-left: 0;
+    }
+    @include media-breakpoint-down(sm) {
+      margin-right: 0;
+    }
+
+    &:before {
+      @include media-breakpoint-down(md) {
+        display: none;
+      }
+    }
+  }
+
+  &__data-holder {
+    display: none;
+    height: 0;
+    position: absolute;
+    width: 100%;
+    left: -45px;
+    top: 80px;
+    border: 1px solid $lightgray;
+    z-index: 2;
+    background-color: #fff;
+    transition: height .3s ease-in-out;
+    @include media-breakpoint-only(lg) {
+      left: -20px;
+    }
+    @include media-breakpoint-down(sm) {
+      width: 95%;
+      left: 0px;
+    }
+    @include media-breakpoint-down(xs) {
+      top: 85px;
+    }
+    .wrapper {
+      position: relative;
+      padding: 80px 20px 0 20px;
+      opacity: 2;
+      transition: all .3s ease-in-out;
+      @include media-breakpoint-down(xs) {
+        padding: 80px 5px 0 5px;
+      }
+    }
+    .hidden {
+      display: none;
+    }
+    .visible {
+      display: block;
+    }
+    .close {
+      position: absolute;
+      z-index: 3;
+      right: 25px;
+      top: 25px;
+      width: 30px;
+      height: 30px;
+      background: url('../img/icons/cross-big.svg') no-repeat center;
+      &:active {
+        transform: scale(1.1);
+      }
+      @include media-breakpoint-down(xs) {
+        right: 20px;
+      }
+    }
+    .d-card__control-holder {
+      padding: 0 15px;
+      align-items: center;
+      justify-content: flex-start;
+      @include media-breakpoint-down(xs) {
+        flex-wrap: wrap;
+        .checkbox {
+          margin: 0 auto;
+        }
+        .d-card__c-text {
+          width: 100%;
+        }
+      }
+    }
+  }
+  &__title {
+    font-family: "Gotham Pro Bold";
+    font-size: 20px;
+    padding: 15px 0;
+    margin-bottom: 30px;
+    @include media-breakpoint-only(md) {
+      margin-bottom: 35px;
+      font-weight: 900;
+    }
+  }
+  &__btn-holder {
+    width: 100%;
+    margin-bottom: 50px;
+    @include media-breakpoint-down(md) {
+      margin-bottom: -30px;
+    }
+    .btn {
+      width: 320px;
+      margin-left: 0;
+      border-radius: 0;
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0);
+      }
+      @include media-breakpoint-only(md) {
+        margin-bottom: 80px;
+      }
+      @include media-breakpoint-down(sm) {
+        width: 100%;
+      }
+      &--editForm {
+        width: 70%;
+        margin: 40px auto 35px 15px;
+        @include media-breakpoint-down(xs) {
+          margin: 40px auto 35px auto;
+        }
+      }
+    }
+  }
+}
+
+.d-card {
+  position: relative;
+  margin-top: 30px;
+  font-size: 12px;
+  border: 1px solid $lightgray;
+  padding: 15px;
+  transition: all .3s ease-in-out;
+
+  &--credit {
+    &:nth-of-type(odd) {
+      margin-left: 30px;
+    }
+  }
+  &__type-icon {
+    display: flex;
+  }
+  &__type-icon[data-type="mastercard"] {
+    .icon {
+      background: url('../img/icons/mastercard.svg') no-repeat center;
+      width: 60px;
+      height: 45px;
+    }
+  }
+  &__type-icon[data-type="visa"] {
+    .icon {
+      background: url('../img/icons/visa.svg') no-repeat center;
+      width: 50px;
+      height: 30px;
+    }
+  }
+  &__card-number {
+    margin: 30px 0;
+  }
+  &__pairs {
+    width: 24%;
+    outline: none;
+    text-align: center;
+    border: 1px solid transparent;
+    &:focus {
+      border-bottom: 1px solid $lightgray;
+    }
+  }
+  &__type {
+    position: relative;
+    font-family: "Gotham Pro Bold";
+    font-size: 13px;
+    min-height: 20px;
+    .text {
+      width: 100%;
+      border: 1px solid transparent;
+    }
+  }
+  &__address {
+    position: relative;
+    padding: 5px 0;
+    min-height: 20px;
+    .text {
+      white-space: pre-line;
+      width: 100%;
+      border: 1px solid transparent;
+      min-height: 80px;
+    }
+  }
+  &__phone-holder {
+    position: relative;
+    width: 100%;
+    min-height: 20px;
+    .text {
+      width: 100%;
+      border: 1px solid transparent;
+    }
+  }
+  &__phone {
+    position: relative;
+    color: $cyan;
+    letter-spacing: .1px;
+    .text {
+      width: 100%;
+      border: 1px solid transparent;
+    }
+  }
+  &__name {
+    position: relative;
+    font-family: "Gotham Pro Bold";
+    font-size: 13px;
+    padding: 5px 0;
+    min-height: 20px;
+
+    .text {
+      white-space: pre-line;
+      width: 100%;
+      border: 1px solid transparent;
+      min-height: 40px;
+      text-transform: capitalize;
+    }
+  }
+  &__info-holder {
+    padding: 30px;
+    @include media-breakpoint-down(xs) {
+      text-align: left;
+    }
+  }
+  &__control-holder {
+    display: flex;
+    width: 100%;
+    &:first-of-type {
+      margin-bottom: -1px;
+    }
+    .edit {
+      color: $cyan;
+      border-left: 0;
+    }
+    .remove {
+      color: rgba(23,54,61,.5);
+    }
+    .d-control,
+    .d-card__c-text {
+      height: 50px;
+    }
+    .d-card__c-text {
+      margin: 0;
+      border-bottom: 0;
+      border-top: 0;
+      border-right: 0;
+    }
+    .checkbox {
+      width: 50px;
+      height: 50px;
+      border: 0;
+      &--popup {
+        border: 1px solid $lightgray;
+        width: 30px;
+        height: 30px;
+      }
+      &__control {
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+    }
+  }
+  .d-control {
+    background-color: transparent;
+    border: 1px solid $lightgray;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .edit {
+    width: 60%;
+    border-left: 0;
+    &:hover {
+      color: $black;
+    }
+  }
+  .remove {
+    width: 41%;
+    margin-left: -1px;
+    border-right: 0;
+    &:hover {
+      color: $removeAddressHoverColor;
+    }
+  }
+  &__c-text {
+    border: 1px solid $lightgray;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    margin-left: -1px;
+    width: calc(100% - 50px);
+    &--editForm {
+      margin-left: 0;
+      border: 0;
+      font-size: 12px;
+    }
+    .text {
+      margin: auto 0;
+    }
+  }
+  .delete {
+    display: none;
+    position: absolute;
+    z-index: 998;
+    right: 0;
+    top: 0;
+    width: 15px;
+    height: 15px;
+    border: 1px solid $lightgray;
+    label {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 999;
+    }
+    input {
+      display: none;
+      position: absolute;
+      z-index: 999;
+    }
+    input:checked ~ label {
+      background: url("../img/icons/check-mini.svg") no-repeat center;
+    }
+  }
+}

@@ -1,0 +1,368 @@
+.sidebar-nav.open {
+  height: 267px;
+  @include media-breakpoint-down(md) {
+    border-right: 1px solid $lightgray;
+    border-left: 1px solid $lightgray;
+  }
+  .sidebar-nav__control {
+    transform: rotate(180deg);
+    .icon svg path {
+      fill: #fff;
+    }
+  }
+  .sidebar-nav__item.hidden {
+    color: #fff;
+  }
+  .sidebar-nav__item:first-of-type {
+    @include media-breakpoint-down(md) {
+      background: $cyan;
+    }
+    a {
+      @include media-breakpoint-down(md) {
+        color: #fff;
+      }
+    }
+  }
+}
+.sidebar-nav {
+  position: relative;
+  list-style-type: none;
+  padding: 0;
+  padding-left: 15px;
+  transition: height .3s ease-in-out;
+  @include media-breakpoint-down(md) {
+    background-color: #fff;
+    text-align: center;
+    margin-bottom: 0;
+    overflow: hidden;
+    height: 46px;
+    position: absolute;
+    z-index: 9;
+    left: 0;
+    margin: 0;
+    margin-left: 10px;
+    width: 96.5%;
+    padding-left: 0;
+  }
+  @include media-breakpoint-down(sm) {
+    margin-left: 0;
+  }
+  &__item.hidden {
+    height: 46px;
+    display: none;
+    color: $cyan;
+    @include media-breakpoint-down(md) {
+      display: list-item;
+    }
+  }
+  &__item.active {
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+  }
+  &__item {
+    position: relative;
+    margin-bottom: 10px;
+    padding: 10px 0;
+    width: 175px;
+    &:last-of-type {
+      margin-top: 40px;
+      &:after {
+        display: none;
+      }
+      .sidebar-nav__link {
+        &:hover {
+          color: $accountExitColor;
+        }
+      }
+    }
+    &:after {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 1px;
+      background-color: $lightgray;
+      bottom: -10px;
+      left: 0;
+    }
+
+    @include media-breakpoint-down(md) {
+      border-left: 0;
+      border-right: 0;
+      border-bottom: 1px solid  $lightgray;
+      margin-bottom: 0;
+      width: 100%;
+      &:first-of-type {
+        border-top: 1px solid  $lightgray;
+        border-right: 1px solid $lightgray;
+        border-left: 1px solid $lightgray;
+      }
+      &:last-of-type {
+        border-top: 1px solid  $lightgray;
+      }
+      &:after {
+        display: none;
+      }
+    }
+  }
+  &__control {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40px;
+    height: 46px;
+    display: none;
+    z-index: 8;
+    margin: 0;
+    @include media-breakpoint-down(md) {
+      display: flex;
+      justify-content: center;
+      right: 25px;
+    }
+    .icon {
+      margin: auto 0;
+      display: flex;
+    }
+    .icon svg path {
+      fill: $cyan;
+    }
+    .marked svg path {
+      fill: #fff !important;
+    }
+    &:active {
+      transform: scale(1.03);
+    }
+  }
+  .active {
+    a {
+      color: $cyan;
+    }
+  }
+  &__link {
+    color: $black;
+    display: inline-block;
+    height: 100%;
+    letter-spacing: 0.3px;
+    font-size: 14px;
+    &:hover {
+      color: $sidebarContactsHoverColor;
+      text-decoration: none;
+    }
+  }
+  &__btn-holder {
+    @include media-breakpoint-down(md) {
+      border: 1px solid  $lightgray;
+      padding: 10px 0;
+    }
+  }
+  &__exit {
+    color: $black;
+    @include media-breakpoint-down(md) {
+      margin: 0 auto;
+    }
+    &:hover {
+      @include textHover();
+      text-decoration: none;
+    }
+  }
+}
+
+.account {
+  padding-bottom: 60px;
+  @include media-breakpoint-down(sm) {
+    text-align: center;
+  }
+  .btn {
+    @include media-breakpoint-down(sm) {
+      margin: 0 auto;
+    }
+  }
+  &--address {
+    margin-bottom: 300px;
+    padding-bottom: 0;
+  }
+  &--order-d {
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 0;
+    }
+    @include media-breakpoint-only(sm) {
+      max-width: 600px;
+    }
+    @include media-breakpoint-only(xs) {
+      max-width: 280px;
+    }
+  }
+  .contacts__input-holder {
+    display: flex;
+    flex-wrap: wrap;
+    &--none {
+      display: none;
+    }
+    @include media-breakpoint-down(sm) {
+      text-align: center;
+      justify-content: center;
+    }
+  }
+  .contacts__input {
+
+    @include media-breakpoint-down(sm) {
+      text-align: center;
+      justify-content: center;
+    }
+  }
+  .form-control {
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  &__title {
+    font-family: "Futura Pt Light";
+    text-align: center;
+    margin: 45px 0 80px 0;
+    font-size: 48px;
+    @include media-breakpoint-down(md) {
+      margin: 45px 0;
+    }
+    @include media-breakpoint-down(sm) {
+      font-size: 32px;
+    }
+    &--wishlist {
+      @include media-breakpoint-down(sm) {
+        margin: 45px 0 20px;
+      }
+      @include media-breakpoint-down(xs) {
+        width: calc(100% + 40px);
+        margin-left: -20px;
+      }
+    }
+    &--address {
+      @include media-breakpoint-down(sm) {
+        margin: 45px 0 20px;
+      }
+      @include media-breakpoint-down(xs) {
+        width: calc(100% + 40px);
+        margin-left: -20px;
+      }
+    }
+    &--history {
+      @include media-breakpoint-down(sm) {
+        margin: 45px 0 20px;
+      }
+      @include media-breakpoint-down(xs) {
+        width: calc(100% + 40px);
+        margin-left: -20px;
+      }
+    }
+    &--history-info {
+      @include media-breakpoint-down(sm) {
+        margin: 45px 0 20px;
+      }
+      @include media-breakpoint-down(xs) {
+        width: calc(100% + 40px);
+        margin-left: -20px;
+      }
+    }
+  }
+  &__sidebar-nav {
+    @include media-breakpoint-down(sm) {
+      width: 100%;
+    }
+  }
+  &__info-title {
+    font-family: 'Gotham Pro Bold';
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 55px;
+    @include media-breakpoint-down(sm) {
+      font-size: 18px;
+    }
+  }
+  &__pass {
+    display: none;
+    @include media-breakpoint-down(xs) {
+      label {
+        width: 100%;
+        left: 0;
+        text-align: left;
+      }
+      input:focus ~ label {
+        text-align: center;
+      }
+    }
+    @include media-breakpoint-only(sm) {
+      label {
+        width: 100%;
+        left: 0;
+        text-align: center;
+      }
+    }
+  }
+  &__content-holder {
+    margin-left: 30px;
+    @include media-breakpoint-only(xl) {
+      margin-left: 60px;
+    }
+    @include media-breakpoint-only(lg) {
+      margin-left: 100px;
+    }
+    @include media-breakpoint-down(md) {
+      margin-left: 0;
+      margin-top: 100px;
+      padding: 0 45px;
+    }
+    form {
+      div:nth-of-type(odd) {
+        @include media-breakpoint-only(xl) {
+          margin-right: 30px;
+        }
+      }
+    }
+  }
+  &__line {
+    background-color: #f1f1f1;
+    left: -15px;
+    width: 1px;
+    height: 110%;
+    top: -70px;
+    position: absolute;
+    @include media-breakpoint-only(xl) {
+      left: -90px;
+    }
+    @include media-breakpoint-only(lg) {
+      left: -45px;
+    }
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+  }
+  &__notification {
+    margin-bottom: 60px;
+    font-family: "Gotham Pro Bold";
+    @include media-breakpoint-down(md) {
+      margin-top: 90px;
+    }
+  }
+  &__subscribe {
+    font-family: "Gotham Pro Bold";
+    font-size: 20px;
+    margin-left: 15px;
+
+    @include media-breakpoint-down(sm) {
+      width: 100%;
+      margin-top: 15px;
+      margin-left: 0;
+    }
+  }
+}
+@-webkit-keyframes pulse {
+  from { transform: scale(1); }
+  to 	{ transform: scale(1.1); }
+}
+@-moz-keyframes pulse {
+  from { transform: scale(1); }
+  to 	{ transform: scale(1.1); }
+}
+@keyframes pulse {
+  from { transform: scale(1); }
+  to 	{ transform: scale(1.1); }
+}

@@ -1,0 +1,185 @@
+<?php echo $header; ?>
+<main class="main">
+
+  <!-- BEGIN: account -->
+  <section class="account container">
+    <h1 class="account__title"><?php echo $text_my_account; ?></h1>
+    <div class="row">
+
+      <!-- BEGIN: sidebar-->
+      <div class="col-xl-2 col-lg-2 col-md-8 col-12 offset-xl-0 offset-lg-0 offset-md-2">
+        <ul class="sidebar-nav account__sidebar-nav row">
+          <label id="sidebar-nav__control" class="sidebar-nav__control">
+            <i class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="9" height="5" viewBox="0 0 9 5">
+                <path id="arrow-mini-down" class="cls-1" d="M231.056,880.819l-3.87-3.774a0.6,0.6,0,0,1,0-.869,0.643,0.643,0,0,1,.892,0l3.424,3.339,3.424-3.339a0.641,0.641,0,0,1,.891,0,0.6,0.6,0,0,1,0,.869l-3.87,3.774A0.641,0.641,0,0,1,231.056,880.819Z" transform="translate(-227 -876)"/>
+              </svg>
+            </i>
+          </label>
+            <?php echo $edit; ?>
+          <li class="sidebar-nav__item"><a href="#" class="sidebar-nav__link"><?= $heading_title; ?></a></li>
+          <li class="sidebar-nav__item"><a href="<?php echo $address; ?>" class="sidebar-nav__link"><?= $text_address; ?></a></li>
+          <li class="sidebar-nav__item"><a href="<?php echo $order; ?>" class="sidebar-nav__link"><?= $text_order; ?></a></li>
+          <li class="sidebar-nav__item"><a href="<?php echo $wishlist; ?>" class="sidebar-nav__link"><?php echo $text_wishlist; ?></a></li>
+          <li class="sidebar-nav__item"><a href="#" class="sidebar-nav__link"><?= $text_mycards; ?></a></li>
+          <li class="sidebar-nav__item">
+            <a href="<?= $logout; ?>" class="sidebar-nav__link"><?= $text_logout; ?></a>
+          </li>
+        </ul>
+      </div>
+      <!-- END: sidebar -->
+
+      <div class="account__content-holder col-xl-8 col-lg-9 col-12">
+        <div class="account__line"></div>
+
+        <div class="account__notification row">
+          <p class="col-12">Спасибо! Ваш аккаунт успешно зарегистрирован</p>
+        </div>
+
+        <div class="account__info-title row">
+          <p class="col-12">Изменить личные данные</p>
+        </div>
+
+        <form class="account__data-holder row" action="#" id="contactForm">
+          <div class="col-xl-5 col-lg-6 col-md-6 col-sm-10 col-12 offset-xl-0 offset-lg-0 offset-md-0 offset-sm-1 offset-0">
+            <div class="contacts contacts__input-holder">
+              <input class="contacts__input" type="text" name="uname" data-error=".error1"/>
+              <label class="has">Ваше имя</label>
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <div class="error1"></div>
+            </div>
+          </div>
+          <div class="col-xl-5 col-lg-6 col-md-6 col-sm-10 col-12 offset-xl-0 offset-lg-0 offset-md-0 offset-sm-1 offset-0">
+            <div class="contacts contacts__input-holder">
+              <input class="contacts__input" type="text" name="surname" data-error=".error2"/>
+              <label class="has">Фамилия</label>
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <div class="error2"></div>
+            </div>
+          </div>
+          <div class="col-xl-5 col-lg-6 col-md-6 col-sm-10 col-12 offset-xl-0 offset-lg-0 offset-md-0 offset-sm-1 offset-0">
+            <div class="contacts contacts__input-holder">
+              <input class="contacts__input" type="text" name="company" data-error=".error3"/>
+              <label class="has">Компания</label>
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <div class="error3"></div>
+            </div>
+          </div>
+          <div class="col-xl-5 col-lg-6 col-md-6 col-sm-10 col-12 offset-xl-0 offset-lg-0 offset-md-0 offset-sm-1 offset-0">
+            <div class="contacts">
+              <div class="contacts__input-holder ">
+                <select class="contacts__input contacts__input--select" name="gender" id="gender" data-error=".error4">
+                  <option value="">Мужской</option>
+                  <option value="">Женский</option>
+                </select>
+                <label class="select has">Пол</label>
+                <label class="control" for="gender"><i class="icon"></i></label>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <div class="error4"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-5 col-lg-6 col-md-6 col-sm-10 col-12 offset-xl-0 offset-lg-0 offset-md-0 offset-sm-1 offset-0">
+            <div class="contacts contacts__input-holder input-group ">
+              <input id="bday" class="contacts__input form-control" type="text" name="bday" data-error=".error5"/>
+              <label class="has">Дата рождения</label>
+              <label for="bday" class="calendar">
+                <i class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 14">
+                    <path id="calendar" class="cls-1" d="M925,917h14v1H925v-1Zm0,13h14v1H925v-1Zm-1-13h1v14h-1V917Zm15,0h1v14h-1V917Zm-12,6h2v2h-2v-2Zm4,0h2v2h-2v-2Zm4,0h2v2h-2v-2Zm-8,3h2v2h-2v-2Zm4,0h2v2h-2v-2Zm4,0h2v2h-2v-2Zm-8-6h2v2h-2v-2Zm4,0h2v2h-2v-2Zm4,0h2v2h-2v-2Z" transform="translate(-924 -917)"/>
+                  </svg>
+                </i>
+              </label>
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <div class="error5"></div>
+            </div>
+          </div>
+          <div class="col-xl-5 col-lg-6 col-md-6 col-sm-10 col-12 offset-xl-0 offset-lg-0 offset-md-0 offset-sm-1 offset-0">
+            <div class="contacts contacts__input-holder">
+              <input class="contacts__input" id="phone" type="tel" name="phone" data-error=".error6"/>
+              <label class="has">Телефон</label>
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <div class="error6"></div>
+            </div>
+          </div>
+          <div class="col-xl-5 col-lg-6 col-md-6 col-sm-10 col-12 offset-xl-0 offset-lg-0 offset-md-0 offset-sm-1 offset-0">
+            <div class="contacts contacts__input-holder">
+              <input class="contacts__input" type="email" name="email" data-error=".error7"/>
+              <label class="has">Email</label>
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <div class="error7"></div>
+            </div>
+          </div>
+          <div class="contacts__input-holder col-12">
+            <div class="row justify-content-between">
+              <div class="contacts__c-holder col-12">
+                <div class="checkbox">
+                  <input id="subscribe-input" class="checkbox__core" type="checkbox"/>
+                  <label for="subscribe-input" class="checkbox__control"><i class="icon"></i></label>
+                </div>
+                <p class="account__subscribe">
+                  Изменить пароль
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-5 col-lg-6 col-md-6 col-sm-10 col-12 offset-xl-0 offset-lg-0 offset-md-0 offset-sm-1 offset-0">
+            <div class="account__pass contacts contacts__input-holder contacts__input-holder--none">
+              <input id="pass1" class="contacts__input" type="password" name="password1" data-error=".error8"/>
+              <label class="has">Пароль</label>
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <div class="error8"></div>
+              <span id="passVisible1" class="contacts__pass-visible">
+                            <i class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="18.969" height="12" viewBox="0 0 18.969 12">
+                            <metadata>
+                              <x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c142 79.160924, 2017/07/13-01:06:39        ">
+                                    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+                                        <rdf:Description rdf:about=""/>
+                                    </rdf:RDF>
+                                </x:xmpmeta>
+                            </metadata>
+                            <path id="eye" class="cls-1" d="M883.878,920.634c-0.169-.23-4.214-5.634-9.379-5.634s-9.209,5.4-9.379,5.634a0.615,0.615,0,0,0,0,.732c0.17,0.23,4.214,5.634,9.379,5.634s9.21-5.4,9.379-5.634A0.615,0.615,0,0,0,883.878,920.634Zm-9.379,5.125c-3.805,0-7.1-3.587-8.075-4.76,0.974-1.173,4.262-4.758,8.075-4.758s7.1,3.586,8.076,4.759C881.6,922.174,878.312,925.759,874.5,925.759Zm0-8.483A3.724,3.724,0,1,0,878.257,921,3.745,3.745,0,0,0,874.5,917.276Zm0,6.207A2.483,2.483,0,1,1,877.005,921,2.5,2.5,0,0,1,874.5,923.483Z" transform="translate(-865.031 -915)"/>
+                        </svg></i>
+                        </span>
+            </div>
+          </div>
+          <div class="col-xl-5 col-lg-6 col-md-6 col-sm-10 col-12 offset-xl-0 offset-lg-0 offset-md-0 offset-sm-1 offset-0">
+            <div class="account__pass contacts contacts__input-holder contacts__input-holder--none">
+              <input id="pass2" class="contacts__input" type="password" name="password2" data-error=".error9"/>
+              <label class="has">Пароль</label>
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <div class="error9"></div>
+              <span id="passVisible2" class="contacts__pass-visible">
+                            <i class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="18.969" height="12" viewBox="0 0 18.969 12">
+                            <metadata>
+                              <x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c142 79.160924, 2017/07/13-01:06:39        ">
+                                    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+                                        <rdf:Description rdf:about=""/>
+                                    </rdf:RDF>
+                                </x:xmpmeta>
+                            </metadata>
+                            <path id="eye" class="cls-1" d="M883.878,920.634c-0.169-.23-4.214-5.634-9.379-5.634s-9.209,5.4-9.379,5.634a0.615,0.615,0,0,0,0,.732c0.17,0.23,4.214,5.634,9.379,5.634s9.21-5.4,9.379-5.634A0.615,0.615,0,0,0,883.878,920.634Zm-9.379,5.125c-3.805,0-7.1-3.587-8.075-4.76,0.974-1.173,4.262-4.758,8.075-4.758s7.1,3.586,8.076,4.759C881.6,922.174,878.312,925.759,874.5,925.759Zm0-8.483A3.724,3.724,0,1,0,878.257,921,3.745,3.745,0,0,0,874.5,917.276Zm0,6.207A2.483,2.483,0,1,1,877.005,921,2.5,2.5,0,0,1,874.5,923.483Z" transform="translate(-865.031 -915)"/>
+                        </svg></i>
+                        </span>
+            </div>
+          </div>
+          <div class="contacts__input-holder col-xl-6 col-lg-6 col-md-6 col-12">
+            <input class="btn btn--account" type="submit" value="Создать аккаунт" />
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+  <!-- END: account -->
+</main>
+<?php echo $footer; ?>

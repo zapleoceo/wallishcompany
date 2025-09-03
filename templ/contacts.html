@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Holiday item</title>
+    <link rel="stylesheet" href="./css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bootstrap/bootstrap-grid.css" />
+    <link rel="stylesheet" href="./css/bootstrap/bootstrap-reboot.css" />
+    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="./css/owl.carousel.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="#" />
+    <meta name="description" content="" />
+    <meta name="Keywords" content="" />
+</head>
+<body>
+<main class="main">
+    <!-- BEGIN: contacts -->
+    <section class="contacts container">
+        <h1 class="contacts__title">Контакты</h1>
+        <div class="row contacts__info">
+        <!-- BEGIN: left column -->
+            <div class="contacts__left-holder col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 offset-xl-2 offset-lg-2">
+                <h6 class="contacts__caption">Контактная информация</h6>
+                <div class="row">
+                    <div class="col-12 contacts__text">Офис</div>
+                    <div class="col-12 contacts__text">01054, Украина, г. Киев,
+                        ул. Дмитриевская 80, оф. 9, этаж 4</div>
+                    <div class="col-12 contacts__text">График работы</div>
+                    <div class="col-12 contacts__text">10:00-18:00 Пн-Пт, Сб-Вс — выходные</div>
+                    <div class="col-12 contacts__text">Электронная почта</div>
+                    <div class="col-12 contacts__text">info@holidaydecor.com.ua</div>
+                    <div class="col-12 contacts__text">Телефоны</div>
+                    <div class="col-12 contacts__text">+38 044 484-41-01
+                        +38 068 49-417-49
+                        +38 063 691-77-74</div>
+                </div>
+            </div>
+        <!-- END: left column -->
+
+        <!-- BEGIN: right column -->
+            <div class="contacts__right-holder col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                <h6 class="contacts__caption">Напишите нам</h6>
+                <form class="row" action="#" id="contactForm">
+                    <div class="contacts__input-holder col-12">
+                        <input class="contacts__input" type="text" name="uname" data-error=".error1"/>
+                        <label class="has align--1">Ваше имя</label>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <div class="error1"></div>
+                    </div>
+                    <div class="contacts__input-holder col-12">
+                        <input class="contacts__input" type="email" name="email" data-error=".error2"/>
+                        <label class="has align--2">Email</label>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <div class="error2"></div>
+                    </div>
+                    <div class="contacts__input-holder col-12">
+                        <input class="contacts__input" id="phone" type="text" name="phone" data-error=".error3"/>
+                        <label class="has align--3">Телефон</label>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <div class="error3"></div>
+                    </div>
+                    <div class="contacts__input-holder col-12">
+                        <textarea class="contacts__input" name="" cols="30" rows="1"></textarea>
+                        <label class="has align--4">Сообщение</label>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                    </div>
+                    <div class="contacts__input-holder col-12">
+                        <input class="btn contacts__btn" type="submit" value="Отправить сообщение" />
+                    </div>
+                </form>
+            </div>
+        <!-- END: right column -->
+        </div>
+    </section>
+    <!-- END: contacts -->
+    <section id="map" class="map"></section>
+</main>
+
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script src="./js/jquery.validate.min.js"></script>
+<script src="./js/jquery.inputmask.bundle.js"></script>
+<script src="./js/contacts.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDum53ni7B-Evuxi7pqmSY8S8KMpGTo-Jc"></script>
+<script src="./js/map.js"></script>
+</body>
+</html>

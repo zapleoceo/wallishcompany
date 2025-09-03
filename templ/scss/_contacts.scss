@@ -1,0 +1,827 @@
+.map {
+  width: 100%;
+  height: 590px;
+
+  @include media-breakpoint-down(sm) {
+    height: 460px;
+  }
+}
+.main {
+  &--contacts {
+    display: flex;
+    width: 200%;
+    overflow-x: hidden;
+    transition: all 1s ease;
+  }
+}
+.main.translatedLeft {
+  transform: translate(-50%, 0);
+}
+.contacts {
+  &--contacts {
+    margin-bottom: 135px;
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 30px;
+    }
+    @include media-breakpoint-down(xs) {
+      input {
+        text-align: center;
+      }
+      label {
+        width: 100%;
+        text-align: center;
+        left: 0;
+      }
+    }
+  }
+  transition: all 1s ease;
+  animation-name: fadeIn;
+  animation-duration: .5s;
+  @include media-breakpoint-down(sm) {
+    text-align: center;
+    .contacts__input-holder {
+      label {
+        width: 100%;
+        left: 0;
+      }
+      input {
+        text-align: center;
+      }
+    }
+  }
+  @include media-breakpoint-down(xs) {
+    text-align: center;
+  }
+  &--register {
+    @include media-breakpoint-down(sm) {
+      text-align: center;
+    }
+    .contacts__input-holder--checkbox {
+      margin-bottom: 0;
+      .checkbox {
+        label {
+          @include media-breakpoint-down(sm) {
+            width: 30px;
+          }
+        }
+      }
+      .contacts__subscribe {
+        @include media-breakpoint-down(sm) {
+          margin-left: 0;
+        }
+      }
+    }
+    .contacts__input-holder--signup {
+      width: 45%;
+      margin-bottom: 55px;
+      @include media-breakpoint-down(sm) {
+        width: 75%;
+        margin-bottom: 55px;
+      }
+      @include media-breakpoint-down(xs) {
+        width: 100%;
+      }
+      &:nth-of-type(5) {
+        margin-bottom: 65px;
+        @include media-breakpoint-down(sm) {
+          margin-bottom: 35px;
+        }
+      }
+      &:nth-of-type(odd) {
+        margin-right: 25px;
+        @include media-breakpoint-only(md) {
+          margin-right: 50px;
+        }
+        @include media-breakpoint-down(sm) {
+          margin-right: 0;
+        }
+      }
+      label {
+        @include media-breakpoint-down(sm) {
+          width: 100%;
+        }
+        @include media-breakpoint-down(xs) {
+          width: 100%;
+          text-align: center;
+          left: 0;
+        }
+      }
+      label.checkbox__control {
+        width: 30px;
+      }
+    }
+    .contacts__input {
+      @include media-breakpoint-down(xs) {
+        text-align: center;
+      }
+    }
+  }
+  &--login {
+    .row--signin {
+      @include media-breakpoint-down(sm) {
+        order: 2;
+      }
+    }
+    .contacts {
+      &__title {
+        @include media-breakpoint-down(sm) {
+          margin: 45px 0 55px 0;
+        }
+        @include media-breakpoint-down(xs) {
+          margin: 45px 0 10px 0;
+        }
+      }
+      &__input-holder {
+        label {
+          @include media-breakpoint-down(sm) {
+            width: 100%;
+            text-align: center;
+            left: 0;
+          }
+        }
+      }
+      &__left-holder {
+        padding-right: 50px;
+        &:after {
+          content: '';
+          position: absolute;
+          width: 1px;
+          height: 100%;
+          top: 0;
+          right: -30px;
+          background-color: $lightgray;
+          @include media-breakpoint-only(md) {
+            right: -20px;
+          }
+          @include media-breakpoint-only(sm) {
+            right: 0px;
+          }
+          @include media-breakpoint-down(xs) {
+            position: relative;
+            width: calc(100% + 30px);
+            height: 1px;
+            order: 4;
+            left: -15px;
+            margin-bottom: 30px;
+          }
+        }
+        @include media-breakpoint-down(sm) {
+          padding-right: 15px;
+          display: flex;
+          flex-direction: column;
+        }
+        @include media-breakpoint-down(xs) {
+          padding-left: 0;
+          padding-right: 0;
+        }
+        .text-holder {
+          margin-bottom: 35px;
+          @include media-breakpoint-only(sm) {
+            margin-bottom: 10px;
+          }
+          @include media-breakpoint-down(xs) {
+            margin-bottom: 15px;
+          }
+        }
+        .contacts__caption {
+          @include media-breakpoint-down(xs) {
+            margin-bottom: 35px;
+          }
+        }
+        form {
+          .contacts__input-holder:nth-of-type(1) {
+            margin-bottom: 55px;
+            @include media-breakpoint-down(sm) {
+              padding-left: 25px;
+              padding-right: 25px;
+            }
+          }
+          .contacts__input-holder:nth-of-type(2) {
+            margin-bottom: 110px;
+            @include media-breakpoint-down(sm) {
+              margin-bottom: 85px;
+              padding-left: 25px;
+              padding-right: 25px;
+            }
+          }
+        }
+      }
+      &__input {
+        @include media-breakpoint-down(sm) {
+          text-align: center;
+        }
+        @include media-breakpoint-down(xs) {
+          text-align: center;
+        }
+      }
+      &__right-holder {
+        padding-left: 80px;
+        @include media-breakpoint-only(md) {
+          padding-right: 0;
+        }
+        @include media-breakpoint-down(sm) {
+          padding-left: 0;
+          padding-right: 0;
+        }
+        @include media-breakpoint-down(xs) {
+          padding-left: 0;
+          padding-right: 0;
+        }
+        .text-holder {
+          margin-bottom: 50px;
+          @include media-breakpoint-down(sm) {
+            margin-bottom: 15px;
+            line-height: 20px;
+          }
+        }
+        .contacts {
+          &__caption {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            @include media-breakpoint-down(xs) {
+              margin-top: 20px;
+            }
+          }
+        }
+        &--signup {
+          padding-left: 40px;
+          @include media-breakpoint-only(md) {
+            padding-right: 40px;
+          }
+          @include media-breakpoint-down(sm) {
+            padding-left: 15px;
+            padding-right: 15px;
+            .row {
+              justify-content: center;
+            }
+          }
+        }
+      }
+    }
+  }
+  .text {
+    white-space: pre-line;
+
+    &--signup {
+      font-size: 12px;
+      margin: 0;
+      margin-bottom: 75px;
+      @include media-breakpoint-down(sm) {
+        white-space: normal;
+        width: 85%;
+        margin-bottom: 45px;
+      }
+      @include media-breakpoint-down(xs) {
+        width: 100%;
+      }
+    }
+  }
+
+  .text-holder {
+    margin-bottom: 30px;
+    font-size: 12px;
+    @include media-breakpoint-down(sm) {
+      text-align: center;
+    }
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 0;
+    }
+    &--signin {
+      @include media-breakpoint-down(sm) {
+        order: 0;
+      }
+    }
+  }
+  &__title-holder {
+    position: relative;
+    left: -110px;
+
+    @include media-breakpoint-down(md) {
+      left: 0;
+    }
+  }
+  &__left-holder {
+    padding-left: 60px;
+    @include media-breakpoint-only(md) {
+       padding-left: 20px;
+    }
+    @include media-breakpoint-down(sm) {
+      padding-left: 0;
+   }
+
+   &--signin {
+    padding-right: 50px;
+   }
+  }
+  &__right-holder {
+    padding-left: 40px;
+    padding-right: 70px;
+    @include media-breakpoint-down(sm) {
+      padding-left: 15px;
+      padding-right: 25px;
+    }
+    &--signup {
+      padding-left: 50px;
+      @include media-breakpoint-only(md) {
+        padding-right: 40px;
+        padding-left: 55px;
+      }
+      @include media-breakpoint-down(sm) {
+        padding-left: 15px;
+        padding-right: 15px;
+        .row {
+          justify-content: center;
+        }
+      }
+    }
+    #contactForm {
+      .contacts__input-holder {
+        margin-bottom: 55px;
+        &:last-of-type {
+          @include media-breakpoint-down(xs) {
+            margin-bottom: 65px;
+          }
+          .btn {
+            width: 270px !important;
+            margin-top: 0 !important;
+            height: 60px !important;
+            @include media-breakpoint-down(sm) {
+              width: 215px !important;
+              height: 50px !important;
+           }
+          }
+        }
+      }
+    }
+  }
+  &__c-holder {
+    display: flex;
+    @include media-breakpoint-down(sm) {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+  &__signin {
+    position: relative;
+    color: darken($lightgray, 20%);
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    left: -70px;
+    @include media-breakpoint-only(md) {
+      left: -15px;
+    }
+    @include media-breakpoint-down(sm) {
+      left: 0;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+    &:hover {
+      text-decoration: none;
+      color: $cyan;
+    }
+
+    &:after {
+      position: absolute;
+      content: '';
+      width: 1px;
+      height: 70%;
+      background-color: #bebebe;
+      right: -53px;
+      top: 0;
+      @include media-breakpoint-only(sm) {
+        content: '';
+        position: absolute;
+        width: 7%;
+        height: 1px;
+        background-color: $lightgray;
+        left: 46.5%;
+        top: 32px;
+      }
+      @include media-breakpoint-down(xs) {
+        display: none;
+      }
+    }
+  }
+  &__subscribe-holder {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__subscribe {
+    width: 90%;
+    margin-left: 15px;
+    font-size: 12px;
+  }
+  &__breadcrumb {
+    margin-left: -15px;
+    margin-top: 15px;
+  }
+  &__control {
+    opacity: 0;
+  }
+  &__title {
+    text-align: center;
+    font-size: 48px;
+    font-family: "Futura Pt Light";
+    @include media-breakpoint-only(xl) {
+      margin: 45px 0 90px 0;
+    }
+    @include media-breakpoint-only(lg) {
+      margin: 45px 0 95px 0;
+    }
+    @include media-breakpoint-only(md) {
+      margin: 45px 0 95px 0;
+    }
+    @include media-breakpoint-down(sm) {
+      font-size: 32px;
+      margin: 45px 0 55px 0;
+    }
+    @include media-breakpoint-down(xs) {
+      margin: 45px 0 25px 0;
+    }
+    &--signup {
+      @include media-breakpoint-only(lg) {
+        margin: 45px 0 90px 0;
+      }
+      @include media-breakpoint-down(sm) {
+        margin: 45px 0 20px 0;
+      }
+    }
+  }
+  &__caption {
+    font-family: "Gotham Pro Bold";
+    margin-bottom: 65px;
+    font-size: 20px;
+    color: $black;
+    @include media-breakpoint-down(sm) {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+    &--margin {
+      margin-bottom: 47px;
+      @include media-breakpoint-down(sm) {
+        margin-bottom: 35px;
+      }
+    }
+    &--auth {
+      margin-bottom: 30px;
+      font-size: 20px;
+      @include media-breakpoint-down(sm) {
+        text-align: center;
+        font-size: 18px;
+      }
+    }
+    &--reg {
+      @include media-breakpoint-only(xl) {
+        margin-top: 0px !important;
+        margin-bottom: 30px !important;
+      }
+      @include media-breakpoint-only(lg) {
+        margin-top: 0px !important;
+        margin-bottom: 30px !important;
+      }
+      @include media-breakpoint-only(md) {
+        margin-top: 0px !important;
+        margin-bottom: 30px !important;
+      }
+    }
+    &--signin {
+      @include media-breakpoint-down(sm) {
+        order: 1;
+      }
+    }
+    &--register {
+      margin-left: 20px;
+      font-size: 20px;
+      position: relative;
+      top: 3px;
+      margin-bottom: 25px;
+      @include media-breakpoint-only(md) {
+        margin-left: 85px;
+      }
+      @include media-breakpoint-down(sm) {
+        margin-left: 0;
+        font-size: 18px;
+      }
+    }
+  }
+  &__text {
+    margin-bottom: 30px;
+    line-height: 20px;
+    white-space: normal;
+    a {
+      color: $black;
+      cursor: pointer;
+      &:hover {
+        text-decoration: none;
+        color: $cyan;
+      }
+    }
+    &:nth-of-type(odd) {
+      font-family: "Gotham Pro Bold";
+    }
+    &:last-of-type {
+      white-space: pre-line;
+      @include media-breakpoint-down(xs) {
+        margin-bottom: 55px;
+      }
+    }
+    @include media-breakpoint-down(sm) {
+      font-size: 14px;
+    }
+    @include media-breakpoint-down(xs) {
+      padding: 0;
+    }
+  }
+  &__input {
+    font-size: 14px;
+    padding:10px 10px 10px 5px;
+    width: 100%;
+    display:block;
+    border:none;
+    border-bottom:1px solid $lightgray;
+    background: transparent;
+
+    &--select {
+    }
+    &:focus { outline:none; }
+
+    /* active state */
+    &:focus ~ .bar:before, &:focus ~ .bar:after {
+      width:50%;
+    }
+  }
+  .control {
+    position: absolute;
+    z-index: 3;
+    width: 10px;
+    height: 90%;
+    top: 1px;
+    right: 5px;
+    background: #fff url("../img/icons/arrow-mini-down.svg") no-repeat center;
+    cursor: pointer;
+  }
+  input:focus ~ label {
+    top:-20px !important;
+    font-size:12px !important;
+    color:$cyan !important;
+    z-index: 8;
+  }
+  input.valid ~ label {
+    top:-20px;
+    font-size:12px;
+    color:#838383;
+    z-index: 8;
+  }
+  select {
+    cursor: pointer;
+  }
+  input.error.empty ~ label {
+    color:red;
+    top: 0;
+    font-size:16px;
+  }
+  input.error ~ label {
+    top: -20px;
+    font-size:12px;
+    color:red;
+  }
+  .intl-tel-input.phone-error ~ label {
+    color: red;
+  }
+  .intl-tel-input.error ~ label {
+    color: red;
+  }
+  textarea.error ~ label {
+    color: red;
+  }
+  .intl-tel-input.error ~ .bar {
+    &:before,
+    &:after {
+      background-color: red;
+      width: 50%;
+    }
+  }
+  textarea.error ~ .bar {
+    &:before,
+    &:after {
+      background-color: red;
+      width: 50%;
+    }
+  }
+  .intl-tel-input.focused ~ .bar {
+    &:after,
+    &:before {
+      width: 50%;
+    }
+  }
+  .intl-tel-input.phone-error ~ .bar {
+    &:after,
+    &:before {
+      background-color: red;
+      width: 50%;
+    }
+  }
+  input[class*='error'] ~ .bar {
+    &:after,
+    &:before {
+      background-color: red;
+      width: 50%;
+    }
+  }
+  div[class='error'] {
+    position: absolute;
+    width: 100%;
+    color:red;
+    font-size: 11px;
+  }
+  textarea.valid ~ label,
+  textarea:focus ~ label {
+    top:-20px;
+    font-size:12px;
+    color:$cyan;
+  }
+
+  label {
+    color:#838383;
+    font-size:16px;
+    font-weight:normal;
+    position:absolute;
+    pointer-events:none;
+    // left:15px;
+    z-index: 2;
+    top: 0;
+    transition:0.2s ease all;
+    -moz-transition:0.2s ease all;
+    -webkit-transition:0.2s ease all;
+    @include media-breakpoint-down(sm) {
+      font-size: 14px;
+    }
+  }
+  label[class*='calendar'] {
+    top: 15px !important;
+    right: 15px !important;
+    left: auto;
+    z-index: 9;
+    @include media-breakpoint-down(sm) {
+      right: 0 !important;
+    }
+    .icon svg path {
+      fill: $cyan;
+    }
+  }
+  span.contacts__pass-visible.visible {
+    &:before {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 2px;
+      background: #aaa;
+      left: 0;
+      top: 46%;
+      transform: rotate(35deg);
+    }
+  }
+  span.contacts__pass-visible {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    z-index: 2;
+
+    &:active {
+      transform: scale(.9);
+    }
+    .icon svg .cls-1 {
+      fill: darken(#ebebeb, 20%);
+      cursor: pointer;
+    }
+    .icon:hover svg .cls-1 {
+      fill: $cyan;
+    }
+    @include media-breakpoint-down(sm) {
+      right: 25px;
+    }
+  }
+  .intl-tel-input ~ label,
+  .select2-container ~.select,
+  .contacts__input--select ~ select {
+    top: -20px;
+    transition: 0.2s ease all;
+    font-size: 12px;
+  }
+  .intl-tel-input.focused ~ label,
+  .select2-container--open ~ .select,
+  .contacts__input--select.valid ~ .select {
+    color: $cyan;
+    top: -20px;
+    transition: 0.2s ease all;
+    font-size: 12px;
+  }
+
+
+  .bar 	{ position:relative; display:block; width:100%; }
+  .bar:before, .bar:after 	{
+    content:'';
+    height:1px;
+    width:0;
+    bottom:1px;
+    position:absolute;
+    background:$cyan;
+    transition:0.2s ease all;
+    -moz-transition:0.2s ease all;
+    -webkit-transition:0.2s ease all;
+  }
+  .bar:before {
+    left:50%;
+  }
+  .bar:after {
+    right:50%;
+  }
+  .forget-pass {
+    color: darken(#ebebeb, 20%);
+    font-family: 'Gotham Pro Bold';
+    font-size: 12px;
+    position: absolute;
+    bottom: -35px;
+    right: 15px;
+    &:hover {
+      text-decoration: none;
+      color: $cyan;
+    }
+    @include media-breakpoint-down(sm) {
+     width: 100%;
+     left: 0;
+     right: auto;
+     text-align: center;
+     bottom: -55px;
+    }
+  }
+  // .highlight {
+  //   position:absolute;
+  //   height:60%;
+  //   width:100px;
+  //   top:25%;
+  //   left:0;
+  //   pointer-events:none;
+  //   opacity:0.5;
+  // }
+  &__input-holder {
+    position:relative;
+    margin-bottom:45px;
+
+    &--signup {
+      width: 50%;
+      &:nth-of-type(odd) {
+        padding-right: 15px;
+        @include media-breakpoint-down(sm) {
+          padding-right: 0;
+        }
+      }
+      &:nth-of-type(even) {
+        padding-left: 15px;
+        @include media-breakpoint-down(sm) {
+          padding-right: 0;
+          padding-left: 0;
+        }
+      }
+      @include media-breakpoint-only(lg) {
+        width: 45%;
+      }
+      @include media-breakpoint-down(sm) {
+        width: 75%;
+        label {
+          width: 100%;
+          left: 0;
+          text-align: center;
+        }
+        input {
+          text-align: center;
+        }
+      }
+      @include media-breakpoint-down(xs) {
+        width: 100%;
+      }
+    }
+    &--checkbox {
+      width: 100%;
+    }
+    &--btn {
+      width: 100%;
+    }
+  }
+}
+
+@-webkit-keyframes inputHighlighter {
+  from { background:$cyan; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+  from { background:$cyan; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+  from { background:$cyan; }
+  to 	{ width:0; background:transparent; }
+}

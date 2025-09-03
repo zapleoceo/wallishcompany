@@ -1,0 +1,1 @@
+<a href="#" class="btn btn--submit confirm-but"><span class="text"><?= $button_confirm; ?></span></a>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Аккаунт карты</title>
+    <link rel="stylesheet" href="./css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bootstrap/bootstrap-grid.css" />
+    <link rel="stylesheet" href="./css/bootstrap/bootstrap-reboot.css" />
+    <link rel="stylesheet" href="./css/global.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="#" />
+    <meta name="description" content="" />
+    <meta name="Keywords" content="" />
+</head>
+<body>
+<main class="main">
+    <!-- BEGIN: account -->
+    <section class="account container">
+        <h1 class="account__title">Персональный аккаунт</h1>
+        <div class="row">
+
+            <!-- BEGIN: sidebar-->
+            <div class="col-xl-2 col-lg-2 col-md-8 col-12 offset-xl-0 offset-lg-0 offset-md-2">
+                <ul class="sidebar-nav account__sidebar-nav row">
+                    <label id="sidebar-nav__control" class="sidebar-nav__control">
+                        <i class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="9" height="5" viewBox="0 0 9 5">
+                                <path id="arrow-mini-down" class="cls-1" d="M231.056,880.819l-3.87-3.774a0.6,0.6,0,0,1,0-.869,0.643,0.643,0,0,1,.892,0l3.424,3.339,3.424-3.339a0.641,0.641,0,0,1,.891,0,0.6,0.6,0,0,1,0,.869l-3.87,3.774A0.641,0.641,0,0,1,231.056,880.819Z" transform="translate(-227 -876)"/>
+                            </svg>
+                        </i>
+                    </label>
+                    <li class="sidebar-nav__item col-12"><a href="#" class="sidebar-nav__link">Личные данные</a></li>
+                    <li class="sidebar-nav__item col-12"><a href="#" class="sidebar-nav__link">Адреса доставки</a></li>
+                    <li class="sidebar-nav__item col-12"><a href="#" class="sidebar-nav__link">Мои заказы</a></li>
+                    <li class="sidebar-nav__item col-12"><a href="#" class="sidebar-nav__link">Список желаний</a></li>
+                    <li class="sidebar-nav__item col-12"><a href="#" class="sidebar-nav__link">Мои карты</a></li>
+                    <li class="sidebar-nav__item col-12">
+                        <a href="#" class="sidebar-nav__link">Выход</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- END: sidebar -->
+
+            <div class="col-xl-9 col-lg-9 col-12">
+
+              <div class="row align">
+
+<!-- BEGIN: content -->
+                <div class="delivery col-12">
+                  <div class="row">
+                    <h4 class="delivery__title col-12">Мои карты</h4>
+                    <div class="delivery__btn-holder">
+                        <button id="addCard" class="btn"><span class="text">Добавить карту</span></button>
+                    </div>
+                    <!-- BEGIN: ukraine address -->
+                    <form class="delivery__data-holder col-7" action="#" id="addCardForm">
+                        <div class="wrapper">
+                            <span class="close" id="closeCardEditing"></span>
+                            <div class="col-12">
+                                <div class="contacts">
+                                    <div class="contacts__input-holder ">
+                                        <select class="contacts__input contacts__input--select" name="cardType" id="cardType" data-error=".error0">
+                                            <option value="visa">Visa</option>
+                                            <option value="mastercard" selected>Mastercard</option>
+                                        </select>
+                                        <label class="select has align--1">Выбрать тип карты</label>
+                                        <label class="control" for="cardType"><i class="icon"></i></label>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <div class="error0"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="contacts contacts__input-holder">
+                                    <input class="contacts__input" type="text" name="cardNumber" data-error=".error1"/>
+                                    <label class="has">Номер карточки</label>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <div class="error1"></div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="contacts contacts__input-holder">
+                                    <input class="contacts__input" type="text" name="cardDate" data-error=".error2"/>
+                                    <label class="has">Дата действия карты</label>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <div class="error2"></div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="contacts contacts__input-holder">
+                                    <input class="contacts__input" type="text" name="cvvcode" data-error=".error3"/>
+                                    <label class="has">CVV код</label>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <div class="error3"></div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="contacts contacts__input-holder">
+                                    <input class="contacts__input" type="text" name="uname" data-error=".error4"/>
+                                    <label class="has">Имя</label>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <div class="error4"></div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="contacts contacts__input-holder">
+                                    <input class="contacts__input" type="text" name="surname" data-error=".error5"/>
+                                    <label class="has">Фамилия</label>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <div class="error5"></div>
+                                </div>
+                            </div>
+                            <div class="d-card__control-holder">
+                                <div class="checkbox">
+                                    <input id="subscribe-input_card" class="checkbox__core" type="checkbox"/>
+                                    <label for="subscribe-input_card" class="checkbox__control"><i class="icon"></i></label>
+                                </div>
+                                <p class="d-card__c-text d-card__c-text--editForm">
+                                    <span class="text">Установить картой по умолчанию</span>
+                                </p>
+                            </div>
+                            <div class="delivery__btn-holder">
+                                <a href="#" id="addDelivery" class="btn btn--editForm"><span class="text">Сохранить</span></a>
+                            </div>
+                        </div>
+                      </form>
+                      <!-- END: ukraine address -->
+      <!-- BEGIN: d-card -->
+                    <div class="d-card delivery__d-card col-5 d-card--credit" id="d-card_0">
+                      <div class="d-card__type-icon" data-type="mastercard">
+                          <i class="icon"></i>
+                      </div>
+                      <div class="d-card__card-number">
+                        <input class="d-card__pairs first" type="text" name="fst-pairs" placeholder="XXXX" maxlength="4" pattern="\d*" readonly />
+                        <input class="d-card__pairs second" type="text" name="s-pairs" placeholder="XXXX" maxlength="4" pattern="\d*" readonly/>
+                        <input class="d-card__pairs third" type="text" name="t-pairs" placeholder="XXXX" maxlength="4" pattern="\d*" readonly/>
+                        <input class="d-card__pairs fourth" type="text" name="frth-pairs" placeholder="XXXX" maxlength="4" pattern="\d*" readonly/>
+                        <input class="d-card__c-n-input" type="hidden" name="card-number" value=""/>
+                      </div>
+                      <div class="d-card__control-holder">
+                          <button class="d-control edit" id="0" data-edit="Редактировать" data-save="Сохранить">Редактировать</button>
+                          <button class="d-control remove" id="0" data-language="Удалить">Удалить</button>
+                      </div>
+                      <div class="d-card__control-holder">
+                          <div class="checkbox">
+                              <input id="subscribe-input_0" class="checkbox__core" type="checkbox"/>
+                              <label for="subscribe-input_0" class="checkbox__control"><i class="icon"></i></label>
+                          </div>
+                          <p class="d-card__c-text">
+                              <span class="text">Установить адресом по умолчанию</span>
+                          </p>
+                      </div>
+                    </div>
+      <!-- END: d-card -->
+      <!-- BEGIN: d-card -->
+                    <div class="d-card delivery__d-card d-card--credit col-5" id="d-card_1">
+                      <div class="d-card__type-icon" data-type="visa">
+                          <i class="icon"></i>
+                      </div>
+                      <div class="d-card__card-number">
+                        <input class="d-card__pairs first" type="text" name="fst-pairs" placeholder="XXXX" maxlength="4" pattern="\d*" readonly />
+                        <input class="d-card__pairs second" type="text" name="s-pairs" placeholder="XXXX" maxlength="4" pattern="\d*" readonly/>
+                        <input class="d-card__pairs third" type="text" name="t-pairs" placeholder="XXXX" maxlength="4" pattern="\d*" readonly/>
+                        <input class="d-card__pairs fourth" type="text" name="frth-pairs" placeholder="XXXX" maxlength="4" pattern="\d*" readonly/>
+                        <input class="d-card__c-n-input" type="hidden" name="card-number" value=""/>
+                      </div>
+                      <div class="d-card__control-holder">
+                          <button class="d-control edit" id="0" data-edit="Редактировать" data-save="Сохранить">Редактировать</button>
+                          <button class="d-control remove" id="0" data-language="Удалить">Удалить</button>
+                      </div>
+                      <div class="d-card__control-holder">
+                          <div class="checkbox">
+                              <input id="subscribe-input_1" class="checkbox__core" type="checkbox"/>
+                              <label for="subscribe-input_1" class="checkbox__control"><i class="icon"></i></label>
+                          </div>
+                          <p class="d-card__c-text">
+                              <span class="text">Установить адресом по умолчанию</span>
+                          </p>
+                      </div>
+                    </div>
+      <!-- END: d-card -->
+                  </div>
+<!-- END: left column -->
+                </div>
+
+            </div>
+
+
+        </div>
+    </section>
+    <!-- END: account -->
+</main>
+
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script src="./js/credit-card.js"></script>
+</body>
+</html>

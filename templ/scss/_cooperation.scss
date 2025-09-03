@@ -1,0 +1,114 @@
+.cooperation.container {
+  @include media-breakpoint-down(sm) {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+.cooperation {
+  padding-bottom: 110px;
+  &__title {
+    font-family: 'Futura Pt Light';
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 90px;
+    margin-top: 45px;
+    @include media-breakpoint-down(sm) {
+      font-size: 32px
+    }
+  }
+  &__text {
+    white-space: pre-line;
+    line-height: 35px;
+    font-size: 17px;
+    margin-bottom: 10px;
+    strong {
+      font-family: 'Gotham Pro Bold';
+    }
+    @include media-breakpoint-down(sm) {
+      text-align: center;
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+  }
+  .row {
+    justify-content: center;
+  }
+  .separator {
+    margin: 50px 0;
+  }
+  .benefits {
+    &__list {
+      list-style-type: none;
+      list-style-image: none;
+      padding: 0;
+    }
+    &__title {
+      font-size: 31.99px;
+      margin-bottom: 75px;
+      font-weight: 600;
+      @include media-breakpoint-down(sm) {
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 50px;
+      }
+    }
+    &__item {
+      margin-bottom: 40px;
+      padding: 0;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+      strong {
+        font-family: 'Gotham Pro Bold';
+      }
+      @include media-breakpoint-down(sm) {
+        text-align: center;
+      }
+      &:before {
+        content: '';
+        display: inline-flex;
+        background: url('../img/icons/check-big.svg') no-repeat center;
+        width: 15px;
+        height: 15px;
+        margin-right: 25px;
+        @include media-breakpoint-down(sm) {
+          display: flex;
+          margin: 0 auto 20px auto;
+        }
+      }
+      a {
+        color: $benefitCooperationLinkColor;
+        cursor: pointer;
+        &:hover {
+          color: $benefitCooperationLinkColor;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  .regards {
+    padding: 0;
+    &__regard {
+      margin-top: 50px;
+      font-weight: 500;
+      margin-bottom: 15px;
+      font-size: 48px;
+      @include media-breakpoint-down(sm) {
+        font-size: 32px;
+        margin-top: -20px;
+      }
+      @include media-breakpoint-down(xs) {
+        line-height: 40px
+      }
+    }
+    &__sub-regard {
+      font-family: 'Gotham Pro Regular';
+      font-size: 17px;
+      font-weight: 500;
+      margin-bottom: 60px;
+      @include media-breakpoint-down(sm) {
+
+      }
+    }
+  }
+}

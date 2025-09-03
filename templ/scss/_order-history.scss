@@ -1,0 +1,730 @@
+.order-align {
+  margin-left: 75px;
+  position: relative;
+  padding-right: 0;
+  @include media-breakpoint-only(lg) {
+    margin-left: 85px;
+  }
+  &:before {
+    position: absolute;
+    content: '';
+    width: 1px;
+    height: 110%;
+    left: -70px;
+    top: -30px;
+    background-color: $lightgray;
+    @include media-breakpoint-only(lg) {
+      left: -30px;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    margin-top: 100px;
+    margin-left: 0;
+    padding-left: 30px;
+    padding-right: 30px;
+
+    &:before {
+      display: none;
+    }
+  }
+  @include media-breakpoint-only(sm) {
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  @include media-breakpoint-down(xs) {
+    margin-top: 60px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  &--info {
+    margin-top: 10px;
+    margin-left: 90px;
+    @include media-breakpoint-down(lg) {
+      margin-left: 95px;
+    }
+    @include media-breakpoint-down(md) {
+      margin-left: 0;
+      margin-top: 100px;
+    }
+    @include media-breakpoint-down(sm) {
+      margin-top: 65px;
+
+      .order .product-nav .product-nav__prev {
+        height: 35px;
+      }
+    }
+    @include media-breakpoint-down(xs) {
+      margin-top: 55px;
+    }
+    &:before {
+      left: -90px;
+      @include media-breakpoint-down(lg) {
+        left: -40px;
+      }
+    }
+    @include media-breakpoint-down(xl) {
+      flex: 0 0 77%;
+      max-width: 77%;
+    }
+    @include media-breakpoint-down(lg) {
+      flex: 0 0 75%;
+      max-width: 75%;
+    }
+    @include media-breakpoint-down(md) {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+
+  &--wish {
+    margin-left: 35px;
+    flex: 0 0 80%;
+    max-width: 80%;
+    &:before {
+      left: -30px;
+      height: 90%;
+    }
+    @include media-breakpoint-down(lg) {
+      margin-left: 95px;
+      flex: 0 0 74.5%;
+      max-width: 74.5%;
+      &:before {
+        left: -40px;
+      }
+    }
+    @include media-breakpoint-down(md) {
+      margin-left: 0;
+      margin-top: 85px;
+      flex: 0 0 100%;
+      max-width: 100%;
+      padding: 0;
+    }
+    @include media-breakpoint-down(sm) {
+      margin-top: 65px;
+    }
+  }
+}
+
+.order {
+  .pagination {
+    margin-top: 60px;
+  }
+  .order &__btn {
+    margin: 30px auto;
+    border-radius: 0;
+  }
+  .product-nav {
+    border: 0;
+    padding: 0;
+  }
+  &__title {
+    width: 100%;
+    font-family: "Gotham Pro Bold";
+    margin-bottom: 50px;
+    margin-top: 15px;
+    font-size: 20px;
+    @include media-breakpoint-down(md) {
+      margin-top: 0;
+    }
+    @include media-breakpoint-down(sm) {
+      font-size: 18px;
+    }
+    @include media-breakpoint-down(xs) {
+      margin-top: 20px;
+    }
+  }
+
+  &__table {
+    border-collapse: separate;
+    text-align: center;
+    vertical-align: middle;
+    border-spacing: 0 25px;
+    width: 100%;
+    font-size: 12px;
+    &--list {
+      margin-top: 25px;
+      padding-right: 20px;
+      @include media-breakpoint-only(lg) {
+        margin-top: 15px;
+      }
+      @include media-breakpoint-only(md) {
+        margin-top: 20px;
+        padding-right: 0;
+      }
+      @include media-breakpoint-down(sm) {
+        margin-top: 10px;
+        padding-right: 0;
+      }
+      @include media-breakpoint-down(xs) {
+        margin-top: 50px;
+      }
+      tr td {
+        padding: 0 !important;
+        @include media-breakpoint-down(sm) {
+          padding: 15px 0 !important;
+          border: 0 !important;
+          border-bottom: 1px solid $lightgray !important;
+          // border-bottom: 0 !important;
+          // border-top: 1px solid $lightgray !important;
+        }
+        &:nth-of-type(1) {
+          width: 290px;
+          @include media-breakpoint-only(xl) {
+            width: 400px;
+          }
+          @include media-breakpoint-down(sm) {
+            width: initial;
+            padding: 15px 0 25px !important;
+            //border-top: 2px solid $lightgray !important;
+          }
+        }
+        &:nth-of-type(2) {
+          width: 218px;
+          @include media-breakpoint-only(xl) {
+            width: 238px;
+          }
+          @include media-breakpoint-down(sm) {
+            width: initial;
+          }
+        }
+        &:nth-of-type(5) {
+          width: 100px;
+          @include media-breakpoint-only(xl) {
+            width: 135px;
+          }
+          @include media-breakpoint-down(sm) {
+            width: initial;
+          }
+        }
+        &:nth-of-type(6) {
+          width: 100px;
+          @include media-breakpoint-only(xl) {
+            width: 170px;
+          }
+          @include media-breakpoint-down(sm) {
+            width: initial;
+            border-bottom: 0 !important;
+          }
+        }
+      }
+
+      tr td .t-product {
+        .t-product__caption {
+          color: $orderTableCaptionTextColor;
+          a {
+            color: $orderTableCaptionTextColor;
+          }
+        }
+      }
+      tr td.order__category {
+        color: $orderTableCategoryTextColor;
+      }
+      tr td.order__code {
+        color: $orderTableCodeTextColor;
+      }
+      tr td.order__price {
+        font-size: 14px;
+      }
+    }
+    @include media-breakpoint-down(sm) {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+    thead {
+      @include media-breakpoint-down(sm) {
+        display: none;
+      }
+    }
+
+    tbody {
+      @include media-breakpoint-down(sm) {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    tr {
+      margin-bottom: 15px;
+
+      &:hover > td {
+        background-color: $lightgray;
+        @include media-breakpoint-down(sm) {
+          background-color: transparent;
+        }
+      }
+      @include media-breakpoint-down(sm) {
+        display: flex;
+        flex-direction: column;
+        border: 2px solid $lightgray;
+      }
+      @include media-breakpoint-only(sm) {
+        flex: 0 0 47%;
+        max-width: 47%;
+        margin-bottom: 30px;
+        &:nth-child(odd) {
+          margin-right: 30px;
+        }
+        &:last-of-type {
+          margin-right: 0;
+        }
+      }
+      @include media-breakpoint-down(xs) {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 30px;
+        border: 2px solid $lightgray;
+      }
+      td {
+        border-right: 0;
+        padding: 8px 0;
+        @include media-breakpoint-down(sm) {
+          border: 0;
+          border-bottom: 1px solid $lightgray;
+          padding: 15px 0;
+        }
+        &:last-of-type {
+          border-right: 1px solid $lightgray;
+          @include media-breakpoint-down(sm) {
+            padding: 5px 0;
+            border-right: 0;
+            border-bottom: 0;
+          }
+        }
+        .t-product {
+          &__pic {
+            width: 65px;
+            height: 65px;
+          }
+          &__caption a {
+            color: $cyan;
+            &:hover {
+              text-decoration: none;
+              color: $cyan;
+            }
+          }
+        }
+      }
+    }
+
+    th {
+      background-color: #f9f9f9;
+      height: 40px;
+      border: 1px solid $lightgray;
+      border-right: 0;
+      font-family: 'Gotham Pro Bold';
+      &:last-of-type {
+        border-right: 1px solid $lightgray;
+      }
+      @include media-breakpoint-down(sm) {
+        padding: 10px;
+      }
+    }
+
+    td {
+      border: 1px solid $lightgray;
+      @include media-breakpoint-down(sm) {
+        padding: 10px;
+      }
+    }
+  }
+
+  &__link-holder {
+    &:hover {
+      cursor: pointer;
+    }
+    @include media-breakpoint-down(sm) {
+      background-color: #fafafa;
+    }
+  }
+  &__link {
+    color: $cyan;
+    &:hover {
+      color: $cyan;
+      text-decoration: none;
+    }
+  }
+  &__price {
+    font-family: "Gotham Pro Bold";
+  }
+  &__delivery {
+    font-family: "Gotham Pro Bold";
+  }
+  &__status {
+    font-family: "Gotham Pro Bold";
+
+    // ####################### statuses
+    &[data-status="inprogress"] {
+      color: #ffdf00;
+    }
+    &[data-status="canceled"] {
+      color: #d24c5c;
+    }
+    &[data-status="payed"] {
+      color: #44b9d4;
+    }
+    &[data-status="success"] {
+      color: #2eb77b;
+    }
+    &[data-status="none"] .btn {
+      display: flex;
+    }
+    .btn {
+      display: none;
+      width: 150px;
+      height: 50px;
+      border-radius: 0;
+      @include media-breakpoint-down(sm) {
+        margin: 0 auto;
+      }
+    }
+  }
+  &__repeat-holder {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &__repeat {
+    display: flex;
+    justify-content: center;
+    border: none;
+    &:active {
+      transform: scale(1.1);
+    }
+    .icon {
+      width: 40px;
+      height: 40px;
+      background: url("../img/icons/cart-refresh-c.png") no-repeat center;
+    }
+  }
+
+  //############################# order detais table style
+  .t-product {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    margin: 0;
+    overflow: hidden;
+    @include media-breakpoint-down(sm) {
+      display: block;
+    }
+    &__pic-holder {
+      height: 100%;
+      padding: 10px;
+      margin: 0 10px 0 0;
+      @include media-breakpoint-down(sm) {
+        margin: 0;
+      }
+    }
+    &__caption {
+      margin: auto 0;
+      color: $cyan;
+      @include media-breakpoint-down(xs) {
+        margin: auto 0 10px 0;
+      }
+    }
+  }
+  &__category {
+    color: $cyan;
+    a {
+      color: $cyan;
+      &:hover {
+        text-decoration: none;
+        color: $cyan;
+      }
+    }
+  }
+  &__code {
+    color: #a3a3a3;
+  }
+
+}
+
+.order-details {
+  position: relative;
+  margin-top: 40px;
+  @include media-breakpoint-down(xs) {
+    margin-top: 30px;
+  }
+  &--bottom {
+    margin-top: 15px;
+    padding-right: 35px;
+    @include media-breakpoint-down(md) {
+      padding-right: 15px;
+    }
+  }
+  &--top {
+    @include media-breakpoint-down(sm) {
+      margin-top: 20px;
+    }
+    @include media-breakpoint-down(xs) {
+      margin-top: 30px;
+    }
+    @include media-breakpoint-only(md) {
+      width: 91%;
+    }
+  }
+  &__btn-holder {
+    position: absolute;
+    bottom: 0;
+    @include media-breakpoint-down(sm) {
+      position: relative;
+      margin: 30px auto;
+    }
+  }
+  &__btn {
+    margin: 0 !important;
+    margin-left: -15px !important;
+    border-radius: 0 !important;
+    @include media-breakpoint-down(sm) {
+      margin: 60px auto 100px auto !important;
+    }
+  }
+  &__info-holder {
+    background-color: #f9f9f9;
+    display: flex;
+    align-items: center;
+    padding: 15px 55px;
+    font-family: "Gotham Pro Bold";
+    font-size: 20px;
+    justify-content: space-between;
+    margin-right: -15px;
+    height: 90px;
+
+    &--small {
+      font-family: "Gotham Pro Regular";
+      font-size: 16px;
+      background-color: transparent;
+      border-top: 2px dotted $lightgray;
+      height: 75px;
+      @include media-breakpoint-down(xs) {
+        font-size: 12px;
+      }
+    }
+
+    @include media-breakpoint-down(xs) {
+      margin-left: -15px;
+      font-size: 16px;
+    }
+  }
+  &__name {
+    position: relative;
+    margin: 0;
+    width: 60%;
+    @include media-breakpoint-down(sm) {
+      width: 50%;
+      text-align: right;
+      font-size: 16px;
+    }
+  }
+  &__price {
+    margin: 0;
+    width: 40%;
+    text-align: right;
+    @include media-breakpoint-down(sm) {
+      width: 50%;
+      text-align: center;
+      font-size: 16px;
+    }
+  }
+  &__name,
+  &__price {
+    @include media-breakpoint-down(xs) {
+      width: 50%;
+    }
+  }
+  &__order-info {
+
+  }
+  &__padding {
+    padding-left: 0;
+    padding-right: 0;
+    @include media-breakpoint-only(lg) {
+      flex: 0 0 42.5%;
+      max-width: 42.5%;
+    }
+    &:nth-of-type(odd) {
+      @include media-breakpoint-down(sm) {
+        padding-right: 15px;
+      }
+      @include media-breakpoint-down(xs) {
+        padding-right: 0;
+      }
+    }
+    &:nth-of-type(even) {
+      @include media-breakpoint-down(sm) {
+        padding-left: 15px;
+      }
+      @include media-breakpoint-down(xs) {
+        padding-left: 0;
+      }
+    }
+    &:nth-of-type(1) {
+      order: 0;
+    }
+    &:nth-of-type(2) {
+      order: 1;
+      @include media-breakpoint-down(sm) {
+        order: 2;
+        padding-left: 0;
+        padding-right: 15px;
+      }
+      @include media-breakpoint-down(xs) {
+        padding-right: 0;
+      }
+    }
+    &:nth-of-type(3) {
+      order: 4;
+      @include media-breakpoint-down(lg) {
+        order: 3;
+      }
+      @include media-breakpoint-down(sm) {
+        order: 1;
+        padding-left: 15px;
+        padding-right: 0;
+      }
+      @include media-breakpoint-down(xs) {
+        padding-left: 0;
+      }
+    }
+    &:nth-of-type(4) {
+      order: 5;
+      @include media-breakpoint-down(lg) {
+        order: 4;
+      }
+    }
+    &:nth-of-type(5) {
+      order: 3;
+      @include media-breakpoint-down(lg) {
+        order: 5;
+      }
+    }
+    &:nth-of-type(6) {
+      order: 6;
+      padding-right: 20px;
+      @include media-breakpoint-down(sm) {
+        padding-right: 0;
+      }
+    }
+  }
+  .order-info {
+    width: 100%;
+    display: flex;
+    margin-bottom: 10px;
+    @include media-breakpoint-down(sm) {
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+    @include media-breakpoint-down(xs) {
+      margin-bottom: 10px;
+    }
+    &__label,
+    &__text {
+      width: calc(100% / 2);
+      text-align: center;
+      border: 1px solid $lightgray;
+      padding: 15px 0;
+      margin: 0;
+      font-size: 12px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include media-breakpoint-down(sm) {
+        width: 100% !important;
+        height: 50px;
+      }
+      // ####################### statuses
+      &[data-status="inprogress"] {
+        color: #ffdf00;
+      }
+      &[data-status="canceled"] {
+        color: #d24c5c;
+      }
+      &[data-status="payed"] {
+        color: #44b9d4;
+      }
+      &[data-status="success"] {
+        color: #2eb77b;
+      }
+      &[data-status="none"] .btn {
+        display: flex;
+      }
+    }
+    &__label {
+      background-color: #f9f9f9;
+      width: 170px;
+      font-family: "Gotham Pro Bold";
+      font-weight: 900;
+      border-right-color: transparent;
+      @include media-breakpoint-down(sm) {
+        border-right-color: $lightgray;
+        border-bottom-color: transparent;
+      }
+    }
+    &__text {
+      width: 205px;
+      &--colorCyan {
+        color: $cyan;
+      }
+    }
+    &__link {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      color: $cyan;
+      font-size: 12px;
+      height: 60px;
+      align-items: center;
+      @include media-breakpoint-only(sm) {
+        height: 100px;
+      }
+      &:hover {
+        text-decoration: none;
+        color: $cyan;
+      }
+    }
+    &__print-text,
+    &__print-icon {
+      padding: 15px;
+      margin: 0;
+    }
+    &__print-text {
+      color: $printOrderTextColor;
+      @include media-breakpoint-down(sm) {
+        margin: auto 0;
+      }
+    }
+    &__print-icon {
+      padding: 15px;
+      margin: 0;
+      background: url('../img/icons/print.svg') no-repeat center;
+    }
+    &--center {
+      border: 1px solid $lightgray;
+      justify-content: center;
+    }
+  }
+}
+.align-product {
+  @include media-breakpoint-down(sm) {
+    justify-content: center;
+  }
+}
+.order .product-nav {
+  width:280px;
+  @include media-breakpoint-down(xs) {
+    width: 100%;
+  }
+  &__prev {
+    width: 100%;
+    .text {
+      padding: 5px;
+    }
+  }
+}

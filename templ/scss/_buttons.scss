@@ -1,0 +1,352 @@
+.btn {
+  background-color: #1a1a1a;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  border: 0;
+  border-radius: 0;
+  width: 220px;
+  height: 60px;
+  margin: 0 auto;
+  font-family: "Gotham Pro Regular";
+  font-weight: 600;
+  font-size: 12px;
+  align-items: center;
+
+  &--submit {
+    text-transform: uppercase;
+    font-family: "Gotham Pro Bold";
+    font-weight: 900;
+  }
+  .text {
+    margin: auto 0;
+    text-transform: uppercase;
+  }
+  &:active {
+    transform: translateY(1px);
+  }
+  &:active,
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  &:hover {
+    transition: all .3s ease-in-out;
+    background-color: #43b9d4;
+    transition: background-color .7s;
+    color: $white;
+  }
+  @include media-breakpoint-down(sm) {
+    width: 185px;
+    height: 45px;
+  }
+  //####################### order history page
+  &--history {
+    width: 250px;
+  }
+  //####################### order history infos details
+  &--order-info {
+    width: 240px;
+    .text {
+      font-size: 14px;
+    }
+    @include media-breakpoint-down(sm) {
+      width: 200px;
+      height: 50px;
+      .text {
+        font-size: 12px;
+      }
+    }
+  }
+  //####################### wishlist page
+  &--pa-wish {
+    width: 350px;
+    height: 60px;
+    margin-bottom: 50px;
+    @include media-breakpoint-only(md) {
+      margin-top: 15px;
+      margin-right: 30px;
+    }
+    @include media-breakpoint-down(sm) {
+      width: 290px;
+      height: 45px;
+      margin-bottom: 50px !important;
+    }
+    .text {
+      font-size: 14px;
+      @include media-breakpoint-down(sm) {
+        font-size: 12px;
+      }
+    }
+  }
+  &--pa-wish-bottom {
+    margin-bottom: 60px;
+    margin-top: 30px !important;
+    @include media-breakpoint-only(md) {
+      margin-top: 35px;
+    }
+  }
+  &--pa-wish-more {
+
+  }
+  //####################### personal accaunt delivery
+  &--delivery {
+    .text {
+      font-size: 14px;
+      @include media-breakpoint-down(sm) {
+        font-size: 12px;
+      }
+    }
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 30px !important;
+    }
+  }
+  //####################### home page
+  &--up {
+    width: 100px;
+    background: $cyan;
+    color: #fff;
+    height: 40px;
+    align-items: center;
+    position: fixed;
+    right: 15px;
+    top: 50%;
+    z-index: 999;
+    opacity: 0.3;
+    display: none;
+    transition: all .4s ease;
+    &:hover {
+      opacity: 1;
+    }
+    .text {
+      font-weight: 400;
+    }
+    @include media-breakpoint-only(lg) {
+      right: 3px;
+    }
+    @include media-breakpoint-down(sm) {
+      width: 10px;
+      display: none !important;
+      .icon {
+        margin: 0;
+      }
+      .text {
+        display: none;
+      }
+    }
+    &:active {
+      transform: scale(.9);
+    }
+    .icon {
+      width: 15px;
+      height: 15px;
+      margin-right: 5px;
+      background: url('../img/icons/arrow-up.svg') no-repeat center;
+    }
+  }
+  &--bucket {
+    width: 160px;
+    padding: 0;
+    font-size: 10px;
+    height: 40px;
+    .text {
+      color: #fff;
+    }
+  }
+  &--wishlist {
+    width: 100%;
+    height: 40px;
+    .text {
+      font-size: 10px;
+    }
+  }
+  &--back {
+    background: #fff;
+    border: 2px solid #1a1a1a;
+    color: #1a1a1a;
+    &:hover {
+      color: #fff;
+      border-color: $cyan;
+      .text {
+        color: #fff;
+      }
+    }
+  }
+  //########################## account
+  &--account {
+    margin-left: 0;
+    margin-right: auto;
+    font-size: 14px;
+    text-transform: uppercase;
+    @include media-breakpoint-down(sm) {
+      margin-left: auto;
+      font-size: 12px;
+    }
+  }
+  //########################## contacts
+  &--sendMess.hover {
+    transition: all .3s ease-in-out;
+    background-color: #43b9d4;
+    transition: background-color .7s;
+    color: $white;
+  }
+  &--sendMess {
+    margin-left: 0;
+    margin-right: auto;
+    font-size: 14px;
+    text-transform: uppercase;
+    @include media-breakpoint-down(sm) {
+      margin-left: auto;
+      font-size: 12px;
+    }
+  }
+  //########################## auth page
+  &--authPage {
+    margin-left: 0;
+    margin-top: 60px;
+    width: 215px;
+    height: 50px;
+    .text {
+      color: #fff;
+    }
+    &:active,
+    &:focus {
+      outline: none;
+    }
+    @include media-breakpoint-down(sm) {
+      margin-top: 30px;
+      margin-left: auto;
+      height: 45px;
+    }
+    @include media-breakpoint-down(xs) {
+      margin: 0 auto;
+      margin-top: 30px;
+    }
+  }
+  &--createUser {
+    background: #fff;
+    border: 2px solid #1a1a1a;
+    margin-left: -15px;
+    height: 60px;
+    margin-top: 0;
+    width: 220px;
+    font-size: 14px;
+    .text {
+      color: #1a1a1a;
+    }
+    &:hover {
+      background: $cyan;
+      border-color: $cyan;
+      color: #fff;
+      .text {
+        color: #fff;
+      }
+    }
+    @include media-breakpoint-down(sm) {
+      margin-left: auto;
+      height: 50px;
+      font-size: 12px;
+    }
+  }
+  &--signin {
+    height: 60px;
+    width: 205px;
+    margin-top: 0px;
+    font-size: 14px;
+    text-transform: uppercase;
+    @include media-breakpoint-down(sm) {
+      height: 50px;
+      font-size: 12px;
+    }
+  }
+  &--register {
+    height: 60px;
+    margin-top: 55px;
+    text-transform: uppercase;
+    font-size: 14px;
+    @include media-breakpoint-down(sm) {
+      height: 45px;
+      margin-top: 35px;
+      font-size: 12px;
+    }
+  }
+  //######################### catalog page
+  &--new {
+    @include categoryButton($cyan);
+    & .icon {
+      height: 100%;
+    }
+    &:hover .icon svg path {
+      fill: $white;
+    }
+
+    @include media-breakpoint-down(md) {
+      height: 37px;
+    }
+    @include media-breakpoint-down(xs) {
+      height: 35px;
+    }
+  }
+  &--sale {
+    @include categoryButton($saleColor);
+    & .icon {
+      height: 100%;
+    }
+    &:hover .icon svg path {
+      fill: $white;
+    }
+
+    @include media-breakpoint-down(md) {
+      height: 37px;
+    }
+    @include media-breakpoint-down(xs) {
+      height: 35px;
+    }
+  }
+  &--category {
+    @include categoryButton($black);
+    position: relative;
+    width: 200px;
+    font-size: 10px;
+    padding: 7px 10px;
+    height: 30px;
+    @include media-breakpoint-down(md) {
+      height: 37px;
+    }
+    @media (max-width: 475px) {
+      //width: 190px;
+      width: 100%;
+      margin-right: 0 !important; // HV-32
+    }
+    & .icon {
+      position: relative;
+      height: 30px;
+      padding-right: 20px;
+      top: 0;
+    }
+    &:focus {
+      box-shadow: none;
+    }
+    & .control {
+      cursor: pointer;
+    }
+    &:hover {
+      color: $black;
+      background: #fff;
+      border-color: $cyan;
+      .icon {
+        border-color: $cyan;
+      }
+    }
+    &:hover .text {
+      text-decoration: none;
+    }
+    &:hover .icon svg path {
+      fill: rgba(23, 54, 61, 0.1);
+    }
+    @include media-breakpoint-only(md) {
+      width: 200px;
+      margin-left: 12px;
+    }
+  }
+}
