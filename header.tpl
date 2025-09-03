@@ -303,9 +303,7 @@
                             </div>
                         </div><!-- drop-menu -->
 
-                        <div class="col-auto d-sm-block language_container offset-xl-0 offset-lg-0 offset-md-1 offset-0 lang">
-                        <?php echo isset($language['name']) ? $language['name'] : 'Language'; ?>
-                        </div><!-- lenguage -->
+
 						<?php if ( ! empty( $language['languages'] ) ): ?>
                             <div class="col-auto d-sm-block language_container
                             offset-xl-0 offset-lg-0 offset-md-1 offset-0 lang">

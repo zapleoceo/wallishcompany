@@ -13022,7 +13022,7 @@ select:-webkit-autofill:active {
 }
 
 .breadcrumb {
-  background-color: #fff;
+  background-color: transparent;
   padding: 30px 0 0 0;
   margin: 0;
 }
