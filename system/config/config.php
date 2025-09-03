@@ -154,7 +154,7 @@ $loader->register('Manufacturer', new Manufacturer($registry));
 $loader->register('Download', new Download($registry));
 $loader->register('Order', new Order($registry));
 $loader->register('OrderStatus', new OrderStatus($registry));
-$loader->register('Return', new \Return($registry));
+$loader->register('Return', new ReturnClass($registry));
 $loader->register('ReturnAction', new ReturnAction($registry));
 $loader->register('ReturnReason', new ReturnReason($registry));
 $loader->register('ReturnStatus', new ReturnStatus($registry));
