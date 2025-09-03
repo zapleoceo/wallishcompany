@@ -33,12 +33,13 @@
             <img class="link__icon" src="<?= STYLE_PATH; ?>img/icons/arrow-mini-home.svg" alt="arrow" />
           </a>
         </div>
-          <pre><?php if ( $language_code == 'en' ) {
+          <?php if ( $language_code == 'en' ) {
               $banner_second = $banner_second_en;
-          } ?></pre>
-          <pre><?php if ( $language_code == 'uk' ) {
+          } ?>
+          <?php if ( $language_code == 'uk' ) {
               $banner_second = $banner_second_uk;
-          } ?></pre>
+          } ?>
+        <?php if (isset($banner_second['banners']) && !empty($banner_second['banners'])): ?>
         <div class="banner banner--wider banners__banner">
           <div class="banner__photo-holder">
             <img class="banner__photo" src="/image/<?= $banner_second['banners'][0]['image']; ?>" alt="">
@@ -48,6 +49,7 @@
             <img class="link__icon" src="<?= STYLE_PATH; ?>img/icons/arrow-mini-home.svg" alt="arrow" />
           </a>
         </div>
+        <?php endif; ?>
         <!-- <div class="banner banner--paddingleft banners__banner">
           <div class="banner__photo-holder">
             <img class="banner__photo" src="/image/<?= $text_6['image']; ?>" alt="">

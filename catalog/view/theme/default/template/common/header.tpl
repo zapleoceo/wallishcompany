@@ -869,6 +869,7 @@
 			<?php endforeach; ?>
         </div>
 
+        <?php if (isset($banner_home['banners']) && !empty($banner_home['banners'])): ?>
         <div class="header__bottom-holder container">
             <div class="bottom-holder row justify-content-center">
                 <div class="col-12">
@@ -881,6 +882,7 @@
                 </div>
             </div>
         </div>
+        <?php endif; ?>
 
 	<?php endif; ?>
 </div>
