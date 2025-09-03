@@ -28,6 +28,9 @@ $('#range a').on('click', function(e) {
 		type: 'get',
 		url: 'index.php?route=dashboard/chart/chart&token=<?php echo $token; ?>&range=' + $(this).attr('href'),
 		dataType: 'json',
+		beforeSend: function(xhr) {
+			xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+		},
 		success: function(json) {
                         if (typeof json['order'] == 'undefined') { return false; }
 			var option = {	

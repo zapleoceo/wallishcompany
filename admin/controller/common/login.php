@@ -115,6 +115,13 @@ class ControllerCommonLogin extends Controller {
 		);
 
 		if (!$this->user->isLogged() && !in_array($route, $ignore)) {
+			// Check if this is an AJAX request
+			if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+				$this->response->addHeader('Content-Type: application/json');
+				$this->response->setOutput(json_encode(array('error' => 'Not logged in')));
+				$this->response->output();
+				exit;
+			}
 			return new Action('common/login');
 		}
 
@@ -129,10 +136,24 @@ class ControllerCommonLogin extends Controller {
 			);
 
 			if (!in_array($route, $ignore) && (!isset($this->request->get['token']) || !isset($this->session->data['token']) || ($this->request->get['token'] != $this->session->data['token']))) {
+				// Check if this is an AJAX request
+				if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+					$this->response->addHeader('Content-Type: application/json');
+					$this->response->setOutput(json_encode(array('error' => 'Invalid token')));
+					$this->response->output();
+					exit;
+				}
 				return new Action('common/login');
 			}
 		} else {
 			if (!isset($this->request->get['token']) || !isset($this->session->data['token']) || ($this->request->get['token'] != $this->session->data['token'])) {
+				// Check if this is an AJAX request
+				if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+					$this->response->addHeader('Content-Type: application/json');
+					$this->response->setOutput(json_encode(array('error' => 'Invalid token')));
+					$this->response->output();
+					exit;
+				}
 				return new Action('common/login');
 			}
 		}

@@ -14,6 +14,9 @@ $(document).ready(function() {
 	$.ajax({
 		url: 'index.php?route=dashboard/map/map&token=<?php echo $token; ?>',
 		dataType: 'json',
+		beforeSend: function(xhr) {
+			xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+		},
 		success: function(json) {
 			data = [];
 						

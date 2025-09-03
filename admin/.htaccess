@@ -1,0 +1,40 @@
+RewriteEngine On
+
+# Enable .htaccess
+Options +FollowSymlinks
+Options -Indexes
+
+# Prevent Direct Access to files
+<FilesMatch "(?i)((\.tpl|\.ini|\.log|(?<!robots)\.txt))">
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# SEO URL Settings
+RewriteBase /admin/
+RewriteRule ^sitemap.xml$ index.php?route=feed/google_sitemap
+RewriteRule ^googlebase.xml$ index.php?route=feed/google_base [L]
+
+# Main rewrite rule for admin
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !.*\.(ico|gif|jpg|jpeg|png|js|css)
+RewriteRule ^([^?]*) index.php?_route_=$1 [L,QSA]
+
+# Security Headers
+Header always set X-Content-Type-Options nosniff
+Header always set X-Frame-Options DENY
+Header always set X-XSS-Protection "1; mode=block"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+# Additional security for admin
+<Files "*.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+# Block access to sensitive files
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|inc|bak)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>

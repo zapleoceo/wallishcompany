@@ -26,10 +26,13 @@ class ControllerDashboardMap extends Controller {
 		$results = $this->model_report_sale->getTotalOrdersByCountry();
 
 		foreach ($results as $result) {
-			$json[strtolower($result['iso_code_2'])] = array(
-				'total'  => $result['total'],
-				'amount' => $this->currency->format($result['amount'], $this->config->get('currency_code'))
-			);
+			// Skip records with NULL country codes
+			if (!empty($result['iso_code_2'])) {
+				$json[strtolower($result['iso_code_2'])] = array(
+					'total'  => $result['total'],
+					'amount' => $this->currency->format($result['amount'], $this->config->get('currency_code'))
+				);
+			}
 		}
 
 		$this->response->addHeader('Content-Type: application/json');

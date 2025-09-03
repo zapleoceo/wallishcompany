@@ -28,7 +28,7 @@
                   </a>
                   <?php else: ?>
                   <a href="<?= $nroom['url']; ?>">
-                    <img class="item__picture" src="/image/<?= $nroom['image']; ?>" alt="<?= $nroom['name']; ?>">
+                    <img class="item__picture" src="<?= HTTP_IMAGE; ?><?= $nroom['image']; ?>" alt="<?= $nroom['name']; ?>">
                   </a>
                   <?php endif ?>
                 </div>

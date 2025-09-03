@@ -185,7 +185,7 @@
 <script src="<?= STYLE_PATH; ?>js/owl.carousel.min.js<?= CSSJS; ?>"></script>
 <script src="<?= STYLE_PATH; ?>js/bootstrap.bundle.min.js<?= CSSJS; ?>"></script>
 <script src="<?= STYLE_PATH; ?>js/swiper.jquery.js<?= CSSJS; ?>"></script>
-<script src="catalog/view/javascript/common.js<?= CSSJS; ?>" type="text/javascript"></script>
+<script src="<?= STYLE_PATH; ?>../javascript/common.js<?= CSSJS; ?>" type="text/javascript"></script>
 
 
 <script src="<?= STYLE_PATH; ?>js/main.js<?= CSSJS; ?>"></script>

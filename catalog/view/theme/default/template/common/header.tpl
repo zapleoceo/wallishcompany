@@ -67,7 +67,7 @@
 		<?php endforeach; ?>
 		<?php endif; ?>
     </script>
-    <script src="catalog/view/javascript/jquery.elevatezoom.min.js" type="text/javascript"></script>
+    <script src="<?= STYLE_PATH; ?>../javascript/jquery.elevatezoom.min.js" type="text/javascript"></script>
 
     <link rel="stylesheet" href="<?= STYLE_PATH; ?>intelmaska/build/css/intlTelInput.css<?= CSSJS; ?>">
     <link rel="stylesheet" href="<?= STYLE_PATH; ?>intelmaska/examples/css/isValidNumber.css<?= CSSJS; ?>">
@@ -822,7 +822,7 @@
 
 </header>
 <div class="header header-bottom">
-	<?php if ( $_SERVER['REQUEST_URI'] == '/' || $_SERVER['REQUEST_URI'] == '/en' || $_SERVER['REQUEST_URI'] == '/uk' || $_SERVER['REQUEST_URI'] == '/ru'): ?>
+	<?php if ( !isset($this->request->get['route']) || $this->request->get['route'] == 'common/home' || $this->request->get['route'] == '' ): ?>
 
 
         <?php if ( $language_code == 'uk' ): ?>
@@ -847,17 +847,20 @@
 
 		<?php if ( $language_code == 'en' ) {
 			$banner_home = $banner_home_en;
-		} ?>
-        <?php if ( $language_code == 'uk' ) {
+		} elseif ( $language_code == 'uk' ) {
 			$banner_home = $banner_home_uk;
+		} else {
+			// Default to Russian banner
+			$banner_home = $banner_home;
 		} ?>
+
         <div id="slideshow_top" class="owl-carousel owl-theme header__background-holder">
 			<?php foreach ( $banner_home['banners'] as $banner ): ?>
                 <div class="item">
 					<?php if ( ! empty( $banner['link'] ) ): ?>
                     <a href="<?= $banner['link']; ?>">
 						<?php endif; ?>
-                        <img class="header__background-pic" src="/image/<?= $banner['image']; ?>"
+                        <img class="header__background-pic" src="<?= HTTP_IMAGE; ?><?= $banner['image']; ?>"
                              alt="<?= $banner['title']; ?>"/>
 
 						<?php if ( ! empty( $banner['link'] ) ): ?>
