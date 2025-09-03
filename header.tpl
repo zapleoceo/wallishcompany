@@ -1,0 +1,900 @@
+<?php $phones = explode( ',', $telephone ); ?>
+
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<!--[if IE 8 ]>
+<html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>" class="ie8"><![endif]-->
+<!--[if IE 9 ]>
+<html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>" class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>">
+
+<!--<![endif]-->
+<?php $language_code = $lang; ?>
+<head>
+    <meta charset="UTF-8">
+    <title><?php echo $title; ?></title>
+	<?php if ( $robots ) { ?>
+        <meta name="robots" content="<?php echo $robots; ?>"/>
+	<?php } ?>
+    <base href="<?php echo $base; ?>"/>
+	<?php if ( $description ) { ?>
+        <meta name="description" content="<?php echo $description; ?>"/>
+	<?php } ?>
+	<?php if ( $keywords ) { ?>
+        <meta name="keywords" content="<?php echo $keywords; ?>"/>
+	<?php } ?>
+    <?php if ($og_image) { ?>
+    <meta property="og:image" content="<?php echo $og_image; ?>" />
+    <?php } else { ?>
+    <meta property="og:image" content="<?php echo $logo; ?>" />
+    <?php } ?>
+    <style>.alert {
+            position: fixed !important;
+        }</style>
+    <link rel="stylesheet" href="<?= STYLE_PATH; ?>css/bootstrap/bootstrap.css<?= CSSJS; ?>"/>
+    <link rel="stylesheet" href="<?= STYLE_PATH; ?>css/bootstrap/bootstrap-grid.css<?= CSSJS; ?>"/>
+    <link rel="stylesheet" href="<?= STYLE_PATH; ?>css/bootstrap/bootstrap-reboot.css<?= CSSJS; ?>"/>
+    <link rel="stylesheet" href="<?= STYLE_PATH; ?>css/global.css<?= CSSJS; ?>?v=1.1"/>
+    <link rel="stylesheet" href="<?= STYLE_PATH; ?>css/owl.carousel.min.css<?= CSSJS; ?>"/>
+    <link rel="stylesheet" href="<?= STYLE_PATH; ?>css/animate.min.css<?= CSSJS; ?>"/>
+    <link rel="stylesheet" href="<?= STYLE_PATH; ?>css/simplebar.css"/>
+    <link rel="stylesheet" href="<?= STYLE_PATH; ?>css/custom.css?7"/>
+    <!--  <link rel="stylesheet" href="--><? //= STYLE_PATH; ?><!--css/bootstrap-datepicker.min.css" />-->
+    <link rel="stylesheet" href="<?= STYLE_PATH; ?>airpicker/css/datepicker.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="theme-color" content="#43b9d4"/>
+    <link rel="shortcut icon" type="image/x-icon" href="#"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-navbutton-color" content="#43b9d4">
+
+	<?php foreach ( $styles as $style ) { ?>
+        <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>"
+              media="<?php echo $style['media']; ?>"/>
+	<?php } ?>
+
+	<?php foreach ( $links as $link ) { ?>
+        <link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>"/>
+	<?php } ?>
+
+    <script src="<?= STYLE_PATH; ?>js/jquery-3.3.1.min.js<?= CSSJS; ?>"></script>
+    <script>
+        var js_translation = {};
+		<?php if (isset( $js_translation ) && ! empty( $js_translation ) && is_array( $js_translation )): ?>
+		<?php foreach ($js_translation as $code => $txt): ?>
+        js_translation['<?= $code; ?>'] = '<?= $txt; ?>';
+		<?php endforeach; ?>
+		<?php endif; ?>
+    </script>
+    <script src="<?= STYLE_PATH; ?>../javascript/jquery.elevatezoom.min.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="<?= STYLE_PATH; ?>intelmaska/build/css/intlTelInput.css<?= CSSJS; ?>">
+    <link rel="stylesheet" href="<?= STYLE_PATH; ?>intelmaska/examples/css/isValidNumber.css<?= CSSJS; ?>">
+
+</head>
+<body class="<?php echo $class; ?>">
+
+
+<header class="header">
+    <div class="header__nav-wrapper">
+        <div class="header__nav-holder container">
+            <nav class="top-nav row">
+                <div class="col-5">
+                    <div class="row">
+
+                        <div class="col-auto drop-menu-wrapper" style="position: static">
+                            <div class="drop-menu">
+                                <input class="drop-menu__core" type="checkbox" id="dropcontrol">
+                                <label class="drop-menu__control" for="dropcontrol">
+                      <span class="drop-menu__icon ham">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </span>
+                                    <span class="drop-menu__title"><?= $text_menu; ?></span>
+                                </label>
+
+                                <div class="drop-menu__detail menu__detail container-fluid">
+                                    <div class="drop-menu__items row">
+                                        <!--<div class="col-6 d-sm-none d-block">-->
+                                        <?php //echo $language; ?>
+                                        <!--</div>--><!-- lenguage -->
+										<?php if ( ! empty( $language['languages'] ) ): ?>
+                                            <div class="col-6 d-sm-none d-block">
+                                                <form action="<?= $language['action']; ?>"
+                                                      class="language top-nav__language" method="post"
+                                                      enctype="multipart/form-data" id="languageDrop">
+                                                    <div class="language__holder select">
+                                                        <select onchange="$('#languageDrop').submit();"
+                                                                class="language__control" id="languageDropSelect"
+                                                                name="code">
+															<?php foreach ( $language['languages'] as $lang ): ?>
+                                                                <option class="language__item"
+                                                                        value="<?= $lang['code'] ?>"<?php if ( $lang['code'] == $language['code'] ) {
+																	echo 'selected';
+																} ?>><?= $lang['code'] ?></option>
+															<?php endforeach; ?>
+                                                        </select>
+                                                        <div class="selected">
+                                                            <span class="text"></span>
+                                                            <ul class="select-list"></ul>
+                                                        </div>
+                                                    </div>
+                                                    <input type="hidden" name="redirect"
+                                                           value="<?= $language['redirect'] ?>">
+                                                </form>
+                                            </div><!-- lenguage -->
+										<?php endif; ?>
+										<?php if ( ! empty( $currency['currencies'] ) ): ?>
+                                            <div class="col-12 d-sm-none d-block">
+                                                <form action="<?php echo $currency['action']; ?>"
+                                                      class="currency top-nav__currency" method="post"
+                                                      enctype="multipart/form-data" id="currencyDrop">
+                                                    <div class="currency__currency-holder justify-content-md-end select">
+                                                        <select onchange="$('#currencyDrop').submit();"
+                                                                class="currency__control" id="currencyDropSelect"
+                                                                name="code">
+															<?php foreach ( $currency['currencies'] as $cur ): ?>
+                                                                <option class="currency__item"
+                                                                        value="<?php echo $cur['code']; ?>"<?php if ( $cur['code'] == $currency['code'] ) {
+																	echo 'selected';
+																} ?>><?php echo $cur['code']; ?></option>
+															<?php endforeach; ?>
+                                                        </select>
+                                                        <div class="selected selected--curr">
+                                                            <span class="text"></span>
+                                                            <ul class="select-list select-list--curr"></ul>
+                                                        </div>
+                                                    </div>
+                                                    <input type="hidden" name="redirect"
+                                                           value="<?php echo $currency['redirect']; ?>"/>
+                                                </form>
+                                            </div><!-- col -->
+										<?php endif; ?>
+
+										<?php foreach ( $this->registry->get( 'load' )->controller( 'module/we_menu', array( 'module_id' => 36 ) ) as $m ): ?>
+                                            <div class="drop-menu__item-holder col-xl-6 col-lg-6 col-md-4 col-sm-6 col-12">
+                                                <a class="drop-menu__item"
+                                                   href="<?= $m['url']; ?>"><?= $m['name']; ?></a>
+                                            </div>
+										<?php endforeach; ?>
+                                    </div>
+                                    <div class="drop-menu__bottom-info-wrapper row">
+                                        <div class="drop-menu__socials col-auto">
+                                            <div class="row socials">
+                                                <div class="socials__icon-holder facebook col-auto">
+                                                    <a href="<?= $link_facebook; ?>" class="socials__link" rel="nofollow">
+                                                        <i class="socials__icon">
+                                                            <svg version="1.1" id="Слой_1"
+                                                                 xmlns="http://www.w3.org/2000/svg"
+                                                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                                                                 y="0px"
+                                                                 viewBox="0 0 4 8"
+                                                                 style="enable-background:new 0 0 4 8;">
+                                 <title>facebook</title>
+                                                                <g id="Page-1">
+                                                                    <g id="_x30_1-main"
+                                                                       transform="translate(-137.000000, -36.000000)">
+                                                                        <g id="_x30_06-facebook-letter-logo"
+                                                                           transform="translate(137.000000, 36.000000)">
+                                                                            <path id="Facebook" class="st4" d="M0.8645788,1.5493453c0,0.2016033,0,1.1014433,0,1.1014433H0v1.3468492h0.8645788V8h1.7760285
+                                         V3.9977493h1.1917977c0,0,0.1116171-0.6458037,0.1657217-1.3519268c-0.1551199,0-1.3508036,0-1.3508036,0
+                                         s0-0.7835541,0-0.9208951c0-0.1376386,0.1936409-0.322781,0.38503-0.322781c0.1910305,0,0.5942149,0,0.9676468,0
+                                         C4,1.2187709,4,0.5851685,4,0C3.5014796,0,2.9343271,0,2.6843295,0C0.8206773-0.000093,0.8645788,1.3480954,0.8645788,1.5493453z
+                                         "/>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                 </svg>
+                                                        </i>
+                                                    </a>
+                                                </div>
+                                                <div class="socials__icon-holder instagram col-auto">
+                                                    <a href="<?= $link_instagramm; ?>" class="socials__link" rel="nofollow">
+                                                        <i class="socials__icon">
+                                                            <svg version="1.1" id="Isolation_Mode"
+                                                                 xmlns="http://www.w3.org/2000/svg"
+                                                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                                                                 y="0px" viewBox="0 0 7 7"
+                                                                 style="enable-background:new 0 0 7 7;"
+                                                                 >
+                                    <title>instagram</title>>
+                                                                <g>
+                                                                    <path class="st4" d="M5.1086426,0H1.8913574C0.8484497,0,0,0.8484497,0,1.8913574v3.2172852C0,6.1515503,0.8484497,7,1.8913574,7
+                                     h3.2172852C6.1515503,7,7,6.1515503,7,5.1086426V1.8913574C7,0.8484497,6.1515503,0,5.1086426,0z M4.7045288,4.3933716
+                                     c-0.2386475,0.3217773-0.5883179,0.531311-0.9845581,0.5900879C3.6453857,4.9945679,3.5708618,5,3.4968262,5
+                                     C3.1774902,5,2.8677979,4.8982544,2.6065674,4.7045288c-0.3217163-0.2387085-0.53125-0.5883789-0.5900269-0.9846802
+                                     c-0.0587769-0.3962402,0.0402832-0.791748,0.2789307-1.1135254c0.2386475-0.3217163,0.5882568-0.531311,0.9845581-0.5900879
+                                     c0.1459351-0.0216675,0.2939453-0.0216675,0.4399414,0C4.0405884,2.0637817,4.3312378,2.210083,4.5604248,2.4393311
+                                     c0.229187,0.229187,0.3754883,0.5198364,0.4230347,0.8405151C5.0422363,3.6761475,4.9431763,4.0715942,4.7045288,4.3933716z
+                                      M5.8535767,1.8535767C5.760437,1.9466553,5.6315308,2,5.5,2S5.239563,1.9466553,5.1464233,1.8535767
+                                     C5.0533447,1.760437,5,1.6317749,5,1.5s0.0533447-0.260437,0.1464233-0.3535767C5.239563,1.0533447,5.3684692,1,5.5,1
+                                     s0.260437,0.0533447,0.3535767,0.1464233C5.9466553,1.239563,6,1.3684082,6,1.5
+                                     C6,1.6315308,5.9466553,1.760437,5.8535767,1.8535767z"/>
+                                                                </g>
+                                 </svg>
+                                                        </i>
+                                                    </a>
+                                                </div>
+                                                <div class="socials__icon-holder pinterest col-auto">
+                                                    <a href="<?= $link_pinterest; ?>" class="socials__link" rel="nofollow">
+                                                        <i class="socials__icon">
+                                                            <svg version="1.1" id="Слой_1"
+                                                                 xmlns="http://www.w3.org/2000/svg"
+                                                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                                                                 y="0px"
+                                                                 viewBox="0 0 6 7"
+                                                                 style="enable-background:new 0 0 6 7;"
+                                                                 >
+                                 <title>pinterest</title>
+                                                                <g id="Page-1">
+                                                                    <g id="_x30_1-main"
+                                                                       transform="translate(-214.000000, -37.000000)">
+                                                                        <g id="_x30_03-pinterest"
+                                                                           transform="translate(214.000000, 37.000000)">
+                                                                            <path id="XMLID_799_" class="st4" d="M5.2218575,0.7173191C4.696382,0.2547598,3.969182,0,3.1742227,0
+                                         C1.9598831,0,1.2130101,0.4564409,0.800302,0.8393257C0.291668,1.3111867,0,1.9377234,0,2.5583222
+                                         c0,0.7792029,0.3554381,1.3772697,0.9506664,1.599767c0.0399609,0.0150137,0.0801681,0.0225773,0.1195873,0.0225773
+                                         c0.1255704,0,0.2250665-0.0753398,0.2595369-0.1961951c0.0200912-0.069334,0.0666507-0.2403781,0.0868897-0.3146341
+                                         c0.0433341-0.1466382,0.0083221-0.217169-0.0861758-0.3192852C1.15835,3.1637719,1.078182,2.9429002,1.078182,2.6554489
+                                         c0-0.8538202,0.6933455-1.761261,1.9783986-1.761261c1.0196319,0,1.6530237,0.5313968,1.6530237,1.3867974
+                                         c0,0.5397954-0.1268015,1.0396972-0.3571124,1.407681C4.192451,3.9443519,3.9110255,4.2491426,3.4789896,4.2491426
+                                         c-0.1868291,0-0.3546503-0.0703731-0.4605479-0.1930566C2.9184039,3.9401073,2.8854356,3.7902858,2.9256673,3.6341429
+                                         c0.0454516-0.1764174,0.1074243-0.3604431,0.1674025-0.5383506c0.1093941-0.3249295,0.212805-0.6318197,0.212805-0.8766682
+                                         c0-0.4188049-0.2807853-0.7002057-0.6986394-0.7002057c-0.5310397,0-0.9470716,0.4945737-0.9470716,1.1259419
+                                         c0,0.3096447,0.0897459,0.5412402,0.1303716,0.6301715C1.7236384,3.5349391,1.326048,5.0801373,1.2506319,5.3715172
+                                         c-0.0436049,0.1700954-0.3062932,1.513545,0.1285003,1.6206732c0.4885181,0.1203585,0.9251831-1.1880736,0.9696252-1.3359313
+                                         C2.384779,5.5360136,2.5108171,5.0813336,2.5880551,4.8018293C2.8238814,5.0101256,3.2035964,5.150939,3.5730689,5.150939
+                                         c0.696522,0,1.322921-0.2874064,1.7638209-0.8092303C5.7644939,3.8355756,6,3.130132,6,2.355422
+                                         C6,1.7497691,5.7163587,1.1526955,5.2218575,0.7173191z"/>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                 </svg>
+                                                        </i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto d-sm-block d-none">
+                                            <div class="drop-menu__separator"></div>
+                                        </div>
+                                        <div class="drop-menu__phone-number-holder col-auto order-sm-0 order-1">
+                                            <div class="row text-center">
+												<?php foreach ( $phones as $phone ): ?>
+                                                    <div class="drop-menu__phone-number-wrapper">
+                                                        <a class="drop-menu__phone-number"
+                                                           href="tel:+<?= str_replace( array(
+															   '+',
+															   ' ',
+															   '-',
+															   '(',
+															   ')'
+														   ), '', $phone ); ?>">
+															<?= $phone; ?>
+                                                        </a>
+                                                    </div>
+												<?php endforeach; ?>
+                                            </div>
+                                        </div>
+                                        <div class="d-lg-none d-md-block d-none col-auto">
+                                            <div class="drop-menu__separator"></div>
+                                        </div>
+                                        <div class="bdr d-lg-none d-md-block col-md-auto col-sm-5 col-12 order-sm-1 order-2">
+                                            <a href="mailto: <?= $email; ?>" class="info__item info__item--email">
+                              <span class="text">
+                                  <?= $email; ?>
+                              </span>
+                                            </a>
+                                        </div>
+                                        <div class="bdr d-md-none d-sm-block col-sm-7 col-12 order-sm-2 order-0">
+                                            <div class="search">
+                                                <form action="/search/" class="col-12">
+                                                    <input class="search__input animated" type="search" id="dropSearch"
+                                                           name="search" value="" placeholder=""/>
+                                                    <label class="search__control animated" for="dropSearch"
+                                                           id="drop-search-label"><i class="icon"></i></label>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- drop-menu -->
+
+                        <div class="col-auto d-sm-block language_container offset-xl-0 offset-lg-0 offset-md-1 offset-0 lang">
+                        <?php echo isset($language['name']) ? $language['name'] : 'Language'; ?>
+                        </div><!-- lenguage -->
+						<?php if ( ! empty( $language['languages'] ) ): ?>
+                            <div class="col-auto d-sm-block language_container
+                            offset-xl-0 offset-lg-0 offset-md-1 offset-0 lang">
+                                <form action="<?= $language['action']; ?>" class="language top-nav__language"
+                                      method="post" enctype="multipart/form-data" id="languageTop">
+                                    <div class="language__holder select">
+                                        <select class="language__control" id="languageTopSelect" name="code">
+											<?php foreach ( $language['languages'] as $lang ): ?>
+                                                <option class="language__item"
+                                                        value="<?= $lang['code'] ?>"<?php if ( $lang['code'] == $language['code'] ) {
+													echo 'selected';
+												} ?>><?= $lang['code'] ?></option>
+											<?php endforeach; ?>
+                                        </select>
+                                        <div class="selected">
+                                            <span class="text"></span>
+                                            <ul class="select-list"></ul>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="redirect" value="<?= $language['redirect'] ?>">
+                                </form>
+                            </div><!-- lenguage -->
+						<?php endif; ?>
+
+                        <div class="col-auto offset-xl-0 offset-lg-1 offset-md-1 offset-0">
+                            <div class="info top-nav__info row flex-lg-wrap">
+                                <a href="tel: <?= $phones[0]; ?> "
+                                   class="info__item col-xl-auto col-lg-12 col-md-12 col-md-auto d-xl-block d-lg-block d-md-block d-none">
+									<?= $phones[0]; ?>
+                                </a>
+                                <a href="mailto: <?= $email; ?>"
+                                   class="info__item col-xl-auto col-lg-12 d-xl-block d-lg-block d-none">
+									<?= $email; ?>
+                                </a>
+                            </div>
+                        </div><!-- tel  -->
+
+                    </div><!-- row -->
+                </div>
+
+                <div class="col-2"> <!-- logo -->
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 d-flex">
+                            <a href="<?= $home; ?>" class="top-nav__logo-holder">
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                     viewBox="0 0 400 400" style="enable-background:new 0 0 400 400;" >
+                                <style type="text/css">
+                                    .st10{fill:#FFFFFF;}
+                                    .st11{fill:#E1E1E1;}
+                                </style>
+                                    <g>
+                                        <circle class="st10" cx="205.8098755" cy="197.9842682" r="153.4476471"/>
+                                        <path class="st11" d="M205.8095398,352.9320374c-85.4379883,0-154.9472656-69.5087891-154.9472656-154.9477692
+                                            c0-85.4384689,69.5092773-154.9477539,154.9472656-154.9477539c85.4384766,0,154.9482422,69.5092773,154.9482422,154.9477539
+                                            C360.757782,283.4232483,291.2480164,352.9320374,205.8095398,352.9320374z M205.8095398,46.0365181
+                                            c-83.7841797,0-151.9472656,68.1635742-151.9472656,151.9477539c0,83.7846832,68.1630859,151.9477692,151.9472656,151.9477692
+                                            S357.757782,281.7689514,357.757782,197.9842682C357.757782,114.2000961,289.5937195,46.0365181,205.8095398,46.0365181z"/>
+                                    </g>
+                                    <g>
+                                        <path d="M174.7107391,188.0891571c1.6681366-3.9726257,3.5973206-7.7819214,6.2178955-11.2716064
+                                                c3.030777-4.0136261,6.771225-7.1109619,11.9398499-8.1218262c0.5086517-0.101059,1.101593-0.2043304,1.5151672-0.6432648
+                                                c0.4124603-0.4389038,0.3889771-1.2048645-0.1308746-1.4453735c-0.3453064-0.1592712-0.7756348-0.3166656-1.1172333-0.3062134
+                                                c-0.9382629-0.0567322-1.957428,0.059967-2.8919678,0.1736908c-4.7487335,0.8274231-8.7677002,3.1666107-12.2422333,6.5969696
+                                                c-2.5642242,2.5506897-4.6895599,5.5138245-6.4643402,8.8070221c-2.4236908,4.3361969-4.3268127,8.9968567-5.7988129,13.8152771
+                                                c-1.3970337,4.4749451-2.7061157,9.0323181-4.0181427,13.504303c-0.6906891,2.4936676-1.4641724,5.0746155-2.4983368,7.4925842
+                                                c-1.1161804,2.5063324-2.4964142,4.7643127-4.4829712,6.7004547c-0.993103,0.9680634-2.0790558,1.6832886-3.3432617,2.1479034
+                                                c-1.7724609,0.56604-3.3182068,0.1867371-4.6345673-1.0509949c-1.0531006-0.9908752-1.6858978-2.164444-2.0658722-3.4316254
+                                                c-0.5708771-1.9425354-0.8009338-3.8962555-0.6934967-5.9454193c0.1152954-1.793335,0.4013519-3.5919189,0.7724304-5.3938293
+                                                c1.4068451-6.9466553,2.4701996-13.968277,3.5335541-20.9902496c0.1521454-0.6011353,0.2163086-1.2850647,0.1980591-1.8809814
+                                                c-0.0365295-1.192215-0.6559296-1.9406738-1.7709351-2.1618347c-1.6281433-0.2913055-3.0553284,0.4340057-3.6893005,1.987915
+                                                c-0.394577,1.0348358-0.6157532,2.1494751-0.753006,3.2619019c-0.795166,4.6274719-1.5060425,9.2516174-2.2165833,13.8757629
+                                                c-0.644104,4.0263672-1.6309509,7.977005-3.0492249,11.7710266c-0.8737793,2.0726471-1.920639,4.0647278-3.2288666,5.8946075
+                                                c-1.1448822,1.5695648-2.4710083,2.8031464-4.2308197,3.7947083c-0.9237213,0.4545593-1.8493042,0.8240814-2.9564972,0.8579865
+                                                c-1.6154633,0.134964-2.9139633-0.5075989-3.7268829-2.0168152c-0.3617172-0.6712494-0.7256546-1.4268036-0.7491302-2.1931458
+                                                c-0.1193008-1.1042023-0.3236465-2.2065277-0.2725296-3.31633c-0.0032806-2.8975677,0.4215469-5.7231445,1.1898117-8.4745026
+                                                c0.8506851-2.838623,1.6159897-5.6746216,2.4666824-8.5132446c0.6053009-2.4906769,1.0409164-4.9761658,1.2184982-7.5381012
+                                                c0.0865707-2.730484-0.337738-5.4449463-1.2673645-7.9737091c-1.120903-3.2044983-3.2404861-5.6109772-6.1078186-7.398819
+                                                c-1.7343979-0.9696198-3.6317749-1.6785583-5.6056137-2.1294708c-2.487709-0.5206604-4.9649963-0.7004547-7.6898804-0.6170044
+                                                c-4.2579727,0.1304321-8.5797043,0.9451447-12.5244675,2.9408875c-5.0340424,2.6263275-9.099678,6.2450104-11.4980392,11.4322357
+                                                c-1.5159836,3.3707428-1.9199219,6.878006-1.810379,10.4542694c0.158165,5.1639252,1.9980545,9.5105743,5.1310272,13.2005157
+                                                l-0.0040588-0.0025635c0.2447128,0.3253326,3.1233444,4.0957184,4.7047729,3.4236298
+                                                c0.1204605-0.0512085,0.2382202-0.1302185,0.3492203-0.2466583l-0.0002823-0.0001678
+                                                c0.0460892-0.045639,0.0861435-0.096817,0.1181412-0.1541443c0.2121124-0.2823334,0.2808914-0.5604248,0.2529297-0.858551
+                                                c0.0000763,0.0000153,0.0001602,0.0000458,0.0002289,0.0000763c-0.0004272-0.0045166-0.0012589-0.0102081-0.0017471-0.0149078
+                                                c-0.0019073-0.0182495-0.0038452-0.0365143-0.0064545-0.0549316c-0.0116425-0.0871124-0.0321045-0.1954346-0.0704727-0.3166199
+                                                c-0.0972977-0.307373-0.2512131-0.513916-0.3155823-0.5987549c-0.0000076,0-0.1673813-0.2206116-0.8560715-1.1397095
+                                                l-0.2117462-0.3038788c-2.4883957-3.3331909-3.9684219-7.1239166-4.0962219-11.2961121
+                                                c-0.5847702-13.534256,10.9747314-22.9236145,21.3537598-23.581955c6.3783493-0.4514313,11.7807159,3.3897247,13.5865936,9.4709015
+                                                c0.3799667,1.2668152,0.5891495,2.5392151,0.713295,3.8134613c0.0678329,2.214386-0.1194382,4.436203-0.7359314,6.5856934
+                                                l-2.7575912,10.1421204c-0.6910629,2.4933167-1.2937469,5.0690155-1.4683609,7.7159729
+                                                c-0.1928329,2.0517883-0.1302338,4.0957336,0.4432602,6.1236725c0.7826767,3.3003235,2.8068085,5.3689423,6.0660706,6.0361633
+                                                c4.9780273,1.1259613,9.6406021,0.3008118,13.8095474-2.7241821l1.7497253-1.3323975
+                                                c0.9181519-0.6246185,1.4290466-0.6402588,2.309494,0.2704163c0.2658691,0.3330231,0.6171265,0.6626892,0.8852692,1.0811157
+                                                c0.8804321,0.910675,2.0106964,1.6423645,3.1335754,2.1200867c6.384964,2.5311432,13.6509399,0.4344177,17.6565552-5.1435699
+                                                c2.1253204-2.9635162,3.4735107-6.2429047,4.5617371-9.6863861c1.3090515-4.557373,2.7012634-9.2023926,4.0957031-13.7627411
+                                                C171.7894897,195.6786804,173.1197662,191.8022614,174.7107391,188.0891571z"/>
+                                        <path d="M331.401001,215.1129608c-0.0075073-0.1188354-0.0308533-0.4898376-0.3048401-0.7959747
+                                                c-0.0529785-0.0591736-0.2142639-0.2393951-0.4622192-0.3113556c-0.4601135-0.1335297-0.9222717,0.1819305-1.1077271,0.3410034
+                                                c-0.5954895,0.5107727-0.8510132,1.2774658-1.1923828,1.9591217c-1.5333862,3.2373047-3.7481079,5.878418-6.3899536,8.2635803
+                                                c-0.6809082,0.6820221-1.5330505,1.193161-2.3855286,1.5337982c-1.2774963,0.5111237-2.3001099,0.3409882-3.2373352-0.7667084
+                                                c-0.8521423-1.0222778-1.2774658-2.2150421-1.362915-3.4932556c-0.1700745-1.7039185,0-3.3227539,0.4256897-4.9412231
+                                                l1.5341797-5.537796c0.5958557-2.3001099,0.6808777-4.6002197,0.085022-6.9003296
+                                                c-1.1924133-3.9193115-4.5151367-5.878418-8.5195007-5.1120911c-1.8747559,0.4260712-3.5779724,1.2785797-5.1971741,2.3004761
+                                                l-1.7035522,1.2782135c-0.2562866,0.1701355-0.5965576,0.255188-0.9371643,0.0850677
+                                                c-0.1405334-0.0938873-0.2281189-0.2397766-0.2796631-0.3942719c-0.0118103-0.0490723-0.0253906-0.1169739-0.0323181-0.1996918
+                                                c-0.0172119-0.2051544,0.0179138-0.3620148,0.0450134-0.4785461c0.000061-0.0001984,0.0001221-0.000412,0.0001526-0.0006256
+                                                l0.4373169-1.8235474c1.3624878-4.6856537,2.726532-9.2858734,4.0043335-13.9722595
+                                                c0.6805725-2.5556793-0.2566528-3.5783386-2.8970337-3.4074554c-1.53302,0.0850677-2.5552673,0.6812744-3.0671387,2.2150421
+                                                c-0.1705322,0.6812744-0.4257507,1.362915-0.5958557,2.0445404l-6.1343384,21.2990417
+                                                c-0.2132874,0.7038116-0.4297791,1.410141-0.6495972,2.1189575c-0.4445801,1.4337921-0.8945007,2.8517761-1.3492737,4.253891
+                                                c-0.1062317,0.2068939-0.2184448,0.4156647-0.3027039,0.6125336c-0.9372559,1.8744202-2.0445862,3.6637573-3.4075012,5.1971588
+                                                c-0.340271,0.4260712-0.7670898,0.7667236-1.192749,1.1077271c-0.3402405,0.255188-0.9372253,0-0.9372253-0.3410034
+                                                c-0.213623-4.4182434-1.1266479-6.8479462-1.9598694-8.2639771c-0.0735779-0.125061-0.7544556-1.271225-1.703125-2.8963165
+                                                c-0.5969849-1.022644-1.1924133-2.0449066-1.7043152-3.0675507c-1.1076965-2.1296082-1.4479675-4.3446503-0.937561-6.7298279
+                                                c0.1716614-0.5965729,0.3417664-1.277832,0.3417664-1.8740387c0.0850525-0.5973206-0.170105-1.1084442-0.6820068-1.4487
+                                                c-1.4479675-0.8521576-4.2599792-0.3410187-5.197113,1.1076965c-0.425354,0.5961914-0.6809387,1.3625336-1.0223083,2.1296082
+                                                c-2.3005371,5.4527283-4.3450623,11.0752106-6.9006958,16.5279388c-0.0159912,0.0319519-0.0282288,0.0661316-0.0441895,0.0980682
+                                                c-1.4324036,2.4925232-3.1530151,4.7387695-5.3230896,6.5466919c-0.8510742,0.6820068-1.7032471,1.2785797-2.6403809,1.6188507
+                                                c-1.5330353,0.5114899-2.7269287,0.1708679-3.4929047-1.1924133c-0.6819916-1.0226288-0.9372253-2.1299744-1.0222473-3.4078064
+                                                c-0.085083-2.2150421,0.4253235-4.4300995,1.1073303-6.5600739c1.1927795-3.6633759,2.3001099-7.4122009,3.4928436-11.1606445
+                                                c0.2552185-0.6816406,0.4253235-1.533783,0.5104065-2.3001099c0.0865479-0.8517761-0.4253235-1.533783-1.2774811-1.7039185
+                                                c-2.725769-0.5114899-4.430069,0.0850677-5.1109619,2.5560455c-1.5157013,4.9096527-3.0313568,9.8193054-4.5470734,14.7289581
+                                                c-1.5237579,2.9241486-3.6470337,5.3791656-6.0173645,7.5923615c-0.7674713,0.6812592-1.6195984,1.2774658-2.6418457,1.6184692
+                                                c-1.4479675,0.5111389-2.6407776,0.0850677-3.4078369-1.2782135c-0.6113586-1.0865784-0.6764221-2.1521606-0.6819916-2.5556793
+                                                c-0.1287231-9.3330231,2.7166595-14.6632385,2.7168427-14.663559c0.0280457-0.0525665,0.3590851-0.7511902,1.2028198-2.0348816
+                                                c1.9598694-2.9817505,3.7492218-5.963501,5.2822266-9.0310364c1.0222931-1.8736725,1.8747559-3.7484589,2.4702759-5.7075653
+                                                c0.4267883-1.3632812,0.5968933-2.8112335,0.4267883-4.2599487c-0.3417053-2.5560608-2.4717255-4.0036469-4.9419403-3.6633911
+                                                c-1.362915,0.2559357-2.5552979,0.9372101-3.4929352,1.9598541c-1.1923676,1.2774658-2.0445251,2.8112488-2.6414185,4.429718
+                                                c-1.7032166,4.515152-3.1511841,9.0310364-4.0883636,13.7163239c-0.8239136,3.953125-1.6426239,7.8289795-2.389267,11.7769165
+                                                c-0.2931061,0.4669342-0.5274811,0.9587402-0.7622375,1.4282684c-1.5341187,3.2373199-3.8342438,5.8788147-6.3895416,8.2647247
+                                                c-0.7674713,0.6812592-1.6192169,1.2774658-2.6419067,1.6184692c-0.7297058,0.2575836-1.3945312,0.2771606-1.9726715,0.0587006
+                                                c-0.8296356-0.3134766-1.2562103-1.0332336-1.4350891-1.3369141c-1.1936035-2.0264587-1.2692719-6.5560913-0.1275482-11.3419037
+                                                c0.508606-2.131897,1.1901398-4.0269775,2.1625061-5.8775482c0.3991547-0.7596436,0.6725769-1.2281647,1.2026978-2.034668
+                                                c1.9598694-2.9817505,3.7491608-5.963501,5.2822418-9.0310364c1.0222168-1.8736725,1.8747711-3.7484589,2.4702148-5.7075653
+                                                c0.4267883-1.3632812,0.5969391-2.8112335,0.4267883-4.2599487c-0.3413391-2.5560608-2.4716797-4.0036469-4.9415741-3.6633911
+                                                c-1.3628845,0.2559357-2.5556641,0.9372101-3.4932404,1.9598541c-1.1923828,1.2774658-2.0445404,2.8112488-2.6414337,4.429718
+                                                c-1.7032166,4.515152-3.1511841,9.0310364-4.0884094,13.7163239c-0.814621,3.9085541-1.6221466,7.7424316-2.3621368,11.6439209
+                                                c-1.3551788,2.9200287-2.8388062,5.1344604-3.9984283,6.6636505c-0.7301178,0.9627991-2.6546021,3.3983612-5.3127136,4.5248718
+                                                c-0.6783447,0.2874603-1.4675903,0.5164642-2.2777252,0.2493134c-0.9012909-0.2971954-1.4028015-1.0550232-1.7270203-1.6118469
+                                                c-0.8622437-1.4808655-0.9350586-2.9740448-0.9372253-3.4085693c-0.0250397-5.0037842,5.0337219-18.1245728,5.1972046-19.7648773
+                                                c0.0539551-0.541687-0.1516876-0.9394684-0.1518555-0.9398041c-0.1654358-0.3204498-0.4555817-0.5796204-0.8707733-0.7641144
+                                                c-1.8744659-0.8525085-4.1745758-0.0850525-5.1117249,1.7039185l-0.1863403,0.4039612
+                                                c-0.0872345,0.1735687-0.3356018,0.6082916-0.8258972,0.8162994c-0.0960846,0.0407715-0.2702789,0.1125488-0.5030975,0.1073303
+                                                c-0.2590485-0.0058289-0.4446259-0.103714-0.6250763-0.1989136c-0.1495056-0.0788574-0.3673248-0.2159729-0.585434-0.4474182
+                                                c-2.0448914-2.1299744-4.515152-2.5556641-7.2420807-1.8740387c-1.5329895,0.3410034-2.9809723,1.0222778-4.344986,1.9591064
+                                                c-4.600235,3.0671844-7.4969177,7.4122009-9.4563751,12.5235596c-0.8518066,2.2157898-1.1927948,4.4308167-1.1927948,7.1570129
+                                                c0,0.3406372,0,1.1076965,0.1701508,1.7889709c0.5965729,3.9189453,2.8115997,6.0489349,6.7309265,6.5600586
+                                                c2.8959503,0.3410034,5.7079468-0.0850525,8.3483124-1.277832c1.0222473-0.5111389,1.9598083-1.1073456,2.8970184-1.7042694
+                                                c1.6196136-1.0219116,2.3001251-1.2778473,3.7492218,0.3409882c1.4479828,1.6188507,3.3227692,2.1299896,5.3665619,2.0445557
+                                                c1.8743744-0.0847015,3.57901-0.7667236,5.1971283-1.7035522c2.8713989-1.7674255,5.1191559-4.0452576,6.9382019-6.6967621
+                                                c0.0204773,0.9542999,0.0731812,1.9085846,0.2199402,2.8628693c0.9372101,4.1741638,3.8342438,6.1340027,8.0927277,5.4527435
+                                                c1.8747864-0.3410034,3.493988-1.1077118,5.0273743-2.1303558c2.4022675-1.7079926,4.36026-3.7881927,6.0013885-6.1443939
+                                                c0.0219269,0.9405518,0.0720367,1.8814697,0.2169342,2.8220062c0.9372101,4.1741638,3.8342438,6.1340027,8.0927277,5.4527435
+                                                c1.8747864-0.3410034,3.493988-1.1077118,5.0270538-2.1303558c2.0192413-1.4353333,3.7380524-3.1217957,5.2149658-5.017746
+                                                c0.0817566,0.7637329,0.2042847,1.527832,0.4078979,2.2915802c1.1938629,3.5779419,3.9193115,5.3676605,7.6673431,4.9412231
+                                                c1.8744507-0.170517,3.5790405-0.9372101,5.1121216-1.9594879c1.3153381-0.8320923,2.4535522-1.8086548,3.517395-2.8476562
+                                                c-0.051239,0.4130707,0.0880737,0.9008026,0.4869995,1.3996887c1.1927795,1.6188354,2.8108826,2.6407318,4.6856689,3.2369385
+                                                c1.5326233,0.4260712,3.1522217,0.5969543,4.6853027,0.5111389c2.6418152-0.0850677,5.282196-0.5111389,7.7524109-1.277832
+                                                c3.2354736-0.9884796,5.7692261-2.6786346,7.8175049-4.8669281c-0.3365784,1.2492371-0.7492676,2.421936-1.0007629,3.6745148
+                                                c-0.2891846,1.5626068-0.0662842,2.4170837,0.8537903,2.8047791l-0.0003052,0.0002594
+                                                c0.0018921,0.0007172,0.0042419,0.0015869,0.0061951,0.0023193c0.0818481,0.0341949,0.1693115,0.0646362,0.2622375,0.0916443
+                                                c0.6503296,0.2084351,2.0727844,0.5279999,3.4084167-0.1862946c0.0091248-0.0048828,0.0213013-0.0115509,0.0317383-0.0171967
+                                                c0.3297729-0.1547699,0.6142578-0.3718262,0.8573608-0.6493835c0.0067749-0.0071106,0.0135498-0.0131683,0.0202942-0.020401
+                                                c0.5249634-0.5602722,0.7054443-1.1476746,0.9391785-1.9698334c0.3201904-1.1261444,0.5755615-2.1133118,0.7750549-2.9268188
+                                                l1.9625549-6.6712494c1.362915-5.0266571,4.1733704-9.1153717,8.0079956-12.5239258
+                                                c0.5969849-0.5103912,1.1924133-0.9364624,1.9598694-1.3625336c1.9598389-1.022644,3.7476807-0.4260712,4.6853027,1.703537
+                                                c0.5119019,1.1077118,0.5969238,2.3001099,0.5119019,3.4928741c-0.1716614,1.7042847-0.5969849,3.4081879-1.0227356,5.1121063
+                                                c-0.4267883,1.7038879-0.9371338,3.4078064-1.2789307,5.1113434c-0.340271,2.1299744-0.340271,4.259964,0.4268188,6.3899384
+                                                c1.1073608,3.4925079,4.0898743,5.2825928,7.7528687,4.7710876c1.7031555-0.2559357,3.2372742-0.9371948,4.6852722-1.8747711
+                                                c4.2599792-2.6411285,7.1569824-6.3892059,9.2015076-10.9897919c0.1046143-0.2093506,0.179657-0.4188995,0.2388-0.6339417
+                                                c0.0788879-0.2868042,0.1546326-0.4653015,0.1774597-0.7025757
+                                                C331.3999023,215.3082275,331.4080505,215.2248993,331.401001,215.1129608z M238.6225128,195.2626495
+                                                c0.5965576-2.726181,1.3625336-5.3672943,2.6414948-7.8382721l0.1701355-0.2552032
+                                                c0.2551727-0.2559357,0.5107574-0.5961914,0.9371948-0.5111389c0.4256897,0.085083,0.5958099,0.5962067,0.5107727,1.1924133
+                                                l-0.2552185,1.1927643c-0.6819916,2.3004913-1.7897034,4.4300842-2.9821014,6.4746246
+                                                c-0.1701355,0.2563171-0.4257202,0.5115204-0.7670746,0.4264374c-0.0775299-0.0302734-0.1280212-0.0719604-0.1593628-0.1044006
+                                                C238.5151978,195.6295013,238.6148224,195.2876587,238.6225128,195.2626495z M219.2840881,195.2626495
+                                                c0.5969086-2.726181,1.3625031-5.3672943,2.6414795-7.8382721l0.1701202-0.2552032
+                                                c0.2552032-0.2559357,0.5107574-0.5961914,0.9375763-0.5111389c0.4253387,0.085083,0.595459,0.5962067,0.5107727,1.1924133
+                                                l-0.2555847,1.1927643c-0.6820068,2.3004913-1.7893372,4.4300842-2.9821167,6.4746246
+                                                c-0.1701202,0.2563171-0.4253387,0.5115204-0.7670746,0.4264374c-0.0522766-0.0227051-0.1137695-0.0593872-0.1669159-0.1194611
+                                                C219.1819763,195.6096191,219.274704,195.2929382,219.2840881,195.2626495z M190.2306976,208.4678497
+                                                c-0.7659302,5.9638519-3.4077759,11.0752106-7.7528229,15.2497253c-1.0222473,1.022644-2.3001251,1.7039032-3.6626282,2.1303406
+                                                c-0.7661438,0.2013855-1.4366913,0.1549683-1.9936981-0.1121674c-0.8784332-0.4212799-1.2495728-1.2909546-1.4141235-1.6771698
+                                                c-1.5387268-3.6110992,0.0909119-8.4286041,0.0910339-8.4289703c2.5243378-7.4623718,9.2092438-14.6349487,12.3050995-13.4092102
+                                                c1.1813507,0.4677124,1.9796906,2.1985779,2.0869446,2.4986267
+                                                C190.3169098,205.9118042,190.4019775,207.1903839,190.2306976,208.4678497z M276.7897644,223.2918701
+                                                c-0.7659912,1.448349-1.9598694,2.3001251-3.4929199,2.6407471c-2.7253723,0.6816406-5.197113,0.2555847-7.4121399-1.5334015
+                                                c-0.340271-0.3406372-0.6809387-0.6816406-1.0223083-0.9372101c-0.612915-0.4907074-1.0910034-0.6626892-1.5025635-0.5984192
+                                                c1.2914734-1.2866516,2.0932922-2.4839783,2.5797424-3.3187714c1.7270813-2.9640503,4.5451965-10.053299,4.9615479-11.0559845
+                                                c0.0560913-0.1351166,0.2678833-0.3640442,0.5213623-0.6171875c0.2563171-0.2559357,0.6816406-0.2559357,0.8521118,0
+                                                c0.340271,0.3402557,0.5969238,0.6812592,0.8521423,1.1073303c0.9372559,1.533783,1.7897339,2.9813843,2.6403809,4.515152
+                                                c0.5969238,1.0222778,1.192749,2.1299744,1.6195679,3.2376862
+                                                C278.3239136,218.9468536,278.0672302,221.2469788,276.7897644,223.2918701z"/>
+                                        <path d="M252.928421,194.9582825c0.0003815,0.0060272,0.0002899,0.0124359,0.0006714,0.0184479l0.000885-0.0029449
+                                                c0.0932312,1.1976166,0.7262268,1.7893982,2.1200104,1.9359436h0.5957336c1.2752991,0,2.3807983-0.1697998,2.9761658-1.2756653
+                                                c0.6795349-1.0198517,0.93573-2.295517,1.0205994-3.5708008c0-0.7651672-0.3410645-1.445816-1.1054688-1.6152344
+                                                c-1.7946167-0.4949799-3.4530487-0.4936218-4.4528198,0.6895599l0.0009766-0.0032349
+                                                c-0.0028381,0.0040131-0.005722,0.0084381-0.0085602,0.0124817c-0.2004395,0.2392273-0.3748474,0.5251007-0.5175629,0.8658295
+                                                c-0.3200378,0.63591-0.5903168,1.4268951-0.6347809,2.3461151c-0.0000153,0.0003357-0.0000153,0.0006409-0.0000153,0.0009766
+                                                C252.9130554,194.5744324,252.9147949,194.7730408,252.928421,194.9582825z"/>
+                                    </g>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-5">
+                    <div class="row justify-content-end">
+
+                        <div class="col-xl-auto col-lg-auto d-xl-block d-lg-block d-none">
+                            <div class="row socials top-nav__socials">
+                                <div class="socials__icon-holder facebook">
+                                    <a href="<?= $link_facebook; ?>" class="socials__link" rel="nofollow">
+                                        <i class="socials__icon">
+                                            <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg"
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                 viewBox="0 0 4 8" style="enable-background:new 0 0 4 8;"
+                                                 >
+                       <title>facebook</title>
+                                                <g id="Page-1">
+                                                    <g id="_x30_1-main" transform="translate(-137.000000, -36.000000)">
+                                                        <g id="_x30_06-facebook-letter-logo"
+                                                           transform="translate(137.000000, 36.000000)">
+                                                            <path id="Facebook" class="st4" d="M0.8645788,1.5493453c0,0.2016033,0,1.1014433,0,1.1014433H0v1.3468492h0.8645788V8h1.7760285
+                               V3.9977493h1.1917977c0,0,0.1116171-0.6458037,0.1657217-1.3519268c-0.1551199,0-1.3508036,0-1.3508036,0
+                               s0-0.7835541,0-0.9208951c0-0.1376386,0.1936409-0.322781,0.38503-0.322781c0.1910305,0,0.5942149,0,0.9676468,0
+                               C4,1.2187709,4,0.5851685,4,0C3.5014796,0,2.9343271,0,2.6843295,0C0.8206773-0.000093,0.8645788,1.3480954,0.8645788,1.5493453z
+                               "/>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                       </svg>
+                                        </i>
+                                    </a>
+                                </div>
+                                <div class="socials__icon-holder instagram">
+                                    <a href="<?= $link_instagramm; ?>" class="socials__link" rel="nofollow">
+                                        <i class="socials__icon">
+                                            <svg version="1.1" id="Isolation_Mode" xmlns="http://www.w3.org/2000/svg"
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                                                 y="0px" viewBox="0 0 7 7" style="enable-background:new 0 0 7 7;"
+                                                 >
+                          <title>instagram</title>>
+                                                <g>
+                                                    <path class="st4" d="M5.1086426,0H1.8913574C0.8484497,0,0,0.8484497,0,1.8913574v3.2172852C0,6.1515503,0.8484497,7,1.8913574,7
+                           h3.2172852C6.1515503,7,7,6.1515503,7,5.1086426V1.8913574C7,0.8484497,6.1515503,0,5.1086426,0z M4.7045288,4.3933716
+                           c-0.2386475,0.3217773-0.5883179,0.531311-0.9845581,0.5900879C3.6453857,4.9945679,3.5708618,5,3.4968262,5
+                           C3.1774902,5,2.8677979,4.8982544,2.6065674,4.7045288c-0.3217163-0.2387085-0.53125-0.5883789-0.5900269-0.9846802
+                           c-0.0587769-0.3962402,0.0402832-0.791748,0.2789307-1.1135254c0.2386475-0.3217163,0.5882568-0.531311,0.9845581-0.5900879
+                           c0.1459351-0.0216675,0.2939453-0.0216675,0.4399414,0C4.0405884,2.0637817,4.3312378,2.210083,4.5604248,2.4393311
+                           c0.229187,0.229187,0.3754883,0.5198364,0.4230347,0.8405151C5.0422363,3.6761475,4.9431763,4.0715942,4.7045288,4.3933716z
+                            M5.8535767,1.8535767C5.760437,1.9466553,5.6315308,2,5.5,2S5.239563,1.9466553,5.1464233,1.8535767
+                           C5.0533447,1.760437,5,1.6317749,5,1.5s0.0533447-0.260437,0.1464233-0.3535767C5.239563,1.0533447,5.3684692,1,5.5,1
+                           s0.260437,0.0533447,0.3535767,0.1464233C5.9466553,1.239563,6,1.3684082,6,1.5
+                           C6,1.6315308,5.9466553,1.760437,5.8535767,1.8535767z"/>
+                                                </g>
+                       </svg>
+                                        </i>
+                                    </a>
+                                </div>
+                                <div class="socials__icon-holder pinterest">
+                                    <a href="<?= $link_pinterest; ?>" class="socials__link" rel="nofollow">
+                                        <i class="socials__icon">
+                                            <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg"
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                 viewBox="0 0 6 7" style="enable-background:new 0 0 6 7;"
+                                                 >
+                       <title>pinterest</title>
+                                                <g id="Page-1">
+                                                    <g id="_x30_1-main" transform="translate(-214.000000, -37.000000)">
+                                                        <g id="_x30_03-pinterest"
+                                                           transform="translate(214.000000, 37.000000)">
+                                                            <path id="XMLID_799_" class="st4" d="M5.2218575,0.7173191C4.696382,0.2547598,3.969182,0,3.1742227,0
+                               C1.9598831,0,1.2130101,0.4564409,0.800302,0.8393257C0.291668,1.3111867,0,1.9377234,0,2.5583222
+                               c0,0.7792029,0.3554381,1.3772697,0.9506664,1.599767c0.0399609,0.0150137,0.0801681,0.0225773,0.1195873,0.0225773
+                               c0.1255704,0,0.2250665-0.0753398,0.2595369-0.1961951c0.0200912-0.069334,0.0666507-0.2403781,0.0868897-0.3146341
+                               c0.0433341-0.1466382,0.0083221-0.217169-0.0861758-0.3192852C1.15835,3.1637719,1.078182,2.9429002,1.078182,2.6554489
+                               c0-0.8538202,0.6933455-1.761261,1.9783986-1.761261c1.0196319,0,1.6530237,0.5313968,1.6530237,1.3867974
+                               c0,0.5397954-0.1268015,1.0396972-0.3571124,1.407681C4.192451,3.9443519,3.9110255,4.2491426,3.4789896,4.2491426
+                               c-0.1868291,0-0.3546503-0.0703731-0.4605479-0.1930566C2.9184039,3.9401073,2.8854356,3.7902858,2.9256673,3.6341429
+                               c0.0454516-0.1764174,0.1074243-0.3604431,0.1674025-0.5383506c0.1093941-0.3249295,0.212805-0.6318197,0.212805-0.8766682
+                               c0-0.4188049-0.2807853-0.7002057-0.6986394-0.7002057c-0.5310397,0-0.9470716,0.4945737-0.9470716,1.1259419
+                               c0,0.3096447,0.0897459,0.5412402,0.1303716,0.6301715C1.7236384,3.5349391,1.326048,5.0801373,1.2506319,5.3715172
+                               c-0.0436049,0.1700954-0.3062932,1.513545,0.1285003,1.6206732c0.4885181,0.1203585,0.9251831-1.1880736,0.9696252-1.3359313
+                               C2.384779,5.5360136,2.5108171,5.0813336,2.5880551,4.8018293C2.8238814,5.0101256,3.2035964,5.150939,3.5730689,5.150939
+                               c0.696522,0,1.322921-0.2874064,1.7638209-0.8092303C5.7644939,3.8355756,6,3.130132,6,2.355422
+                               C6,1.7497691,5.7163587,1.1526955,5.2218575,0.7173191z"/>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                       </svg>
+                                        </i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div><!-- col -->
+
+						<?php if ( ! empty( $currency['currencies'] ) ): ?>
+                            <div class="d-sm-block d-none col-auto">
+                                <form action="<?php echo $currency['action']; ?>" class="currency top-nav__currency"
+                                      method="post" enctype="multipart/form-data" id="currencyTop">
+                                    <div class="currency__currency-holder justify-content-md-end select">
+                                        <select class="currency__control" id="currencyTopSelect" name="code">
+											<?php foreach ( $currency['currencies'] as $cur ): ?>
+                                                <option class="currency__item"
+                                                        value="<?php echo $cur['code']; ?>"<?php if ( $cur['code'] == $currency['code'] ) {
+													echo 'selected';
+												} ?>><?php echo $cur['code']; ?></option>
+											<?php endforeach; ?>
+                                        </select>
+                                        <div class="selected selected--curr">
+                                            <span class="text"></span>
+                                            <ul class="select-list select-list--curr"></ul>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="redirect" value="<?php echo $currency['redirect']; ?>"/>
+                                </form>
+                            </div><!-- col -->
+						<?php endif; ?>
+
+                        <div class="offset-md-1 offset-0">
+                            <div class="row main-icon top-nav__main-icon">
+                                <div class="main-icon__icon-holder">
+                                    <a href="<?= $login; ?>" class="user">
+                                        <span class="user-text"><?= $text_account_user; ?></span>
+                                        <div class="user user-icon">
+                                            <svg width="20px" height="20px" version="1.1" id="Isolation_Mode"
+                                                 xmlns="http://www.w3.org/2000/svg"
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                                                 y="0px" style="enable-background:new 0 0 576 576;"
+                                                 >
+                        <style type="text/css">
+                            .stuser-c {
+                                fill: #fff
+                            }
+
+                            .stuser {
+                                stroke: #000;
+                                stroke-width: 3.7;
+                                stroke-linecap: round;
+                                stroke-miterlimit: 10;
+                                transform: scale(.6) translate(-130px, -228px);
+                            }
+                        </style>
+                                                <path class="stuser"
+                                                      d="M133.0434875,254.0870056c0-3.7879028,2.5669098-7.4427032,8.0843048-8.3740082"/>
+                                                <path class="stuser"
+                                                      d="M146.8721924,245.7129974c5.517395,0.9313049,8.0843048,4.5861053,8.0843048,8.3740082"/>
+                                                <circle class="stuser stuser-c" cx="144" cy="238.4347992"
+                                                        r="7.8261023"/>
+                        </svg>
+                                        </div>
+                                        <ul class="user__dropcontent<?php if ( ! $logged ): ?> nologin<?php endif; ?>">
+											<?php if ( $logged ): ?>
+                                                <li class="user__item"><a href="<?php echo $user_edit; ?>"
+                                                                          class="user__link"><?= $user_heading_title; ?></a>
+                                                </li>
+                                                <li class="user__item"><a href="<?php echo $user_address; ?>"
+                                                                          class="user__link"><?= $user_text_address; ?></a>
+                                                </li>
+                                                <li class="user__item"><a href="<?php echo $user_order; ?>"
+                                                                          class="user__link"><?= $user_text_order; ?></a>
+                                                </li>
+                                                <li class="user__item"><a href="<?php echo $user_wishlist; ?>"
+                                                                          class="user__link"><?= $user_text_wishlist; ?></a>
+                                                </li>
+                                                <li class="user__item"><a href="<?php echo $user_logout; ?>"
+                                                                          class="user__link"><?= $user_text_logout; ?></a>
+                                                </li>
+											<?php else: ?>
+                                                <li class="user__item"><a href="<?php echo $login; ?>"
+                                                                          class="user__link"><?= $text_login; ?></a>
+                                                </li>
+											<?php endif; ?>
+                                        </ul>
+                                    </a>
+                                </div>
+
+                                <div class="dropdown wishlist main-icon__icon-holder hover"
+                                     data-hasMoney='<?= ( $total_cart[0] > 0 ) ? 'true' : 'false' ?>'>
+                                    <button type="button" class="dropbutton wish-cart wish-cart-icon"
+                                            id="dropdownWishList" data-empty="true">
+                                        <i class="icon">
+                                            <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg"
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                 viewBox="0 0 16 15" style="enable-background:new 0 0 16 15;"
+                                                 >
+                          <title>WishList</title>
+                                                <g id="Page-1">
+                                                    <g id="_x30_1-main" transform="translate(-1799.000000, -34.000000)">
+                                                        <g id="sss" transform="translate(1798.000000, 33.000000)">
+                                                            <path id="Shape" class="st4" d="M4.8000002,9C5.9000001,10.3000002,8,12.5,9,13.6000004c0.5-0.5,0.8999996-1,1.3999996-1.5
+                                          c0.9000006-1,1.9000006-2,2.8000002-3.1000004C13.8999996,8.1000004,14.8000002,7,15,5.9000001
+                                          c0.1999998-1.2000003-0.6999998-2.5-1.8999996-2.8000002S10.8000002,3.7,10.3000002,4.5
+                                          c-0.6000004,0.9000001-2,0.9000001-2.6000004,0c-0.5-0.9000001-1.5999999-1.7-2.7999997-1.4000001
+                                          S2.9000001,4.6999998,3,5.9000001C3.2,7,4.0999999,8.1000004,4.8000002,9z M9,15.8000002
+                                          c-0.3999996,0-0.8000002-0.1999998-1.0999999-0.5c-1-1-3.3000002-3.6000004-4.6000004-5.1000004
+                                          c-0.8999999-1-2-2.3999996-2.3-4.0999999c-0.3-2.1999998,1.2-4.5,3.4000001-5C6.0999999,0.7,7.8000002,1.4,9,2.9000001
+                                          C10.1999998,1.4,11.8999996,0.7,13.6000004,1.2C15.8000002,1.8,17.2999992,4,17,6.1999998
+                                          c-0.2000008,1.7000003-1.3999996,3.1000004-2.3000002,4.1000004c-0.8999996,1.0999994-1.8999996,2.0999994-2.8000002,3.0999994
+                                          C11.3000002,14,10.6999998,14.6999998,10.1000004,15.3000002C9.8000002,15.6999998,9.3999996,15.8000002,9,15.8000002z"></path>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                  </svg>
+                                        </i>
+                                    </button>
+
+									<?= $wishlist; ?>
+
+                                </div>
+                                <div class='cart-popup-wrapper hover'>
+                                    <div class="main-icon__icon-holder col-auto">
+                                        <p class="top-nav__money" aria-show='<?= $total_cart[0]; ?>'><a
+                                                    class="money-link"
+                                                    href="<?= $cart_link; ?>"><?= $total_cart[1]; ?></a></p>
+                                    </div>
+                                    <div class="dropdown bucket-empty main-icon__icon-holder">
+                                        <button data-quantity='' aria-more1k=''
+                                                class="dropbutton bucket-empty__icon-holder" <?php if ( $cart == '' ): ?> onclick="return false;" <?php endif; ?> >
+
+                                            <svg version="1.1" class="header__icon" id="bucket"
+                                                 xmlns="http://www.w3.org/2000/svg"
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                 viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;"
+                                                 xml:space="preserve" width="15px" height="15px">
+                      <g id="bucket-1">
+                          <g id="_x30_1-main" transform="translate(-1840.000000, -33.000000)">
+                              <g id="cart" transform="translate(1840.000000, 33.000000)">
+                                  <path id="Shape" class="st4" d="M15.5,3.4000001C15.20263,3.123208,14.8057051,2.9788718,14.3999996,3H4.6999998L4.0999999,1.1
+                  C3.924933,0.4660744,3.3573472,0.0201142,2.7,0H1.1c-0.5522848,0-1,0.4477153-1,1s0.4477153,1,1,1H2.3L5,11
+                  c0.2215791,0.6301298,0.8331194,1.0378227,1.5,1h6.3000002c0.6573467-0.0201139,1.2249327-0.466074,1.3999996-1.1000004
+                  l1.6999998-5.9999995C16.055891,4.3645186,15.9018211,3.7867582,15.5,3.4000001z M12.3000002,10h-5.5l-1.5-5h8.3999996
+                  L12.3000002,10z"/>
+                                  <circle id="Oval" class="st4" cx="6.5" cy="14.5" r="1.5"/>
+                                  <circle id="Oval_1_" class="st4" cx="12.5" cy="14.5" r="1.5"/>
+                              </g>
+                          </g>
+                      </g>
+                      </svg>
+                                        </button>
+
+										<?= $cart; ?>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!-- col -->
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <nav class="b-nav d-xl-block d-lg-block d-md-block d-none container topmenu-block">
+            <div class="row">
+                <div class="col-5">
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="category_dropdown"><a class="category_button" href="<?= $catalog_cat; ?>"><?= $text_catalog_cat; ?></a>
+                                <ul class="category_items">
+                                    <?php if (!empty($new_cat['count'])): ?>
+                                    <li><a href="<?= $new_cat['href']; ?>"><?= $new_cat['name'] . ' ('. $new_cat['count'] .')'; ?></a></li>
+                                    <?php endif; ?>
+                                    <?php if (!empty($sale_cat['count'])): ?>
+                                    <li><a href="<?= $sale_cat['href']; ?>"><?= $sale_cat['name'] . ' ('. $sale_cat['count'] .')'; ?></a></li>
+                                    <?php endif; ?>
+                                    <?php if (!empty($fete_cat['count']) && $fete_cat['disable']): ?>
+                                    <li><a href="<?= $fete_cat['href']; ?>"><?= $fete_cat['name'] . ' ('. $fete_cat['count'] .')'; ?></a></li>
+                                    <?php endif; ?>
+                                    <?php foreach ( $categories as $cat ): ?>
+                                    <li><a href="<?= $cat['href']; ?>"><?= $cat['name']; ?></a>
+                                        <?php if ( !empty( $cat['children'] ) ): ?>
+                                        <ul class="subcategory_items">
+                                            <?php foreach ( $cat['children'] as $catch ): ?>
+                                            <li><a href="<?= $catch['href']; ?>"><?= $catch['name']; ?></a></li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                        <?php endif; ?>
+                                    </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                        </div>
+						<?php foreach ( $this->registry->get( 'load' )->controller( 'module/we_menu', array( 'module_id' => 37 ) ) as $m ): ?>
+                            <div class="b-nav__control col-5">
+                                <a href="<?= $m['url']; ?>" class="b-nav__item"><?= $m['name']; ?></a>
+                            </div>
+						<?php endforeach; ?>
+                    </div>
+                </div><!-- col -->
+
+                <div class="col-6 offset-1">
+                    <div class="row justify-content-end">
+						<?php foreach ( $this->registry->get( 'load' )->controller( 'module/we_menu', array( 'module_id' => 38 ) ) as $m ): ?>
+                            <div class="b-nav__control b-nav__control--right col-lg-4 col-auto">
+                                <a href="<?= $m['url']; ?>" class="b-nav__item"><?= $m['name']; ?></a>
+                            </div>
+						<?php endforeach; ?>
+
+                        <div class="col-auto">
+                            <div class="search">
+								<?= $search; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- col -->
+            </div>
+        </nav>
+    </div>
+
+</header>
+<div class="header header-bottom">
+	<?php if ( !isset($this->request->get['route']) || $this->request->get['route'] == 'common/home' || $this->request->get['route'] == '' ): ?>
+
+
+        <?php if ( $language_code == 'uk' ): ?>
+            <div class="container main-top-block">
+                <div class="row">
+                    <a href="<?= $top_block_link; ?>" class="col-12 col-sm-4 main-top-block_item">
+                        <img src="<?= STYLE_PATH; ?>img/icons/main_top_block_icons-01_new.svg" alt="img">
+                        <span><strong><?= $top_block_text_1; ?></strong></span>
+                    </a>
+                    <a href="<?= $top_block_link; ?>" class="col-12 col-sm-4 main-top-block_item">
+                        <img src="<?= STYLE_PATH; ?>img/icons/main_top_block_icons-02-cropped.svg" alt="img">
+                        <span><strong><?= $top_block_text_2; ?></strong></span>
+                    </a>
+                    <a href="<?= $top_block_link; ?>" class="col-12 col-sm-4 main-top-block_item">
+                        <img src="<?= STYLE_PATH; ?>img/icons/main_top_block_icons-03-cropped.svg" alt="img">
+                        <span><strong><?= $top_block_text_3; ?></strong></span>
+                    </a>
+                </div>
+            </div>
+        <?php endif; ?>
+        
+
+		<?php if ( $language_code == 'en' ) {
+			$banner_home = $banner_home_en;
+		} elseif ( $language_code == 'uk' ) {
+			$banner_home = $banner_home_uk;
+		} else {
+			// Default to Russian banner
+			$banner_home = $banner_home;
+		} ?>
+
+        <div id="slideshow_top" class="owl-carousel owl-theme header__background-holder">
+			<?php foreach ( $banner_home['banners'] as $banner ): ?>
+                <div class="item">
+					<?php if ( ! empty( $banner['link'] ) ): ?>
+                    <a href="<?= $banner['link']; ?>">
+						<?php endif; ?>
+                        <img class="header__background-pic" src="<?= HTTP_IMAGE; ?><?= $banner['image']; ?>"
+                             alt="<?= $banner['title']; ?>"/>
+
+						<?php if ( ! empty( $banner['link'] ) ): ?>
+                    </a>
+				<?php endif; ?>
+
+                </div>
+			<?php endforeach; ?>
+        </div>
+
+        <div class="header__bottom-holder container">
+            <div class="bottom-holder row justify-content-center">
+                <div class="col-12">
+                    <h2 class="bottom-holder__title"><?= isset($banner_home['banners'][0]['title']) ? $banner_home['banners'][0]['title'] : ''; ?></h2>
+                </div>
+                <div class="col-12">
+                    <a href="<?= isset($banner_home['banners'][0]['link']) ? $banner_home['banners'][0]['link'] : '#'; ?>" class="link"><?= $text_go_shop; ?>
+                        <img class="link__icon" src="<?= STYLE_PATH; ?>img/icons/arrow-mini.svg" alt="arrow"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+	<?php endif; ?>
+</div>
+<button class="btn btn--up animated">
+    <i class="icon">
+        <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                width="9px" height="10px">
+            <path fill-rule="evenodd" fill="rgb(255, 255, 255)"
+                  d="M0.135,4.105 C-0.045,4.277 -0.045,4.562 0.135,4.739 C0.309,4.910 0.598,4.910 0.772,4.739 L4.033,1.526 L4.033,9.556 C4.033,9.803 4.233,9.999 4.484,9.999 C4.735,9.999 4.941,9.803 4.941,9.556 L4.941,1.526 L8.196,4.739 C8.376,4.910 8.666,4.910 8.840,4.739 C9.019,4.562 9.019,4.276 8.840,4.105 L4.806,0.132 C4.632,-0.045 4.342,-0.045 4.169,0.132 L0.135,4.105 Z"/>
+        </svg>
+    </i>
+    <span class="text"><?= $text_tootop; ?></span>
+</button>

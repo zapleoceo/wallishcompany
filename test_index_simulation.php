@@ -1,10 +1,10 @@
 <?php
-echo "<h1>Direct Index.php Test</h1>";
+echo "<h1>Index.php Simulation Test</h1>";
 
 // Simulate request
-$_GET['route'] = 'common/home';
+$_GET['route'] = '';
 $_SERVER['HTTP_HOST'] = 'wallishcompany.com';
-$_SERVER['REQUEST_URI'] = '/index.php?route=common/home';
+$_SERVER['REQUEST_URI'] = '/index.php';
 
 // Load main config
 require_once('config.php');
@@ -35,11 +35,11 @@ try {
     echo "<p style='color: red;'>✗ Error: " . $e->getMessage() . "</p>";
 }
 
-// Try to simulate OpenCart Front Controller logic
-echo "<h2>Testing OpenCart Front Controller</h2>";
+// Try to simulate OpenCart routing logic
+echo "<h2>Testing OpenCart Routing</h2>";
 
 try {
-    // Check if route is set
+    // Check if route is empty and set default
     $route = isset($_GET['route']) ? $_GET['route'] : '';
     echo "<p>Route: '" . htmlspecialchars($route) . "'</p>";
     
@@ -84,17 +84,6 @@ try {
                             $output = ob_get_clean();
                             echo "<p>✓ Controller index method executed successfully</p>";
                             echo "<p>Output length: " . strlen($output) . " characters</p>";
-                            
-                            // Show first 1000 characters of output
-                            if (strlen($output) > 0) {
-                                echo "<h3>Output Preview:</h3>";
-                                echo "<div style='background: #f0f0f0; padding: 10px; border: 1px solid #ccc; max-height: 400px; overflow: auto;'>";
-                                echo htmlspecialchars(substr($output, 0, 1000));
-                                if (strlen($output) > 1000) {
-                                    echo "... [truncated]";
-                                }
-                                echo "</div>";
-                            }
                             
                         } catch (Exception $e) {
                             echo "<p style='color: orange;'>⚠ Index method error: " . $e->getMessage() . "</p>";

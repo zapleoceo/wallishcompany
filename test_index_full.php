@@ -1,10 +1,10 @@
 <?php
-echo "<h1>Direct Index.php Test</h1>";
+echo "<h1>Full Index.php Test</h1>";
 
 // Simulate request
-$_GET['route'] = 'common/home';
+$_GET['route'] = '';
 $_SERVER['HTTP_HOST'] = 'wallishcompany.com';
-$_SERVER['REQUEST_URI'] = '/index.php?route=common/home';
+$_SERVER['REQUEST_URI'] = '/index.php';
 
 // Load main config
 require_once('config.php');
