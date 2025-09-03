@@ -146,7 +146,9 @@ class ControllerCheckoutConfirm extends Controller {
 				$order_data['email'] = !empty($this->session->data['guest']['email']) ? 
 					$this->session->data['guest']['email'] : '';
 				$order_data['telephone'] = !empty($this->session->data['guest']['telephone']) ? 
-					$this->session->data['guest']['telephone'] : '';
+					$this->session->data['guest']['telephone'] : 
+					(!empty($this->session->data['payment_address']['address_1']) ? 
+						$this->session->data['payment_address']['address_1'] : '');
 				$order_data['fax'] = $this->session->data['guest']['fax'];
 				$order_data['custom_field'] = $this->session->data['guest']['custom_field'];
 			}
