@@ -67,7 +67,7 @@
 		<?php endforeach; ?>
 		<?php endif; ?>
     </script>
-    <script src="<?= STYLE_PATH; ?>../javascript/jquery.elevatezoom.min.js" type="text/javascript"></script>
+    <script src="<?= STYLE_PATH; ?>js/jquery.elevatezoom.min.js" type="text/javascript"></script>
 
     <link rel="stylesheet" href="<?= STYLE_PATH; ?>intelmaska/build/css/intlTelInput.css<?= CSSJS; ?>">
     <link rel="stylesheet" href="<?= STYLE_PATH; ?>intelmaska/examples/css/isValidNumber.css<?= CSSJS; ?>">
