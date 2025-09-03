@@ -11,23 +11,23 @@ define('HTTP_IMAGE', '/image/');
 define('NUM_LINKS', 4);
 
 // HTTP
-define('HTTP_SERVER', '/');
+define('HTTP_SERVER', 'http://wallishcompany.com/');
 
 // HTTPS
-define('HTTPS_SERVER', '/');
+define('HTTPS_SERVER', 'https://wallishcompany.com/');
 
 // DIR
-define('DIR_APPLICATION',  dirname(__FILE__) . '/catalog/');
-define('DIR_SYSTEM',       dirname(__FILE__) . '/system/');
-define('DIR_LANGUAGE',     dirname(__FILE__) . '/catalog/language/');
-define('DIR_TEMPLATE',     dirname(__FILE__) . '/catalog/view/theme/');
-define('DIR_CONFIG',       dirname(__FILE__) . '/system/config/');
-define('DIR_IMAGE',        dirname(__FILE__) . '/image/');
-define('DIR_CACHE',        dirname(__FILE__) . '/system/storage/cache/');
-define('DIR_DOWNLOAD',     dirname(__FILE__) . '/system/storage/download/');
-define('DIR_LOGS'        , dirname(__FILE__) . '/system/storage/logs/');
-define('DIR_MODIFICATION', dirname(__FILE__) . '/system/storage/modification/');
-define('DIR_UPLOAD'      , dirname(__FILE__) . '/system/storage/upload/');
+define('DIR_APPLICATION',  '/var/www/wallishcompa_usr/data/www/wallishcompany.com/catalog/');
+define('DIR_SYSTEM',       '/var/www/wallishcompa_usr/data/www/wallishcompany.com/system/');
+define('DIR_LANGUAGE',     '/var/www/wallishcompa_usr/data/www/wallishcompany.com/catalog/language/');
+define('DIR_TEMPLATE',     '/var/www/wallishcompa_usr/data/www/wallishcompany.com/catalog/view/theme/');
+define('DIR_CONFIG',       '/var/www/wallishcompa_usr/data/www/wallishcompany.com/system/config/');
+define('DIR_IMAGE',        '/var/www/wallishcompa_usr/data/www/wallishcompany.com/image/');
+define('DIR_CACHE',        '/var/www/wallishcompa_usr/data/www/wallishcompany.com/system/storage/cache/');
+define('DIR_DOWNLOAD',     '/var/www/wallishcompa_usr/data/www/wallishcompany.com/system/storage/download/');
+define('DIR_LOGS'        , '/var/www/wallishcompa_usr/data/www/wallishcompany.com/system/storage/logs/');
+define('DIR_MODIFICATION', '/var/www/wallishcompa_usr/data/www/wallishcompany.com/system/storage/modification/');
+define('DIR_UPLOAD'      , '/var/www/wallishcompa_usr/data/www/wallishcompany.com/system/storage/upload/');
 
 // DB
 define('DB_DRIVER', 'mysqli');
