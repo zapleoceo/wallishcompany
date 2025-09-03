@@ -304,7 +304,7 @@
                         </div><!-- drop-menu -->
 
                         <div class="col-auto d-sm-block language_container offset-xl-0 offset-lg-0 offset-md-1 offset-0 lang">
-                        <?php echo $language; ?>
+                        <?php if (isset($language['code'])) echo $language['code']; ?>
                         </div><!-- lenguage -->
 						<?php if ( ! empty( $language['languages'] ) ): ?>
                             <div class="col-auto d-sm-block language_container
@@ -822,7 +822,7 @@
 
 </header>
 <div class="header header-bottom">
-	<?php if ( !isset($this->request->get['route']) || $this->request->get['route'] == 'common/home' || $this->request->get['route'] == '' ): ?>
+	<?php if ( $_SERVER['REQUEST_URI'] == '/' || $_SERVER['REQUEST_URI'] == '/en' || $_SERVER['REQUEST_URI'] == '/uk' || $_SERVER['REQUEST_URI'] == '/ru'): ?>
 
 
         <?php if ( $language_code == 'uk' ): ?>
@@ -847,11 +847,9 @@
 
 		<?php if ( $language_code == 'en' ) {
 			$banner_home = $banner_home_en;
-		} elseif ( $language_code == 'uk' ) {
+		} ?>
+        <?php if ( $language_code == 'uk' ) {
 			$banner_home = $banner_home_uk;
-		} else {
-			// Default to Russian banner
-			$banner_home = $banner_home;
 		} ?>
 
         <div id="slideshow_top" class="owl-carousel owl-theme header__background-holder">
