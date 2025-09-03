@@ -5,6 +5,9 @@ config.php
 admin/config.php
 catalog/config.php
 
+# Development documentation and reports
+cursor/
+
 # Cache and logs
 system/storage/cache/*
 system/storage/logs/*
