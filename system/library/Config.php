@@ -1,4 +1,9 @@
 <?php
+// *	@copyright	OPENCART.PRO 2011 - 2015.
+// *	@forum	http://forum.opencart.pro
+// *	@source		See SOURCE.txt for source and other copyright.
+// *	@license	GNU General Public License version 3; see LICENSE.txt
+
 class Config {
 	private $data = array();
 
@@ -18,14 +23,14 @@ class Config {
 		$file = DIR_CONFIG . $filename . '.php';
 
 		if (file_exists($file)) {
-			require_once($file);
+			$_ = array();
 
-			if (isset($config)) {
-				foreach ($config as $key => $value) {
-					$this->data[$key] = $value;
-				}
-			}
+			require($file);
+
+			$this->data = array_merge($this->data, $_);
+		} else {
+			trigger_error('Error: Could not load config ' . $filename . '!');
+			exit();
 		}
 	}
 }
-?>
