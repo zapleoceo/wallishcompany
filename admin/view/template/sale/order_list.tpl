@@ -96,7 +96,7 @@
                     <?php } else { ?>
                     <a href="<?php echo $sort_customer; ?>"><?php echo $column_customer; ?></a>
                     <?php } ?></td>
-                  <td class="text-left"><?php echo $column_telephone; ?></td>
+                  <td class="text-left">TEL</td>
                   <td class="text-left"><?php if ($sort == 'status') { ?>
                     <a href="<?php echo $sort_status; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_status; ?></a>
                     <?php } else { ?>
