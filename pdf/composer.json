@@ -14,7 +14,8 @@
     "require": {
         "php": ">=5.6",
         "ext-gd": "*",
-        "ext-mbstring": "*"
+        "ext-mbstring": "*",
+        "psr/log": "^1.1"
     },
     "autoload": {
         "psr-4": {
