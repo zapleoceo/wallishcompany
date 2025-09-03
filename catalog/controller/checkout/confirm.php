@@ -5,16 +5,43 @@
 // *	@license	GNU General Public License version 3; see LICENSE.txt
 
 class ControllerCheckoutConfirm extends Controller {
+	
+	// Функция для логирования
+	private function logOrderData($step, $data = array(), $message = '') {
+		$log_file = DIR_LOGS . 'order_creation.log';
+		$timestamp = date('Y-m-d H:i:s');
+		$log_entry = "[{$timestamp}] STEP: {$step} | MESSAGE: {$message}";
+		
+		if (!empty($data)) {
+			$log_entry .= " | DATA: " . json_encode($data, JSON_UNESCAPED_UNICODE);
+		}
+		
+		$log_entry .= "\n";
+		file_put_contents($log_file, $log_entry, FILE_APPEND | LOCK_EX);
+	}
+	
 	public function index($param = false) {
+		$this->logOrderData('CONFIRM_START', array(
+			'param' => $param,
+			'session_data' => array(
+				'payment_address' => isset($this->session->data['payment_address']) ? $this->session->data['payment_address'] : 'NOT_SET',
+				'payment_method' => isset($this->session->data['payment_method']) ? $this->session->data['payment_method'] : 'NOT_SET',
+				'guest' => isset($this->session->data['guest']) ? $this->session->data['guest'] : 'NOT_SET',
+				'account' => isset($this->session->data['account']) ? $this->session->data['account'] : 'NOT_SET'
+			)
+		), 'Начало подтверждения заказа');
+		
 		$redirect = '';
 
 		// Validate if payment address has been set.
 		if (!isset($this->session->data['payment_address'])) {
+			$this->logOrderData('CONFIRM_ERROR', array('error' => 'payment_address_not_set'), 'Ошибка: адрес оплаты не установлен');
 			$redirect = $this->url->link('checkout/checkout', '', 'SSL');
 		}
 
 		// Validate if payment method has been set.
 		if (!isset($this->session->data['payment_method'])) {
+			$this->logOrderData('CONFIRM_ERROR', array('error' => 'payment_method_not_set'), 'Ошибка: метод оплаты не установлен');
 			$redirect = $this->url->link('checkout/checkout', '', 'SSL');
 		}
 
@@ -430,10 +457,20 @@ class ControllerCheckoutConfirm extends Controller {
 
 	private $first = 0;
     public function result() {
+        $this->logOrderData('RESULT_START', array(
+            'session_data' => array(
+                'payment_address' => isset($this->session->data['payment_address']) ? $this->session->data['payment_address'] : 'NOT_SET',
+                'payment_method' => isset($this->session->data['payment_method']) ? $this->session->data['payment_method'] : 'NOT_SET',
+                'guest' => isset($this->session->data['guest']) ? $this->session->data['guest'] : 'NOT_SET',
+                'account' => isset($this->session->data['account']) ? $this->session->data['account'] : 'NOT_SET'
+            )
+        ), 'Начало метода result - создание заказа');
+        
         $redirect = '';
 
         // Validate if payment address has been set.
         if (!isset($this->session->data['payment_address'])) {
+            $this->logOrderData('RESULT_ERROR', array('error' => 'payment_address_not_set'), 'Ошибка: адрес оплаты не установлен');
             $redirect = $this->url->link('checkout/checkout', '', 'SSL');
         }
 
@@ -491,6 +528,11 @@ class ControllerCheckoutConfirm extends Controller {
             $data['text_message'] = $this->language->get('text_message_beznal');
 
         if ($this->session->data['payment_method']['terms'] == 'confirm_pay') {
+            $this->logOrderData('PAYMENT_CONTROLLER_CALL', array(
+                'payment_method' => $this->session->data['payment_method'],
+                'session_data' => $this->session->data
+            ), 'Вызов контроллера оплаты для создания заказа');
+            
             $this->load->controller('payment/' . $this->session->data['payment_method']['code'] . '/confirm', $this->session->data);
         }
 

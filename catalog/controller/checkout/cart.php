@@ -5,6 +5,7 @@
 // *	@license	GNU General Public License version 3; see LICENSE.txt
 
 class ControllerCheckoutCart extends Controller {
+	
 	public function index() {
 
 		$this->load->language( 'checkout/cart' );
@@ -95,6 +96,7 @@ class ControllerCheckoutCart extends Controller {
 			$data['products'] = array();
 
 			$products = $this->cart->getProducts();
+			
 //			echo '<pre>';
 //			var_dump($products);
 //			echo '</pre>';
