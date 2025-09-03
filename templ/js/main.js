@@ -127,9 +127,11 @@ function initAddCart() {
 
     $('.card').on('click', '.card__bucket', function (e) {
         e.preventDefault();
+        // Логируем добавление в корзину
         var product_id = $(this).data('productId');
         var $count = $(this).closest('.card').find('.card__counter input');
         var quanity = Number($count.val());
+        console.log('CART_ADD_ITEM:', {product_id: product_id, quantity: quanity});
         cart.add(product_id, quanity);
     });
 

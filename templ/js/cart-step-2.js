@@ -374,6 +374,9 @@ $('#loginUser').on('submit', function () {
 $('#anonimUser').on('submit', function (e) {
     e.preventDefault();
 
+    // Логируем отправку формы гостевого заказа
+    console.log('GUEST_FORM_SUBMIT: Начало отправки формы гостевого заказа');
+    
     var action = 'index.php?route=account/login';
     var data = {};
     var $form = $(this);
@@ -401,6 +404,9 @@ $('#anonimUser').on('submit', function (e) {
     data['guest_name'] = $form.find('input[name=guest_name]').val();
     data['telephone'] = $form.find('input[name=telephone]').intlTelInput('getNumber');
 
+    // Логируем данные формы
+    console.log('GUEST_FORM_DATA:', data);
+
 
     $('.errors-fields').each(function () {
         $(this).html('');
@@ -417,6 +423,8 @@ $('#anonimUser').on('submit', function (e) {
         method: 'POST',
         dataType: 'json',
         complete: function (data) {
+            // Логируем ответ сервера
+            console.log('GUEST_FORM_RESPONSE:', data);
 
             $form.find('.btn--submit').prop('disabled', false);
 

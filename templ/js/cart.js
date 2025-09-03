@@ -1,5 +1,8 @@
 var t;
 $('.cart-page').on('click', '.quantity__minus, .quantity__plus', function () {
+    // Логируем изменение количества
+    var action = $(this).hasClass('quantity__minus') ? 'DECREASE' : 'INCREASE';
+    console.log('CART_QUANTITY_CHANGE:', action, 'Button clicked');
 
     var $count = $(this).closest('.quantity').find('.quantity__text input');
     var quanity = Number($count.val());
@@ -80,6 +83,9 @@ function update_quanity(inp = false) {
 }
 
 $('.cart-page').on('click', '.remove', function () {
+    // Логируем удаление товара
+    console.log('CART_REMOVE_ITEM: Кнопка удаления нажата');
+    
     if (!confirm('Удалить ?'))
         return false;
 
