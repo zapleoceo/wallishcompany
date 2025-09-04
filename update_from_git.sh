@@ -42,9 +42,9 @@ check_error() {
 # =============================================================================
 
 # Путь к проекту на сервере
-PROJECT_PATH="/home/wallishcompa_usr/public_html"
+PROJECT_PATH="/var/www/wallishcompa_usr/data/www"
 # Имя папки проекта
-PROJECT_FOLDER="wallish"
+PROJECT_FOLDER="wallishcompany.com"
 # Полный путь к проекту
 FULL_PROJECT_PATH="$PROJECT_PATH/$PROJECT_FOLDER"
 # URL репозитория GitHub
