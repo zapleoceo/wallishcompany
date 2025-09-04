@@ -110,11 +110,17 @@ class ControllerProductCategory extends Controller {
                 'filter_category_id'  => $category['category_id'],
             );
 
+            // Формируем правильный путь для дочерних категорий
+            $child_path = $category_id;
+            if (isset($this->request->get['path'])) {
+                $child_path = $this->request->get['path'] . '_' . $category['category_id'];
+            }
+
             $data['category_children'][] = array(
                 'category_id' => $category['category_id'],
                 'name' => $category['name'] . ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')',
                 'thumb' => !empty($category['image']) ? $this->model_tool_image->resize($category['image'], 300, 300) : '',//$this->model_tool_image->resize('placeholder.png', 300, 300)
-                'href' => $this->url->link('product/category', 'path=' . $category['category_id'])
+                'href' => $this->url->link('product/category', 'path=' . $child_path)
             );
         }
 
