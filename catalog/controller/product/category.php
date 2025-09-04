@@ -270,12 +270,6 @@ class ControllerProductCategory extends Controller {
 			$data['text_categories'] = $this->language->get('text_categories');
 			$data['text_all_products_page'] = $this->language->get('text_all_products_page');
 
-			// Set the last category breadcrumb
-			$data['breadcrumbs'][] = array(
-				'text' => $category_info['name'],
-				'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'])
-			);
-
 			if ($category_info['image']) {
 				$data['thumb'] = $this->model_tool_image->resize($category_info['image'], $this->config->get('config_image_category_width'), $this->config->get('config_image_category_height'));
             } else {
@@ -284,6 +278,12 @@ class ControllerProductCategory extends Controller {
 
 			$data['description'] = html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8');
 			$data['compare'] = $this->url->link('product/compare');
+
+			// Set the last category breadcrumb
+			$data['breadcrumbs'][] = array(
+				'text' => $category_info['name'],
+				'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'])
+			);
 
 			$url = '';
 
