@@ -351,8 +351,8 @@ class ControllerProductCategory extends Controller {
 					$image = $this->model_tool_image->resize($result['image'], 300, 300);
                     $image_full = $this->model_tool_image->resize($result['image'], $this->config->get('config_image_popup_width'), $this->config->get('config_image_popup_height'));
 				} else {
-					$image = ''; //$this->model_tool_image->resize('placeholder.png', 300, 300);
-                    $image_full = '';
+					$image = $this->model_tool_image->resize('no_image.png', 300, 300);
+                    $image_full = $this->model_tool_image->resize('no_image.png', $this->config->get('config_image_popup_width'), $this->config->get('config_image_popup_height'));
 				}
 
 				if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
