@@ -527,9 +527,9 @@ class ModelCatalogProduct extends Model {
 		);
 	}
 
-	public function getProductSimilars($product_id, $limit = 10)
+	    public function getProductSimilars($product_id, $limit = 10)
     {
-        $path = explode('_', $this->request->get['path']);
+        $path = isset($this->request->get['path']) ? explode('_', $this->request->get['path']) : array();
         $countCategory = count($path);
         
         // Проверяем, что у нас достаточно элементов в path
