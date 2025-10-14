@@ -848,10 +848,11 @@
 		} elseif ( $language_code == 'uk' ) {
 			$banner_home = $banner_home_uk;
 		} else {
-			// Default to Russian banner
-			$banner_home = $banner_home;
+			// Default to Ukrainian banner since Russian is disabled
+			$banner_home = $banner_home_uk;
 		} ?>
 
+        <?php if (isset($banner_home['banners']) && !empty($banner_home['banners'])): ?>
         <div id="slideshow_top" class="owl-carousel owl-theme header__background-holder">
 			<?php foreach ( $banner_home['banners'] as $banner ): ?>
                 <div class="item">
@@ -881,6 +882,7 @@
                 </div>
             </div>
         </div>
+        <?php endif; ?>
 
 	<?php endif; ?>
 </div>
