@@ -250,6 +250,7 @@ class ControllerCommonHeader extends Controller {
 		$data['top_block_text_2'] = $this->language->get( 'top_block_text_2' );
 		$data['top_block_text_3'] = $this->language->get( 'top_block_text_3' );
 		$data['top_block_link']	  = $this->url->link('information/information', 'information_id=16', true);
+		$data['language_code']    = $this->language->get( 'code' );
 
 		$data['email']          = $this->config->get( 'config_email' );
 		$data['banner_home']    = $this->load->controller( 'module/banner/get', array( 'banner_id' => 7 ) );
