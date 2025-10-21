@@ -12,3 +12,4 @@ file_put_contents($file, $new_content);
 
 echo "Fixed header.php\n";
 ?>
+

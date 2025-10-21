@@ -8,5 +8,5 @@ $code = $language->get('code');
 
 echo "Language code: " . $code . "\n";
 echo "Is uk: " . ($code == 'uk' ? 'YES' : 'NO') . "\n";
+echo "Is en: " . ($code == 'en' ? 'YES' : 'NO') . "\n";
 ?>
-

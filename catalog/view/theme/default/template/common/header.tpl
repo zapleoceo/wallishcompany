@@ -820,10 +820,10 @@
 
 </header>
 <div class="header header-bottom">
-	<?php if ( $_SERVER['REQUEST_URI'] == '/' || $_SERVER['REQUEST_URI'] == '/en' || $_SERVER['REQUEST_URI'] == '/uk' || $_SERVER['REQUEST_URI'] == '/ru'): ?>
+	<?php if ( $_SERVER['REQUEST_URI'] == '/' || $_SERVER['REQUEST_URI'] == '/en' || $_SERVER['REQUEST_URI'] == '/uk' || $_SERVER['REQUEST_URI'] == '/ru' || strpos($_SERVER['REQUEST_URI'], '/index.php?route=common/home') !== false ): ?>
 
 
-        <?php if ( $language_code == 'uk' ): ?>
+        <?php if ( $language_code == 'uk' || $language_code == 'en' ): ?>
             <div class="container main-top-block">
                 <div class="row">
                     <a href="<?= $top_block_link; ?>" class="col-12 col-sm-4 main-top-block_item">

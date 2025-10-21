@@ -4,7 +4,7 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-@-ms-viewport {
+ @-ms-viewport {
   width: device-width;
 }
 html {
@@ -5284,6 +5284,16 @@ html {
   background-color: #43b9d4;
 }
 /* end: category dropdown */
+
+/* ����� ��� ��������� � ID 144 */
+.category_dropdown .category_items li a[href*="path=144"] {
+    color: #5cb1cd !important; /* ������� ���� */
+    font-weight: bold;
+}
+
+.category_dropdown .category_items li a[href*="path=144"]:hover {
+    color: #4a9bb8 !important; /* �����-������� ��� ��������� */
+}
 .top-drop.open {
   background: #43b9d4;
 }
