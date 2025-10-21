@@ -5285,15 +5285,15 @@ html {
 }
 /* end: category dropdown */
 
-/* Стиль для категории с ID 144 */
+/* пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ ID 144 */
 .category_dropdown .category_items li a[href*="category_id=144"] {
-    background-color: #87CEEB !important; /* Голубой цвет */
+    background-color: #5cb1cd !important; /* пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ */
     color: #fff !important;
     font-weight: bold;
 }
 
 .category_dropdown .category_items li a[href*="category_id=144"]:hover {
-    background-color: #5F9EA0 !important; /* Темно-голубой при наведении */
+    background-color: #4a9bb8 !important; /* пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
     color: #fff !important;
 }
 .top-drop.open {
