@@ -196,22 +196,47 @@ class ModelCatalogProduct extends Model {
 			'p.date_added'
 		);
 
-		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
-			if ($data['sort'] == 'pd.name' || $data['sort'] == 'p.model') {
-				$sql .= " ORDER BY LCASE(" . $data['sort'] . ")";
-			} elseif ($data['sort'] == 'p.price') {
-				$sql .= " ORDER BY (CASE WHEN special IS NOT NULL THEN special WHEN discount IS NOT NULL THEN discount ELSE p.price END)";
+		// Специальная сортировка для категории 144 (НОВОРІЧНИЙ АСОРТИМЕНТ)
+		if (!empty($data['filter_category_id']) && $data['filter_category_id'] == 144) {
+			// Для категории 144: сначала товары НЕ из категории "Коробки подарочные" (105), потом товары из категории 105
+			$sql .= " ORDER BY (CASE WHEN EXISTS (SELECT 1 FROM " . DB_PREFIX . "product_to_category p2c_box WHERE p2c_box.product_id = p.product_id AND p2c_box.category_id = 105) THEN 1 ELSE 0 END) ASC";
+			
+			if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
+				if ($data['sort'] == 'pd.name' || $data['sort'] == 'p.model') {
+					$sql .= ", LCASE(" . $data['sort'] . ")";
+				} elseif ($data['sort'] == 'p.price') {
+					$sql .= ", (CASE WHEN special IS NOT NULL THEN special WHEN discount IS NOT NULL THEN discount ELSE p.price END)";
+				} else {
+					$sql .= ", " . $data['sort'];
+				}
 			} else {
-				$sql .= " ORDER BY " . $data['sort'];
+				$sql .= ", p.sort_order";
+			}
+			
+			if (isset($data['order']) && ($data['order'] == 'DESC')) {
+				$sql .= " DESC, LCASE(pd.name) DESC";
+			} else {
+				$sql .= " ASC, LCASE(pd.name) ASC";
 			}
 		} else {
-			$sql .= " ORDER BY p.sort_order";
-		}
+			// Обычная сортировка для всех остальных категорий
+			if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
+				if ($data['sort'] == 'pd.name' || $data['sort'] == 'p.model') {
+					$sql .= " ORDER BY LCASE(" . $data['sort'] . ")";
+				} elseif ($data['sort'] == 'p.price') {
+					$sql .= " ORDER BY (CASE WHEN special IS NOT NULL THEN special WHEN discount IS NOT NULL THEN discount ELSE p.price END)";
+				} else {
+					$sql .= " ORDER BY " . $data['sort'];
+				}
+			} else {
+				$sql .= " ORDER BY p.sort_order";
+			}
 
-		if (isset($data['order']) && ($data['order'] == 'DESC')) {
-			$sql .= " DESC, LCASE(pd.name) DESC";
-		} else {
-			$sql .= " ASC, LCASE(pd.name) ASC";
+			if (isset($data['order']) && ($data['order'] == 'DESC')) {
+				$sql .= " DESC, LCASE(pd.name) DESC";
+			} else {
+				$sql .= " ASC, LCASE(pd.name) ASC";
+			}
 		}
 
 		if (isset($data['start']) || isset($data['limit'])) {
