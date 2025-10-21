@@ -60,7 +60,7 @@
         </div>
     </div>
     <!-- END: breadcrumb -->
-    <h1 class="category__title"><?php echo $heading_title; ?></h1>
+    <h1 class="category__title"><?php echo preg_replace('/ - страница №\d+/', '', $heading_title); ?></h1>
 
     <!-- BEGIN: category -->
     <section class="category container">
