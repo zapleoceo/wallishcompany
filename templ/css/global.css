@@ -5287,14 +5287,12 @@ html {
 
 /* ����� ��� ��������� � ID 144 */
 .category_dropdown .category_items li a[href*="path=144"] {
-    background-color: #5cb1cd !important; /* ������� ���� */
-    color: #fff !important;
+    color: #5cb1cd !important; /* ������� ���� */
     font-weight: bold;
 }
 
 .category_dropdown .category_items li a[href*="path=144"]:hover {
-    background-color: #4a9bb8 !important; /* �����-������� ��� ��������� */
-    color: #fff !important;
+    color: #4a9bb8 !important; /* �����-������� ��� ��������� */
 }
 .top-drop.open {
   background: #43b9d4;
