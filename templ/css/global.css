@@ -4,7 +4,7 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-@-ms-viewport {
+ @-ms-viewport {
   width: device-width;
 }
 html {
@@ -5284,6 +5284,18 @@ html {
   background-color: #43b9d4;
 }
 /* end: category dropdown */
+
+/* Стиль для категории с ID 144 */
+.category_dropdown .category_items li a[href*="category_id=144"] {
+    background-color: #87CEEB !important; /* Голубой цвет */
+    color: #fff !important;
+    font-weight: bold;
+}
+
+.category_dropdown .category_items li a[href*="category_id=144"]:hover {
+    background-color: #5F9EA0 !important; /* Темно-голубой при наведении */
+    color: #fff !important;
+}
 .top-drop.open {
   background: #43b9d4;
 }
