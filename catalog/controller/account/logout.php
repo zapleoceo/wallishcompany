@@ -23,6 +23,8 @@ class ControllerAccountLogout extends Controller {
 			unset($this->session->data['reward']);
 			unset($this->session->data['voucher']);
 			unset($this->session->data['vouchers']);
+			unset($this->session->data['guest']);
+			unset($this->session->data['account']);
 
 			$this->event->trigger('post.customer.logout');
 

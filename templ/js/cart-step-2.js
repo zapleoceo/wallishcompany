@@ -251,8 +251,16 @@ $('#registerUser').on('submit', function () {
         complete: function (data) {
             $form.find('.c-info__btn-holder input').prop('disabled', false);
 
-            if (typeof data.responseJSON.ok === 'undefined')
+            if (typeof data.responseJSON === 'undefined' || typeof data.responseJSON.ok === 'undefined') {
+                $('.register-block-checkout').prepend('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> Сталася помилка. Спробуйте ще раз або зв\'яжіться з нами.</div>');
+                clearTimeout(timeoutcard0);
+                timeoutcard0 = setTimeout(function () {
+                    $('.alert').fadeOut(1000, function () {
+                        $(this).remove();
+                    });
+                }, 4000);
                 return;
+            }
 
             if (data.responseJSON.ok == true) {
                 if (typeof data.responseJSON.redirect !== 'undefined') {
@@ -330,8 +338,16 @@ $('#loginUser').on('submit', function () {
         complete: function (data) {
             $form.find('.contacts__btn').prop('disabled', false);
 
-            if (typeof data.responseJSON.ok === 'undefined')
+            if (typeof data.responseJSON === 'undefined' || typeof data.responseJSON.ok === 'undefined') {
+                $('.login-block-checkout').prepend('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> Сталася помилка. Спробуйте ще раз або зв\'яжіться з нами.</div>');
+                clearTimeout(timeoutcard1);
+                timeoutcard1 = setTimeout(function () {
+                    $('.alert').fadeOut(1000, function () {
+                        $(this).remove();
+                    });
+                }, 4000);
                 return;
+            }
 
             if (data.responseJSON.ok == true) {
                 if (typeof data.responseJSON.redirect !== 'undefined') {
@@ -428,8 +444,16 @@ $('#anonimUser').on('submit', function (e) {
 
             $form.find('.btn--submit').prop('disabled', false);
 
-            if (typeof data.responseJSON === 'undefined' || typeof data.responseJSON.ok === 'undefined')
+            if (typeof data.responseJSON === 'undefined' || typeof data.responseJSON.ok === 'undefined') {
+                $('.login-block-checkout').prepend('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> Сталася помилка. Спробуйте ще раз або зв\'яжіться з нами.</div>');
+                clearTimeout(timeoutcard2);
+                timeoutcard2 = setTimeout(function () {
+                    $('.alert').fadeOut(1000, function () {
+                        $(this).remove();
+                    });
+                }, 4000);
                 return;
+            }
 
             if (data.responseJSON.ok == true) {
                 if (typeof data.responseJSON.redirect !== 'undefined') {

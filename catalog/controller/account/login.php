@@ -185,9 +185,18 @@ class ControllerAccountLogin extends Controller {
 					);*/
 
 					//$this->model_account_activity->addActivity('quest_register', $activity_data);
-					$this->session->data['guest'] = 1;
+					$this->session->data['guest'] = [
+						'customer_group_id' => $this->config->get('config_customer_group_id'),
+						'firstname'         => $this->guest_name,
+						'lastname'          => '',
+						'email'             => '',
+						'telephone'         => $this->validate_phone,
+						'fax'               => '',
+						'custom_field'      => [],
+					];
+					$this->session->data['account'] = 'guest';
 
-					$this->session->data['shipping_address'] = [
+					$guest_address = [
 						'address_id'   => 0,
 						'firstname'    => $this->guest_name,
 						'lastname'     => '',
@@ -205,27 +214,16 @@ class ControllerAccountLogin extends Controller {
 						'iso_code_3'   => '',
 						'custom_field' => array( 'sendcompany' => 0, 'state' => '', 'shipping_type' => '' ),
 					];
-					$this->session->data['payment_address']  = [
-						'address_id'   => 0,
-						'firstname'    => $this->guest_name,
-						'lastname'     => '',
-						'company'      => '',
-						'address_1'    => $this->validate_phone,
-						'address_2'    => '',
-						'postcode'     => '',
-						'city'         => '',
-						'zone_id'      => 4,
-						'zone'         => '',
-						'zone_code'    => '',
-						'country_id'   => 0,
-						'country'      => '',
-						'iso_code_2'   => '',
-						'iso_code_3'   => '',
-						'custom_field' => array( 'sendcompany' => 0, 'state' => '', 'shipping_type' => '' ),
-					];
+					$this->session->data['shipping_address'] = $guest_address;
+					$this->session->data['payment_address']  = $guest_address;
 
 
 					$this->setPaymentMethods();
+
+					if ( empty( $this->session->data['payment_methods']['postponepayment'] ) ) {
+						$json = array( 'ok' => false, 'error' => array( 'warning' => 'Не вдалося оформити заявку. Зв\'яжіться з нами по телефону.' ) );
+						die( json_encode( $json ) );
+					}
 
 					$this->session->data['shipping_method'] = $this->session->data['payment_method'] = $this->session->data['payment_methods']['postponepayment'];
 
