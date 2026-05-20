@@ -570,6 +570,9 @@ class ModelCatalogProduct extends Model {
 			'p.quantity',
 			'p.status',
 			'p.noindex',
+			'pd.new',
+			'pd.sale',
+			'pd.fete',
 			'p.sort_order'
 		);
 

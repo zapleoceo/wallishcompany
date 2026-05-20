@@ -878,6 +878,9 @@ class ControllerCatalogProduct extends Controller {
 		$data['sort_quantity'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.quantity' . $url, 'SSL');
 		$data['sort_status'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.status' . $url, 'SSL');
 		$data['sort_noindex'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.noindex' . $url, 'SSL');
+		$data['sort_new'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=pd.new' . $url, 'SSL');
+		$data['sort_sale'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=pd.sale' . $url, 'SSL');
+		$data['sort_fete'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=pd.fete' . $url, 'SSL');
 		$data['sort_order'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.sort_order' . $url, 'SSL');
 
 		$url = '';

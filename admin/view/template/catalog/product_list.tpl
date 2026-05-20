@@ -168,9 +168,21 @@
               <thead>
                 <tr>
                   <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);" /></td>
-                  <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected_new\']').prop('checked', this.checked).change();" />new</td>
-                  <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected_sale\']').prop('checked', this.checked).change();" />sale</td>
-                  <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected_fete\']').prop('checked', this.checked).change();" />fete</td>
+                  <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected_new\']').prop('checked', this.checked).change();" /> <?php if ($sort == 'pd.new') { ?>
+                    <a href="<?php echo $sort_new; ?>" class="<?php echo strtolower($order); ?>">new</a>
+                    <?php } else { ?>
+                    <a href="<?php echo $sort_new; ?>">new</a>
+                    <?php } ?></td>
+                  <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected_sale\']').prop('checked', this.checked).change();" /> <?php if ($sort == 'pd.sale') { ?>
+                    <a href="<?php echo $sort_sale; ?>" class="<?php echo strtolower($order); ?>">sale</a>
+                    <?php } else { ?>
+                    <a href="<?php echo $sort_sale; ?>">sale</a>
+                    <?php } ?></td>
+                  <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected_fete\']').prop('checked', this.checked).change();" /> <?php if ($sort == 'pd.fete') { ?>
+                    <a href="<?php echo $sort_fete; ?>" class="<?php echo strtolower($order); ?>">fete</a>
+                    <?php } else { ?>
+                    <a href="<?php echo $sort_fete; ?>">fete</a>
+                    <?php } ?></td>
                   <td class="text-center"><?php echo $column_image; ?></td>
                   <td class="text-left"><?php if ($sort == 'pd.name') { ?>
                     <a href="<?php echo $sort_name; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_name; ?></a>
