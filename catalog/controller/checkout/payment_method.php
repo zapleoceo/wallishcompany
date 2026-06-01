@@ -8,7 +8,7 @@ class ControllerCheckoutPaymentMethod extends Controller {
 	public function index() {
 		$this->load->language('checkout/checkout');
 
-		if (isset($this->session->data['payment_address'])) {
+		if (!empty($this->session->data['payment_address']) && is_array($this->session->data['payment_address'])) {
 			// Totals
 			$total_data = array();
 			$total = 0;
@@ -148,7 +148,7 @@ class ControllerCheckoutPaymentMethod extends Controller {
 
 		$json = array();
 		// Validate if payment address has been set.
-		if (!isset($this->session->data['payment_address'])) {
+		if (empty($this->session->data['payment_address']) || !is_array($this->session->data['payment_address'])) {
 			$json['redirect'] = $this->url->link('checkout/checkout', '', 'SSL');
 		}
 

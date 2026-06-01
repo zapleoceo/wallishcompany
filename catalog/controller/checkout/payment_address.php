@@ -349,7 +349,11 @@ class ControllerCheckoutPaymentAddress extends Controller {
                     ];
                 
             } else {
-                $this->session->data['shipping_address'] = $this->session->data['payment_address'] = $this->model_account_address->getAddress($address_id);
+                $address = $this->model_account_address->getAddress($address_id);
+
+                if (is_array($address)) {
+                    $this->session->data['shipping_address'] = $this->session->data['payment_address'] = $address;
+                }
 
 
             }

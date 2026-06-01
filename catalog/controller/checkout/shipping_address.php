@@ -130,10 +130,16 @@ class ControllerCheckoutShippingAddress extends Controller {
 					// Default Shipping Address
 					$this->load->model('account/address');
 
-					$this->session->data['shipping_address'] = $this->model_account_address->getAddress($this->request->post['address_id']);
+					$shipping_address = $this->model_account_address->getAddress($this->request->post['address_id']);
 
-					unset($this->session->data['shipping_method']);
-					unset($this->session->data['shipping_methods']);
+					if (is_array($shipping_address)) {
+						$this->session->data['shipping_address'] = $shipping_address;
+
+						unset($this->session->data['shipping_method']);
+						unset($this->session->data['shipping_methods']);
+					} else {
+						$json['error']['warning'] = $this->language->get('error_address');
+					}
 				}
 			} else {
 				if ((utf8_strlen(trim($this->request->post['firstname'])) < 1) || (utf8_strlen(trim($this->request->post['firstname'])) > 32)) {
@@ -185,10 +191,14 @@ class ControllerCheckoutShippingAddress extends Controller {
 
 					$address_id = $this->model_account_address->addAddress($this->request->post);
 
-					$this->session->data['shipping_address'] = $this->model_account_address->getAddress($address_id);
+					$shipping_address = $this->model_account_address->getAddress($address_id);
 
-					unset($this->session->data['shipping_method']);
-					unset($this->session->data['shipping_methods']);
+					if (is_array($shipping_address)) {
+						$this->session->data['shipping_address'] = $shipping_address;
+
+						unset($this->session->data['shipping_method']);
+						unset($this->session->data['shipping_methods']);
+					}
 
 					$this->load->model('account/activity');
 

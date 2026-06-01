@@ -34,7 +34,7 @@ class ControllerCheckoutConfirm extends Controller {
 		$redirect = '';
 
 		// Validate if payment address has been set.
-		if (!isset($this->session->data['payment_address'])) {
+		if (empty($this->session->data['payment_address']) || !is_array($this->session->data['payment_address'])) {
 			$this->logOrderData('CONFIRM_ERROR', array('error' => 'payment_address_not_set'), 'Ошибка: адрес оплаты не установлен');
 			$redirect = $this->url->link('checkout/checkout', '', 'SSL');
 		}
@@ -479,7 +479,7 @@ class ControllerCheckoutConfirm extends Controller {
         $redirect = '';
 
         // Validate if payment address has been set.
-        if (!isset($this->session->data['payment_address'])) {
+        if (empty($this->session->data['payment_address']) || !is_array($this->session->data['payment_address'])) {
             $this->logOrderData('RESULT_ERROR', array('error' => 'payment_address_not_set'), 'Ошибка: адрес оплаты не установлен');
             $redirect = $this->url->link('checkout/checkout', '', 'SSL');
         }

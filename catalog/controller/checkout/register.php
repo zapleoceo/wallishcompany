@@ -374,10 +374,14 @@ class ControllerCheckoutRegister extends Controller {
 				// Default Payment Address
 				$this->load->model('account/address');
 
-				$this->session->data['payment_address'] = $this->model_account_address->getAddress($this->customer->getAddressId());
+				$default_address = $this->model_account_address->getAddress($this->customer->getAddressId());
 
-				if (!empty($this->request->post['shipping_address'])) {
-					$this->session->data['shipping_address'] = $this->model_account_address->getAddress($this->customer->getAddressId());
+				if (is_array($default_address)) {
+					$this->session->data['payment_address'] = $default_address;
+
+					if (!empty($this->request->post['shipping_address'])) {
+						$this->session->data['shipping_address'] = $default_address;
+					}
 				}
 			} else {
 				$json['redirect'] = $this->url->link('account/success');

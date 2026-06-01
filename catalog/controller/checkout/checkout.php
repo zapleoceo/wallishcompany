@@ -96,7 +96,7 @@ class ControllerCheckoutCheckout extends Controller {
 
 
         if ($data['logged']) {
-            if (isset($this->session->data['payment_address'])) {
+            if (!empty($this->session->data['payment_address']) && is_array($this->session->data['payment_address'])) {
                 $step = 4;
             } else {
                 $step = 3;
