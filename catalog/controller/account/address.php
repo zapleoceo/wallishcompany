@@ -87,17 +87,19 @@ class ControllerAccountAddress extends Controller {
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_account_address->editAddress($this->request->get['address_id'], $this->request->post);
 
+			$updated_address = $this->model_account_address->getAddress($this->request->get['address_id']);
+
 			// Default Shipping Address
-			if (isset($this->session->data['shipping_address']['address_id']) && ($this->request->get['address_id'] == $this->session->data['shipping_address']['address_id'])) {
-				$this->session->data['shipping_address'] = $this->model_account_address->getAddress($this->request->get['address_id']);
+			if (is_array($updated_address) && isset($this->session->data['shipping_address']['address_id']) && ($this->request->get['address_id'] == $this->session->data['shipping_address']['address_id'])) {
+				$this->session->data['shipping_address'] = $updated_address;
 
 				unset($this->session->data['shipping_method']);
 				unset($this->session->data['shipping_methods']);
 			}
 
 			// Default Payment Address
-			if (isset($this->session->data['payment_address']['address_id']) && ($this->request->get['address_id'] == $this->session->data['payment_address']['address_id'])) {
-				$this->session->data['payment_address'] = $this->model_account_address->getAddress($this->request->get['address_id']);
+			if (is_array($updated_address) && isset($this->session->data['payment_address']['address_id']) && ($this->request->get['address_id'] == $this->session->data['payment_address']['address_id'])) {
+				$this->session->data['payment_address'] = $updated_address;
 
 				unset($this->session->data['payment_method']);
 				unset($this->session->data['payment_methods']);
