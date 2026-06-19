@@ -1,6 +1,10 @@
 <?php
 class ModelShippingXshipping extends Model {
 	function getQuote($address) {
+		if (!is_array($address)) {
+			$address = array('country_id' => 0, 'zone_id' => 0);
+		}
+
 		$this->load->language('shipping/xshipping');
 	
 		$method_data = array();

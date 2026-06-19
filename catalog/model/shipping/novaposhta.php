@@ -3,6 +3,10 @@
 class ModelShippingnovaposhta extends Model {
 
     function getQuote($address) {
+        if (!is_array($address)) {
+            $address = array('country_id' => 0, 'zone_id' => 0);
+        }
+
         $this->load->language('shipping/novaposhta');
 
         if ($this->config->get('novaposhta_status')) {
