@@ -133,7 +133,7 @@ class ModelRecordBlog extends Model
 		LEFT JOIN " . DB_PREFIX . "blog_to_store c2s ON (c.blog_id = c2s.blog_id) WHERE c.parent_id = '" . (int) $parent_id . "' AND c2s.store_id = '" . (int) $this->config->get('config_store_id') . "' AND c.status = '1'");
 		return $query->row['total'];
 	}
-	public function getCustomerOrder($customer_id = 0, $order_status_array, $product_id = -1)
+	public function getCustomerOrder($customer_id, $order_status_array, $product_id = -1)
 	{
 		if (!is_array($order_status_array)) {
 			$order_status_array = array(

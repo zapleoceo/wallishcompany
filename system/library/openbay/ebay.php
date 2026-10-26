@@ -37,7 +37,7 @@ final class Ebay {
 		return $this->registry->get($name);
 	}
 
-	public function call($call, array $post = null, array $options = array(), $content_type = 'json', $status_override = false) {
+	public function call($call, ?array $post = null, array $options = array(), $content_type = 'json', $status_override = false) {
 		if ($this->config->get('ebay_status') == 1 || $status_override == true) {
 			$this->lasterror    = '';
 			$this->lastmsg      = '';
@@ -111,7 +111,7 @@ final class Ebay {
 		}
 	}
 
-	public function callNoResponse($call, array $post = null, array $options = array(), $content_type = 'json') {
+	public function callNoResponse($call, ?array $post = null, array $options = array(), $content_type = 'json') {
 		if ($this->config->get('ebay_status') == 1) {
 			$this->log('openbay_noresponse_call(' . $call . ') - Data :' .  json_encode($post));
 

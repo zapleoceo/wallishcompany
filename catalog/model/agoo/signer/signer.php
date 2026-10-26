@@ -6,7 +6,7 @@
 if (!class_exists('ModelagooSignerSigner', false)) {
 class ModelagooSignerSigner extends Model
 {
-	public function getStatus($id, $customer_id, $pointer = 'record_id', $email) {
+	public function getStatus($id, $customer_id, $pointer, $email) {
 		if ($customer_id!=0) {
 		 	$sql_customer = " AND  customer_id =" . (int) $customer_id . " ";
 		} else {
@@ -39,7 +39,7 @@ class ModelagooSignerSigner extends Model
 		return $query->row;
 	}
 
-	public function setStatus($id, $customer_id, $pointer = 'record_id', $email) {
+	public function setStatus($id, $customer_id, $pointer, $email) {
   		if ($customer_id) {
 			$customer = $this->getCustomer($customer_id);
 			$email = $customer['email'];
@@ -67,7 +67,7 @@ class ModelagooSignerSigner extends Model
 	}
 
 
-	public function removeStatus($id, $customer_id, $pointer = 'record_id', $email)	{
+	public function removeStatus($id, $customer_id, $pointer, $email)	{
 		if ($customer_id) {
 		 	$sql_customer = " AND  customer_id =" . (int) $customer_id . " ";
 		} else {

@@ -38,3 +38,9 @@ Header always set Referrer-Policy "strict-origin-when-cross-origin"
     Order Allow,Deny
     Deny from all
 </FilesMatch>
+
+# config.php holds DB credentials; the "*.php" allow above re-opens it otherwise
+<FilesMatch "^config\.php$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
