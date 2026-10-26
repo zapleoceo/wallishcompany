@@ -133,9 +133,9 @@ class ControllerBlogArticle extends Controller {
 		$this->load->model('blog/article');
 
 		$article_info = $this->model_blog_article->getArticle($article_id);
-		$data['date_added'] = date('d/m/y', strtotime($article_info['date_added']));
+		$data['date_added'] = $article_info ? date('d/m/y', strtotime($article_info['date_added'])) : '';
 
-        $data['image'] = $article_info['image'];
+        $data['image'] = $article_info ? $article_info['image'] : '';
 
 		if ($article_info) {
 			$url = '';

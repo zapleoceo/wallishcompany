@@ -251,7 +251,7 @@ class ControllerInformationContact extends Controller {
 
 	protected function validate() {
 		// Bots post without the fields; PHP 8 turns each missing key into a Warning
-		foreach (array('cl_name', 'cl_email', 'cl_phone', 'cl_enquiry') as $field) {
+		foreach (array('cl_name', 'cl_email', 'cl_phone', 'cl_enquiry', 'contact_status') as $field) {
 			if (!isset($this->request->post[$field])) {
 				$this->request->post[$field] = '';
 			}
