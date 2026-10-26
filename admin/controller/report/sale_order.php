@@ -744,9 +744,10 @@ class ControllerReportSaleOrder extends Controller {
 
 
 
-                        $total_all += $p['total']+$p['saleorder'];
-                        $sale += $p['saleorder'];
-                        $total += $p['total'];
+                        // saleorder is a varchar and empty for most old orders; PHP 8 throws on '' in arithmetic
+                        $total_all += (float)$p['total'] + (float)$p['saleorder'];
+                        $sale += (float)$p['saleorder'];
+                        $total += (float)$p['total'];
 
                         $quantity += $p['quantity'];
                         $orders[] = $ord_id;
@@ -785,9 +786,9 @@ class ControllerReportSaleOrder extends Controller {
 
 
                             $period[$ccategory_id][$filter_group . ':' . $key]['orders'][] = $ord_id;
-                            $period[$ccategory_id][$filter_group . ':' . $key]['total_all'] += $p['total']+$p['saleorder'];
-                            $period[$ccategory_id][$filter_group . ':' . $key]['sale'] += $p['saleorder'];
-                            $period[$ccategory_id][$filter_group . ':' . $key]['total'] += $p['total'];
+                            $period[$ccategory_id][$filter_group . ':' . $key]['total_all'] += (float)$p['total'] + (float)$p['saleorder'];
+                            $period[$ccategory_id][$filter_group . ':' . $key]['sale'] += (float)$p['saleorder'];
+                            $period[$ccategory_id][$filter_group . ':' . $key]['total'] += (float)$p['total'];
                             $period[$ccategory_id][$filter_group . ':' . $key]['quantity'] += $p['quantity'];
 
                             /*if ($p['sale'] == 1) {

@@ -83,12 +83,12 @@ class Controllermodulecustmergroupbysumm extends Controller {
 //            if ($p['sale'])
 //                continue;
 
-            if (empty($persent) && isset($p['saleorder'])) {
-                $persent = round($p['saleorder'] / $p['price'] * 100);
+            // PHP 8 throws on '' in arithmetic and on division by zero
+            if (empty($persent) && isset($p['saleorder']) && (float)$p['price'] > 0) {
+                $persent = round((float)$p['saleorder'] / $p['price'] * 100);
             }
 
-            if (!isset($p['saleorder']))
-                $p['saleorder'] = 0;
+            $p['saleorder'] = isset($p['saleorder']) ? (float)$p['saleorder'] : 0;
 
             $total += $p['price'] * $p['quantity'];
 
