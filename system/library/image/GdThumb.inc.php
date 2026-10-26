@@ -137,12 +137,12 @@ class GdThumb extends ThumbBase
 	 */
 	public function __destruct ()
 	{
-		if (is_resource($this->oldImage))
+		if (is_resource($this->oldImage) || $this->oldImage instanceof \GdImage)
 		{
 			imagedestroy($this->oldImage);
 		}
 
-		if (is_resource($this->workingImage))
+		if (is_resource($this->workingImage) || $this->workingImage instanceof \GdImage)
 		{
 			imagedestroy($this->workingImage);
 		}

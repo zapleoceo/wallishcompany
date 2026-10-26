@@ -65,7 +65,8 @@ class Image {
 
 		$extension = strtolower($info['extension']);
 
-		if (is_resource($this->image)) {
+		// PHP 8 GD returns GdImage objects instead of resources
+		if (is_resource($this->image) || $this->image instanceof \GdImage) {
 			if ($extension == 'jpeg' || $extension == 'jpg') {
 				imagejpeg($this->image, $file, $quality);
 			} elseif ($extension == 'png') {
