@@ -5,6 +5,8 @@
 // *	@license	GNU General Public License version 3; see LICENSE.txt
 
 final class Encryption {
+	const CIPHER = 'aes-256-cbc';
+
 	private $key;
 
 	public function __construct($key) {
@@ -12,10 +14,19 @@ final class Encryption {
 	}
 
 	public function encrypt($value) {
-		return strtr(base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, hash('sha256', $this->key, true), $value, MCRYPT_MODE_ECB)), '+/=', '-_,');
+		$iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length(self::CIPHER));
+
+		return strtr(base64_encode($iv . openssl_encrypt((string)$value, self::CIPHER, $this->key, OPENSSL_RAW_DATA, $iv)), '+/=', '-_,');
 	}
 
 	public function decrypt($value) {
-		return trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, hash('sha256', $this->key, true), base64_decode(strtr($value, '-_,', '+/=')), MCRYPT_MODE_ECB));
+		$data = base64_decode(strtr((string)$value, '-_,', '+/='));
+		$iv_length = openssl_cipher_iv_length(self::CIPHER);
+
+		if ($data === false || strlen($data) <= $iv_length) {
+			return '';
+		}
+
+		return trim((string)openssl_decrypt(substr($data, $iv_length), self::CIPHER, $this->key, OPENSSL_RAW_DATA, substr($data, 0, $iv_length)));
 	}
 }

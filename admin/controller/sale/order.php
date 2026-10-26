@@ -1887,7 +1887,7 @@ class ControllerSaleOrder extends Controller {
 
                 //print_r(implode('<br>', $html));exit();
 
-                $mpdf = new \Mpdf\Mpdf();
+                $mpdf = new \Mpdf\Mpdf(array('tempDir' => DIR_CACHE . 'mpdf'));
                 $mpdf->WriteHTML(implode('<br><br>', $html));
                 $mpdf->Output('report_' . time() . '.pdf', 'D');
                 exit();

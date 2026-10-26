@@ -10,7 +10,7 @@
     $checked = !empty($payment_method) ? $payment_method['code'] : 'first';
     $f=0;
     foreach ($payment_methods as $k => $payment_method):
-      $check = ($checked == 'first') ? ($f==0) ? ' checked':'' : ($checked == $payment_method['code']) ? ' checked': '';
+      $check = ($checked == 'first') ? (($f==0) ? ' checked':'') : (($checked == $payment_method['code']) ? ' checked': '');
       $f++;
   ?>
     <input class="c-info__core" value="<?= $payment_method['code']; ?>" type="radio" name="payment" id="pay_<?= $payment_method['code']; ?>"<?= $check; ?>/>

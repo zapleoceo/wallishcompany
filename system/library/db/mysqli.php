@@ -9,6 +9,9 @@ final class MySQLi {
 	private $link;
 
 	public function __construct($hostname, $username, $password, $database, $port = '3306') {
+		// PHP 8.1+ throws mysqli_sql_exception by default; keep the errno checks below working
+		mysqli_report(MYSQLI_REPORT_OFF);
+
 		$this->link = new \mysqli($hostname, $username, $password, $database, $port);
 
 		if ($this->link->connect_error) {

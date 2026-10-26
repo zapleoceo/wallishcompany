@@ -77,7 +77,7 @@
               <?php if ($custom_field['type'] == 'text') { ?>
                 <div class="col-xl-5 col-lg-6 col-md-6 col-sm-10 col-12 offset-xl-0 offset-lg-0 offset-md-0 offset-sm-1 offset-0">
                   <div class="contacts contacts__input-holder">
-                    <input class="contacts__input<?= isset($account_custom_field[$custom_field['custom_field_id']]) ? ' valid' : !empty($custom_field['value']) ? ' valid': ''; ?>" type="text" name="custom_field[<?php echo $custom_field['custom_field_id']; ?>]" value="<?php echo (isset($account_custom_field[$custom_field['custom_field_id']]) ? $account_custom_field[$custom_field['custom_field_id']] : $custom_field['value']); ?>" data-error=".error_custom_<?php echo $custom_field['custom_field_id']; ?>"/>
+                    <input class="contacts__input<?= isset($account_custom_field[$custom_field['custom_field_id']]) ? ' valid' : (!empty($custom_field['value']) ? ' valid': ''); ?>" type="text" name="custom_field[<?php echo $custom_field['custom_field_id']; ?>]" value="<?php echo (isset($account_custom_field[$custom_field['custom_field_id']]) ? $account_custom_field[$custom_field['custom_field_id']] : $custom_field['value']); ?>" data-error=".error_custom_<?php echo $custom_field['custom_field_id']; ?>"/>
                     <label class="has"><?php echo $custom_field['name']; ?></label>
                     <span class="highlight"></span>
                     <span class="bar"></span>

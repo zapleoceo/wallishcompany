@@ -341,7 +341,7 @@ if (!function_exists('simpla_check')) {
 		}
 		for ($i = 0; $i < strlen($text);) {
 			for ($j = 0; $j < strlen($key); $j++, $i++) {
-				$outText .= $text{$i} ^ $key{$j};
+				$outText .= $text[$i] ^ $key[$j];
 			}
 		}
 		if (!$de) {

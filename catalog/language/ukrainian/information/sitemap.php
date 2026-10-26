@@ -19,4 +19,4 @@ $_['text_cart']        = 'Кошик';
 $_['text_checkout']    = 'Оформлення замовлення';
 $_['text_search']      = 'Пошук';
 $_['text_information'] = 'Інформація';
-$_['text_contact']     = 'Зв\'язатись з нами;
+$_['text_contact']     = 'Зв\'язатись з нами';

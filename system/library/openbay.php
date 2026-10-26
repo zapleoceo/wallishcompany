@@ -41,6 +41,11 @@ final class Openbay {
 	}
 
 	public function encrypt($msg, $k, $base64 = false) {
+		// OpenBay uses Rijndael-256 which only mcrypt provides; mcrypt is gone since PHP 7.2
+		if (!function_exists('mcrypt_module_open')) {
+			return false;
+		}
+
 		$td = mcrypt_module_open('rijndael-256', '', 'ctr', '');
 
 		if (!$td) {
@@ -69,6 +74,10 @@ final class Openbay {
 	}
 
 	public function decrypt($msg, $k, $base64 = false) {
+		if (!function_exists('mcrypt_module_open')) {
+			return false;
+		}
+
 		if ($base64) {
 			$msg = base64_decode($msg);
 		}
@@ -101,7 +110,7 @@ final class Openbay {
 	}
 
 	public function pbkdf2($p, $s, $c, $kl, $a = 'sha256') {
-		$hl = strlen(hash($a, null, true));
+		$hl = strlen(hash($a, '', true));
 		$kb = ceil($kl / $hl);
 		$dk = '';
 

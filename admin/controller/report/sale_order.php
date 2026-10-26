@@ -64,7 +64,7 @@ class ControllerReportSaleOrder extends Controller {
             foreach($rows as $row)
                 $html[] = '<img src="'.$row.'"/>';
 
-            $mpdf = new \Mpdf\Mpdf();
+            $mpdf = new \Mpdf\Mpdf(array('tempDir' => DIR_CACHE . 'mpdf'));
             $mpdf->WriteHTML(implode('<br>', $html));
             $mpdf->Output('report_' .time(). '.pdf', 'D');
             exit();
