@@ -36,6 +36,13 @@ Options -Indexes
  Deny from all
 </FilesMatch>
 
+# Service files: configs with credentials, deploy scripts, docs, git metadata
+<FilesMatch "(?i)^(config\.php|authorized_keys|composer\.(json|lock)|.*\.(sh|md|sql))$">
+ Order deny,allow
+ Deny from all
+</FilesMatch>
+RedirectMatch 404 /\.git
+
 # SEO URL Settings
 RewriteEngine On
 # If your opencart installation does not run on the main web folder make sure you folder it does run in ie. / becomes /shop/
