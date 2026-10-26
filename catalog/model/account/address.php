@@ -123,7 +123,7 @@ class ModelAccountAddress extends Model {
         if ($id === false)
             return false;
 
-        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "zone WHERE zone_id = ".$id."");
+        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "zone WHERE zone_id = " . (int)$id);
 
         if (empty($query))
             return false;
@@ -135,7 +135,7 @@ class ModelAccountAddress extends Model {
         if ($id === false)
             return false;
 
-        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "country WHERE country_id = ".$id."");
+        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "country WHERE country_id = " . (int)$id);
 
         if (empty($query))
             return false;
@@ -147,10 +147,10 @@ class ModelAccountAddress extends Model {
 
 	    $wherearr = array();
 	    if ($country_id !== false)
-            $wherearr[] = ' country_id=' . $country_id;
+            $wherearr[] = ' country_id=' . (int)$country_id;
 
         if ($city_name !== false)
-            $wherearr[] = " name='" . $city_name . "'";
+            $wherearr[] = " name='" . $this->db->escape($city_name) . "'";
 
         $WHERE = $wherearr ? ' WHERE ' . implode(' AND ', $wherearr) : '';
         $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "zone" . $WHERE);
@@ -161,7 +161,7 @@ class ModelAccountAddress extends Model {
     }
 
     public function getCountries($skip_country_id = false) {
-        $skip_country_id = $skip_country_id !== false ? ' WHERE id != ' . $skip_country_id : '';
+        $skip_country_id = $skip_country_id !== false ? ' WHERE id != ' . (int)$skip_country_id : '';
         $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "countries".$skip_country_id." ORDER BY sort DESC");
         if (empty($query))
             return false;
@@ -173,7 +173,7 @@ class ModelAccountAddress extends Model {
 	    if ($country_id === false)
 	        return false;
 
-        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "countries WHERE id = ".$country_id."");
+        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "countries WHERE id = " . (int)$country_id);
 
         if (empty($query))
             return false;
@@ -190,7 +190,7 @@ class ModelAccountAddress extends Model {
     }
 
     public function getNPAdress($zone_id =  0) {
-        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "city WHERE zone_id=".$zone_id." AND status = 1");
+        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "city WHERE zone_id=" . (int)$zone_id . " AND status = 1");
         if (empty($query))
             return false;
 
