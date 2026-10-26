@@ -3,7 +3,7 @@
 // https://opencartadmin.com © 2011-2019 All Rights Reserved
 // Distribution, without the author's consent is prohibited
 // Commercial license
-#[AllowDynamicProperties]
+#[\AllowDynamicProperties]
 class Captcha
 {
 	private $code;

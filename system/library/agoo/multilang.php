@@ -1,5 +1,5 @@
 <?php
-#[AllowDynamicProperties]
+#[\AllowDynamicProperties]
 class agooMultilang extends Controller
 {
 	private $langcode_all;

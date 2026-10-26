@@ -4,7 +4,7 @@
 // *	@source		See SOURCE.txt for source and other copyright.
 // *	@license	GNU General Public License version 3; see LICENSE.txt
 
-#[AllowDynamicProperties]
+#[\AllowDynamicProperties]
 class Pagination {
 	public $total = 0;
 	public $page = 1;

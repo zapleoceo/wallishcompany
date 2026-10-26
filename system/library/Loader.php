@@ -1,5 +1,5 @@
 <?php
-#[AllowDynamicProperties]
+#[\AllowDynamicProperties]
 final class Loader {
 	private $registry;
 

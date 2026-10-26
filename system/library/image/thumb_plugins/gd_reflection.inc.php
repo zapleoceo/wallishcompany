@@ -30,7 +30,7 @@
  * @package PhpThumb
  * @subpackage Plugins
  */
-#[AllowDynamicProperties]
+#[\AllowDynamicProperties]
 class GdReflectionLib
 {
 	/**

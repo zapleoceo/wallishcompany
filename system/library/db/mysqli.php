@@ -5,7 +5,7 @@
 // *	@license	GNU General Public License version 3; see LICENSE.txt
 
 namespace DB;
-#[AllowDynamicProperties]
+#[\AllowDynamicProperties]
 final class MySQLi {
 	private $link;
 

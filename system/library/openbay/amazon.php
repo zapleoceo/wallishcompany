@@ -6,7 +6,7 @@
 
 namespace openbay;
 
-#[AllowDynamicProperties]
+#[\AllowDynamicProperties]
 class Amazon {
 	private $token;
 	private $enc1;
