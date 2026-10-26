@@ -68,7 +68,7 @@ class ModelCatalogProduct extends Model {
 	}
 	
 	public function getproducttab($product_id){
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_tab pt LEFT JOIN ".DB_PREFIX. "product_tab_desc ptd ON(pt.product_tab_id = ptd.product_tab_id) WHERE pt.product_id = '".$product_id."' AND ptd.language_id = '".$this->config->get('config_language_id')."' AND pt.status = 1 ORDER BY sort_order ASC");
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_tab pt LEFT JOIN ".DB_PREFIX. "product_tab_desc ptd ON(pt.product_tab_id = ptd.product_tab_id) WHERE pt.product_id = '" . (int)$product_id . "' AND ptd.language_id = '".$this->config->get('config_language_id')."' AND pt.status = 1 ORDER BY sort_order ASC");
 		return $query->rows;
 	}
 
@@ -473,7 +473,7 @@ class ModelCatalogProduct extends Model {
         if (empty($user_id))
             return array();
 
-	    $query = $this->db->query("SELECT product_id FROM " . DB_PREFIX . "customer_wishlist WHERE customer_id='".$user_id."'");
+	    $query = $this->db->query("SELECT product_id FROM " . DB_PREFIX . "customer_wishlist WHERE customer_id='" . (int)$user_id . "'");
 		if (empty($query->rows))
 			return array();
 
@@ -481,7 +481,10 @@ class ModelCatalogProduct extends Model {
 	}
 
 	public function getProductNav($product_id, $category_id = false) {
-		if (empty($product_id)) 
+		// product_id comes straight from the URL and is concatenated into the queries below
+		$product_id = (int)$product_id;
+
+		if (empty($product_id))
 			return false;
 
         $sql = "SELECT sort_order FROM " . DB_PREFIX . "product WHERE product_id = '" . $product_id . "' LIMIT 1 ";
@@ -554,7 +557,11 @@ class ModelCatalogProduct extends Model {
 
 	    public function getProductSimilars($product_id, $limit = 10)
     {
-        $path = isset($this->request->get['path']) ? explode('_', $this->request->get['path']) : array();
+        // all three end up concatenated into SQL; path comes from the URL
+        $product_id = (int)$product_id;
+        $limit = (int)$limit;
+
+        $path = isset($this->request->get['path']) ? array_map('intval', explode('_', $this->request->get['path'])) : array();
         $countCategory = count($path);
         
         // Проверяем, что у нас достаточно элементов в path
