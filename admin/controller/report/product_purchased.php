@@ -148,6 +148,7 @@ class ControllerReportProductPurchased extends Controller {
 		$data['text_confirm'] = $this->language->get('text_confirm');
 		$data['text_all_status'] = $this->language->get('text_all_status');
         $data['text_all'] = $this->language->get('text_all');
+        $data['text_none_manufacturer'] = $this->language->get('text_none_manufacturer');
         $data['text_none_category'] = $this->language->get('text_none_category');
 
 		$data['column_name'] = $this->language->get('column_name');

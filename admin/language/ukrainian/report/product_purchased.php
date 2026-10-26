@@ -23,3 +23,4 @@ $_['column_total']      = 'Загалом';
 $_['entry_date_start']  = 'Дата початку';
 $_['entry_date_end']    = 'Дата закінчення';
 $_['entry_status']      = 'Статус замовлення';
+$_['text_none_manufacturer'] = ' --- Без виробника --- ';
