@@ -15,6 +15,7 @@
  *       echo "Notice raised: " . $e->getMessage();
  *   }
  */
+#[AllowDynamicProperties]
 class PHP_Exceptionizer
 {
     public function __construct($mask = E_ALL, $ignoreOther = false)

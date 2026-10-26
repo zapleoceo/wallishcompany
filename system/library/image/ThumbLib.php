@@ -63,6 +63,7 @@ require_once THUMBLIB_BASE_PATH . '/GdThumb.inc.php';
  * @package PhpThumb
  * @subpackage Core
  */
+#[AllowDynamicProperties]
 class PhpThumbFactory
 {
 	/**

@@ -1,4 +1,5 @@
 <?php
+#[AllowDynamicProperties]
 final class Loader {
 	private $registry;
 

@@ -5,6 +5,7 @@
 // *	@license	GNU General Public License version 3; see LICENSE.txt
 
 namespace Cache;
+#[AllowDynamicProperties]
 class Mem {
 	private $expire;
 	private $cache;

@@ -119,6 +119,7 @@ function dump_html_tree($node, $show_attr=true, $deep=0)
  *
  * @package PlaceLocalInclude
  */
+#[AllowDynamicProperties]
 class simple_html_dom_node
 {
     public $nodetype = HDOM_TYPE_TEXT;

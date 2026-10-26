@@ -30,6 +30,7 @@
  * @package PhpThumb
  * @subpackage Core
  */
+#[AllowDynamicProperties]
 class GdThumb extends ThumbBase
 {
 	/**

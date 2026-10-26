@@ -30,6 +30,7 @@
  * @package PhpThumb
  * @subpackage Plugins
  */
+#[AllowDynamicProperties]
 class GdWatermarkLib
 {
 	/*

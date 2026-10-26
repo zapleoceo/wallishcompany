@@ -6,6 +6,7 @@
 
 namespace openbay;
 
+#[AllowDynamicProperties]
 final class Ebay {
 	private $token;
 	private $enc1;

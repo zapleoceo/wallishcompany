@@ -42,6 +42,7 @@
  * @package PhpThumb
  * @subpackage Core
  */
+#[AllowDynamicProperties]
 class PhpThumb
 {
 	/**

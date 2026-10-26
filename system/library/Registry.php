@@ -1,4 +1,5 @@
 <?php
+#[AllowDynamicProperties]
 final class Registry {
 	private $data = array();
 

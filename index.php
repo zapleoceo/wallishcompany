@@ -107,7 +107,7 @@ function error_handler($code, $message, $file, $line) {
 	global $log, $config;
 
 	// error suppressed with @
-	if (error_reporting() === 0) {
+	if (!(error_reporting() & $code)) {
 		return false;
 	}
 
@@ -124,12 +124,17 @@ function error_handler($code, $message, $file, $line) {
 		case E_USER_ERROR:
 			$error = 'Fatal Error';
 			break;
+		case E_DEPRECATED:
+		case E_USER_DEPRECATED:
+			$error = 'Deprecated';
+			break;
 		default:
 			$error = 'Unknown';
 			break;
 	}
 
-	if ($config->get('config_error_display')) {
+	// Deprecations go to the log only: printing them sends headers before the session starts
+	if ($config->get('config_error_display') && $error !== 'Deprecated') {
 		echo '<b>' . $error . '</b>: ' . $message . ' in <b>' . $file . '</b> on line <b>' . $line . '</b>';
 	}
 

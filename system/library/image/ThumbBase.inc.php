@@ -32,6 +32,7 @@
  * @package PhpThumb
  * @subpackage Core
  */
+#[AllowDynamicProperties]
 abstract class ThumbBase
 {
 	/**

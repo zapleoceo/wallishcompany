@@ -4,6 +4,7 @@
 // Distribution, without the author's consent is prohibited
 // Commercial license
 if (!class_exists('agooLoader', false)) {
+#[AllowDynamicProperties]
 class agooLoader extends Controller
 {
 	protected $Loader;

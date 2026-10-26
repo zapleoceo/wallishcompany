@@ -4,6 +4,7 @@
 // Distribution, without the author's consent is prohibited
 // Commercial license
 if (!class_exists('agooCache', false)) {
+#[AllowDynamicProperties]
 class agooCache extends Controller
 {
 	protected $Cache;

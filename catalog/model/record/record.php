@@ -66,7 +66,7 @@ class ModelRecordRecord extends Model
 
 		if ($query->num_rows) {
 			if (isset($query->row['rating'])) {
-				$query->row['rating'] = round($query->row['rating']);
+				$query->row['rating'] = round((float)$query->row['rating']);
 			}
 			return $query->row;
 		} else {
@@ -700,7 +700,7 @@ AND p2s.store_id = '" . (int) $this->config->get('config_store_id') . "'
 
 		if ($query->num_rows) {
 			$query->row['price']  = $query->row['price'];
-			$query->row['rating'] = round($query->row['rating']);
+			$query->row['rating'] = round((float)$query->row['rating']);
 			return $query->row;
 		} else {
 			return false;

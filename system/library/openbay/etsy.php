@@ -6,6 +6,7 @@
 
 namespace openbay;
 
+#[AllowDynamicProperties]
 final class Etsy {
 	private $token;
 	private $enc1;

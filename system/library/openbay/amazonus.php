@@ -6,6 +6,7 @@
 
 namespace openbay;
 
+#[AllowDynamicProperties]
 class Amazonus {
 	private $token;
 	private $enc1;
