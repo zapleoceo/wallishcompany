@@ -26,13 +26,13 @@ class ControllerProductSpecial extends Controller {
 		}
 
 		if (isset($this->request->get['page'])) {
-			$page = $this->request->get['page'];
+			$page = (int)$this->request->get['page'];
 			$this->document->setRobots('noindex,follow');
 		} else {
 			$page = 1;
 		}
 
-		if (isset($this->request->get['limit'])) {
+		if (isset($this->request->get['limit']) && (int)$this->request->get['limit'] > 0) {
 			$limit = (int)$this->request->get['limit'];
 			$this->document->setRobots('noindex,follow');
 		} else {

@@ -29,7 +29,7 @@ class ControllerCaptchaGoogleCaptcha extends Controller {
     public function validate() {
         $this->load->language('captcha/google_captcha');
 
-        $recaptcha = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($this->config->get('google_captcha_secret')) . '&response=' . $this->request->post['g-recaptcha-response'] . '&remoteip=' . $this->request->server['REMOTE_ADDR']);
+        $recaptcha = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($this->config->get('google_captcha_secret')) . '&response=' . urlencode(isset($this->request->post['g-recaptcha-response']) ? $this->request->post['g-recaptcha-response'] : '') . '&remoteip=' . $this->request->server['REMOTE_ADDR']);
 
         $recaptcha = json_decode($recaptcha, true);
 

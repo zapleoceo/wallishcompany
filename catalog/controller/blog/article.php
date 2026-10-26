@@ -411,7 +411,7 @@ class ControllerBlogArticle extends Controller {
 
       		$data['breadcrumbs'][] = array(
         		'text'      => $this->language->get('text_error'),
-				'href'      => $this->url->link('blog/article', $url . '&article_id=' . $this->request->get['article_id'])
+				'href'      => $this->url->link('blog/article', $url . '&article_id=' . (isset($this->request->get['article_id']) ? (int)$this->request->get['article_id'] : 0))
       		);
 
       		$this->document->setTitle($this->language->get('text_error'));
@@ -500,7 +500,7 @@ class ControllerBlogArticle extends Controller {
 		$data['text_no_reviews'] = $this->language->get('text_no_reviews');
 
 		if (isset($this->request->get['page'])) {
-			$page = $this->request->get['page'];
+			$page = (int)$this->request->get['page'];
 		} else {
 			$page = 1;
 		}

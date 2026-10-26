@@ -166,7 +166,7 @@ class ControllerProductProduct extends Controller {
 
 		$this->load->model('catalog/product');
 		$product_info = $this->model_catalog_product->getProduct($product_id);
-		if (empty($data['category_title'])) {
+		if (empty($data['category_title']) && $product_info) {
             $data['category_title'] = $product_info['name'];
         }
 
@@ -562,7 +562,9 @@ class ControllerProductProduct extends Controller {
 		
 			$user_id = isset($_SESSION['default']['customer_id']) ? $_SESSION['default']['customer_id'] : 0;
 			$data['user_wishlist'] = $this->model_catalog_product->getProductWishlistIds($user_id);
-			$data['product_nav'] = $this->model_catalog_product->getProductNav($this->request->get['product_id']);
+			$product_nav = $this->model_catalog_product->getProductNav($product_id);
+			// getProductNav() returns false without a category; the template reads ['prev'] / ['next']
+			$data['product_nav'] = (is_array($product_nav) ? $product_nav : array()) + array('prev' => '', 'next' => '');
 
 			foreach ($results as $result) {
 				if ($result['image']) {
@@ -745,7 +747,7 @@ class ControllerProductProduct extends Controller {
 		$data['text_no_reviews'] = $this->language->get('text_no_reviews');
 
 		if (isset($this->request->get['page'])) {
-			$page = $this->request->get['page'];
+			$page = (int)$this->request->get['page'];
 		} else {
 			$page = 1;
 		}
