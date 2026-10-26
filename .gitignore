@@ -132,10 +132,12 @@ yarn-error.log
 !system/*.php
 
 # Include all essential configuration files (but not sensitive ones)
-!config.php
-!admin/config.php
-!catalog/config.php
 !system/config/config.php
+
+# Site configs hold DB credentials: they live only on the server
+/config.php
+/admin/config.php
+/catalog/config.php
 
 # Include all essential template files
 !templ/
